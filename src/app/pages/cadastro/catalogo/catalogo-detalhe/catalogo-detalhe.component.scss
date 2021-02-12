@@ -1,0 +1,39 @@
+:host{
+    #formulario {
+        height: 280px;   
+        width: 100% !important;
+    }
+    .Inputs{
+        font-weight: bold;
+        padding-left: 0.5%;
+    }
+    .coluna-acao {
+        text-align: center;
+        width: 100%;
+    }
+
+    .pad{
+        margin-left: 10px;
+        margin-bottom: 5px;
+        width:150px;
+    }
+    .padS{
+        padding: 6px;
+        padding-top: 0px;
+    }
+
+    ::ng-deep .icone-info-legenda {
+        color: black;
+        width: 40px;
+
+    }
+
+    .titulo{
+        text-align: center;
+    }
+
+    .texto{
+        margin-left: 1.5%;
+    }
+
+}
