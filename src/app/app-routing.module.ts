@@ -18,14 +18,14 @@ const routes: Routes = [
         loadChildren: () => import('./pages/inicio/inicio.module').then(module => module.InicioModule)
       },
       {
-        //basic
-        path: 'cadastro',
-        loadChildren: () => import('./pages/cadastro/cadastro.module').then(module => module.CadastroModule)
-      },
-      {
-        path: 'venda',
-        loadChildren: () => import('./pages/vendas/vendas.module').then(module => module.VendasModule)
-      },
+        path: 'pages',
+        loadChildren:  './pages/pages.module#PagesModule'
+      }
+      // ,
+      // {
+      //   path: 'venda',
+      //   loadChildren: () => import('./pages/vendas/vendas.module').then(module => module.VendasModule)
+      // },
     ]
   },
   {

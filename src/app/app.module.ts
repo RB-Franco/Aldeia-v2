@@ -3,7 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './theme/shared/shared.module';
 
@@ -26,6 +25,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/side-bar/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { CadastroModule } from './pages/cadastros/cadastros.module';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule 
     NgbTooltipModule,
     NgbButtonsModule,
     NgbTabsetModule,
-    MatDialogModule
+    MatDialogModule,
+    CadastroModule
   ],
   providers: [NavigationItem],
   bootstrap: [AppComponent]

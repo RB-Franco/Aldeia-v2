@@ -44,43 +44,43 @@ const NavigationItems = [
         title: 'Cadastro',
         type: 'collapse',
         icon: 'feather icon-file',
-        children: [         
-          {
-            id: 'usuario',
-            title: 'Usuario',
-            type: 'item',
-            url: '/cadastro/usuario'
-          },
-          {
-            id: 'empresa',
-            title: 'Empresa',
-            type: 'item',
-            url: '/cadastro/empresa'
-          },
-          {
-            id: 'fornecedor',
-            title: 'Fornecedor',
-            type: 'item',
-            url: '/cadastro/fornecedor'
-          },
+        children: [  
           {
             id: 'catalogo',
             title: 'Catalogo',
             type: 'item',
-            url: '/cadastro/catalogo'
-          },
-          {
-            id: 'cliente',
-            title: 'Cliente',
-            type: 'item',
-            url: '/cadastro/cliente'
-          },
-          {
-            id: 'produto',
-            title: 'Produto',
-            type: 'item',
-            url: '/cadastro/produto'
-          }
+            url: '/pages/cadastros/catalogo'
+          },      
+           {
+             id: 'usuario',
+             title: 'Usuario',
+             type: 'item',
+             url: '/pages/cadastros/usuario'
+           },
+           {
+             id: 'empresa',
+             title: 'Empresa',
+             type: 'item',
+             url: '/pages/cadastros/empresa'
+           },
+           {
+             id: 'fornecedor',
+             title: 'Fornecedor',
+             type: 'item',
+             url: '/pages/cadastros/fornecedor'
+           },          
+           {
+             id: 'cliente',
+             title: 'Cliente',
+             type: 'item',
+             url: '/pages/cadastros/cliente'
+           },
+           {
+             id: 'produto',
+             title: 'Produto',
+             type: 'item',
+             url: '/pages/cadastros/produto'
+           }
         ]
       },
       {
