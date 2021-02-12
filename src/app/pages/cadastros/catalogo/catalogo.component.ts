@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { MatDialog, } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatDialogContainer, MatDialogModule } from '@angular/material/dialog';
 import { CatalogoDetalheComponent } from './catalogo-detalhe/catalogo-detalhe.component';
 
 @Component({
@@ -8,8 +8,6 @@ import { CatalogoDetalheComponent } from './catalogo-detalhe/catalogo-detalhe.co
   styleUrls: ['./catalogo.component.scss']
 })
 export class CatalogoComponent implements OnInit {
-  @ViewChild(CatalogoDetalheComponent, { static: true }) child: CatalogoDetalheComponent;
-
   public isCollapsed: boolean;
   public multiCollapsed1: boolean;
   public multiCollapsed2: boolean;
@@ -28,14 +26,12 @@ export class CatalogoComponent implements OnInit {
   }
 
   detalheCatalogo() {
-
-    this.configDialog.open(CatalogoDetalheComponent,
-      {
-        width: '95%', height: '95%', disableClose: true,
-        panelClass: '',
-        data: 'testejjsvjsdjvkskbshvbkhfbkdfjhsdklfdifhsdlfksl'
-      });
+    const dialogConfig = new MatDialogConfig();
 
 
+    dialogConfig.position = {
+      top: '20%', right: '30%', left: '30%', bottom: '30%'};
+      dialogConfig.width = '680px';
+    this.configDialog.open(CatalogoDetalheComponent, dialogConfig);
   }
 }

@@ -1,4 +1,3 @@
-<router-outlet></router-outlet>
 <div class="col-sm-12">
     <ngb-accordion [closeOthers]="true" activeIds="static-1" class="next-accordion">
         <ngb-panel id="static-3">
@@ -63,7 +62,10 @@
                             <td class="text-center">
                                 <div role="" class="btn-group-sm btn-group">
                                     <!--Editar-->
-                                    <button class="btn-shadow btn btn-info" (click)="detalheCatalogo()">Editar</button>
+                                    <button class="btn-shadow btn btn-info">
+                                        <a [routerLink]="'/pages/vendas/emitir-pedido'"></a>
+                                        Editar
+                                    </button>
                                     <!--Excluir-->
                                     <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
                                 </div>

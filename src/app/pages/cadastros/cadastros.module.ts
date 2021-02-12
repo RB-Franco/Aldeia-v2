@@ -75,17 +75,7 @@ const routs: Routes = [
     MatDialogModule,
     NgbModule
   ],
-  providers: [
-    {
-      provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: {
-          hasBackdrop: true,
-          panelClass: 'm-mat-dialog-container__wrapper',
-          height: 'auto',
-          width: '900px'
-      }
-  }
-  ],
+  providers: [ ],
   declarations: [
     CadastrosComponent,
     CatalogoComponent,

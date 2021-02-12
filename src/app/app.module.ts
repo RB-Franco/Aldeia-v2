@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './theme/shared/shared.module';
@@ -27,6 +27,7 @@ import { NavigationItem } from './theme/layout/admin/side-bar/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroModule } from './pages/cadastros/cadastros.module';
 import { VendasModule } from './pages/vendas/vendas.module';
+import { CatalogoDetalheComponent } from './pages/cadastros/catalogo/catalogo-detalhe/catalogo-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { VendasModule } from './pages/vendas/vendas.module';
     VendasModule
   ],
   providers: [NavigationItem],
+  entryComponents: [CatalogoDetalheComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

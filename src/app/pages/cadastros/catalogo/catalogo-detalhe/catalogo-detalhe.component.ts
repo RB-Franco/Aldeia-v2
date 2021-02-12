@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { CatalogoComponent } from '../catalogo.component';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-catalogo-detalhe',
@@ -11,6 +11,7 @@ export class CatalogoDetalheComponent implements OnInit {
   texto: string = '';
 
   constructor(
+    private fb : FormBuilder,
     private dialogref: MatDialogRef<CatalogoDetalheComponent>,    
     public configDialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) data,

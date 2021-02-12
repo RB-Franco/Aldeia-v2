@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastroModule } from './cadastros/cadastros.module';
 import { VendasModule } from './vendas/vendas.module';
+import { CatalogoDetalheComponent } from './cadastros/catalogo/catalogo-detalhe/catalogo-detalhe.component';
 
 @NgModule({
 	declarations: [
@@ -20,6 +21,7 @@ import { VendasModule } from './vendas/vendas.module';
 		CadastroModule,
 		VendasModule
 	],
+	entryComponents: [CatalogoDetalheComponent],
 	providers: []
 })
 
