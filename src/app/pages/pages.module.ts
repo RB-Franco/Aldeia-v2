@@ -6,7 +6,6 @@ import { PagesComponent } from './pages.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastroModule } from './cadastros/cadastros.module';
-import { CadastrosComponent } from './cadastros/cadastros.component';
 import { VendasModule } from './vendas/vendas.module';
 
 @NgModule({

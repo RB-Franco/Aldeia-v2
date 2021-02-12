@@ -26,6 +26,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 import { NavigationItem } from './theme/layout/admin/side-bar/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroModule } from './pages/cadastros/cadastros.module';
+import { VendasModule } from './pages/vendas/vendas.module';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CadastroModule } from './pages/cadastros/cadastros.module';
     NgbButtonsModule,
     NgbTabsetModule,
     MatDialogModule,
-    CadastroModule
+    CadastroModule,
+    VendasModule
   ],
   providers: [NavigationItem],
   bootstrap: [AppComponent]

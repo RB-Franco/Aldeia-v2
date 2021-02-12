@@ -93,13 +93,13 @@ const NavigationItems = [
             id: 'consultar-pedido',
             title: 'Consultar pedido',
             type: 'item',
-            url: '/venda/consultar-pedido'
+            url: '/pages/vendas/consultar-pedido'
           },
           {
             id: 'emitir-pedido',
             title: 'Emitir novo pedido',
             type: 'item',
-            url: '/venda/emitir-pedido'
+            url: '/pages/vendas/emitir-pedido'
           }
         ]
       }

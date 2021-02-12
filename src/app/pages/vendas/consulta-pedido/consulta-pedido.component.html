@@ -1,9 +1,11 @@
+<router-outlet></router-outlet>
 <div class="row btn-page">
     <div class="col-sm-12">
         <ngb-accordion [closeOthers]="true" activeIds="static-1" class="next-accordion">
             <ngb-panel id="static-3">
                 <ng-template ngbPanelTitle style="width: 1500px;">
-                    <button class="btn-icon btn-icon-only btn btn-link" (click)="ChangeIcon(troca)" style="width: 1525px; border-style: solid;">
+                    <button class="btn-icon btn-icon-only btn btn-link" (click)="ChangeIcon(troca)"
+                        style="width: 1525px; border-style: solid;">
                         <div class="row">
                             <div class="col-auto mr-auto">
                                 <h5>Filtros avancados</h5>
@@ -19,7 +21,6 @@
         </ngb-accordion>
     </div>
 </div>
-
 <div class="row btn-page">
     <div class="col-md-12">
         <app-card cardTitle="Pedidos" blockClass="table-border-style">

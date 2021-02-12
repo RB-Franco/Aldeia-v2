@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '../../theme/shared/shared.module';
 
 import { NgbAccordionModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { VendasComponent } from './vendas.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
+    SharedModule,
     NgbAccordionModule,
     NgbCollapseModule
   ],
@@ -44,6 +46,7 @@ const routes: Routes = [
   }],
   exports: [RouterModule],
   declarations: [
+    VendasComponent,
     ConsultaPedidoComponent, 
     EmitirPedidoComponent
   ]
