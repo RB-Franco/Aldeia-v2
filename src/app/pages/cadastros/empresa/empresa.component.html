@@ -1,238 +1,263 @@
 <div class="col-sm-12">
   <app-filter cardTitle="Filtros avançados">
-      <div class="row">
-          <div class="col-md-3">
-              <form action="javascript:">
-                  <div class="form-group">
-                      <div class="row">
-                          <div class="col-md-3">
-                              <label for="">Catalogo:</label>
-                          </div>
-                          <div class="col-md-9">
-                              <input type="catalogo" class="form-control" id="idcatalogo" aria-describedby="codigo do catalgo" placeholder="Codigo do catalogo">
-                          </div>
-                      </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Pesquisar</button>
-              </form>
+    <div class="row">
+      <div class="col-md-3">
+        <form action="javascript:">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3">
+                <label for="">Cod. empresa:</label>
+              </div>
+              <div class="col-md-9">
+                <input type="catalogo" class="form-control" id="idcatalogo" aria-describedby="codigo do catalgo"
+                  placeholder="Codigo do catalogo">
+              </div>
+            </div>
           </div>
+          <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </form>
       </div>
+    </div>
   </app-filter>
 </div>
 
 <div class="col-md-12">
-    <app-card cardTitle="Clientes" blockClass="table-border-style">
-        <div class="table-responsive">
-                <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th class="text-center">#</th>
-                          <th class="text-center">Descrição</th>
-                          <th class="text-center">Email</th>
-                          <th class="text-center">endereço</th>
-                          <th class="text-center">Atuação</th>
-                          <th class="text-center">Usr. cadastro</th>
-                          <th class="text-center">Data cadastro</th>
-                          <th class="text-center">Ações</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr><tr>
-                          <td class="text-center text-muted" style="width: 80px;">1</td>
-                          <td class="text-center" style="width: 80px;">Puzzle inc.</td>
-                          <td class="text-center">rodrigo.franco@gmail.com</td>
-                          <td class="text-center">Rua tambaqui Qd:03</td>
-                          <td class="text-center">GO</td>
-                          <td class="text-center">rodrigoF.supervisor</td>
-                          <td class="text-center" style="width: 200px;">06/02/2021</td>
-                          <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                              <!--Editar-->
-                              <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                              <!--Excluir-->
-                              <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-        </div>
-    </app-card>
+  <app-card cardTitle="Empresas" blockClass="table-border-style">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Descrição</th>
+            <th class="text-center">Telefone</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">endereço</th>
+            <th class="text-center">Atuação</th>
+            <th class="text-center">Usr. cadastro</th>
+            <th class="text-center">Data cadastro</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">1</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(1)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">2</td>
+            <td class="text-center">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(2)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">3</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(3)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">4</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(4)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">5</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(5)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">6</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(6)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">7</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(7)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">8</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(8)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">9</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(9)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">10</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(10)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">11</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(11)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center text-muted" style="width: 80px;">12</td>
+            <td class="text-center" style="width: 80px;">Puzzle inc.</td>
+            <td class="text-center">3358-8896</td>
+            <td class="text-center">rodrigo.franco@gmail.com</td>
+            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">GO</td>
+            <td class="text-center">rodrigoF.supervisor</td>
+            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">
+              <div role="" class="btn-group-sm btn-group">
+                <!--Editar-->
+                <button class="btn-shadow btn btn-info" (click)="detalheEmpresa(12)">Editar</button>
+                <!--Excluir-->
+                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-card>
 </div>
-  <button class="fixed feather icon-plus btn btn-primary">   Cadastrar</button>
+<button class="fixed feather icon-plus btn btn-primary" (click)="detalheEmpresa(0)"> Cadastrar</button>

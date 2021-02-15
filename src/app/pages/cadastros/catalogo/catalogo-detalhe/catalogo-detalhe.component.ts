@@ -1,15 +1,13 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import {EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
 import {NextConfig} from '../../../../app-config';
-
 
 @Component({
   selector: 'app-catalogo-detalhe',
   templateUrl: './catalogo-detalhe.component.html',
   styleUrls: ['./catalogo-detalhe.component.scss']
 })
+
 export class CatalogoDetalheComponent implements OnInit {
   public windowWidth: number;
   public nextConfig: any;

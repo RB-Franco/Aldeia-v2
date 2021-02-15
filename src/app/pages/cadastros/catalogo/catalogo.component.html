@@ -9,7 +9,8 @@
                                 <label for="">Catalogo:</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="catalogo" class="form-control" id="idcatalogo" aria-describedby="codigo do catalogo" placeholder="Codigo do catalogo">
+                                <input type="catalogo" class="form-control" id="idcatalogo"
+                                    aria-describedby="codigo do catalogo" placeholder="Codigo do catalogo">
                             </div>
                         </div>
                     </div>
@@ -23,54 +24,52 @@
 <div class="col-md-12">
     <app-card cardTitle="Catalogos" blockClass="table-border-style">
         <div class="table-responsive">
-            <perfect-scrollbar style="overflow: auto; position: relative;">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Cod. tabela</th>
-                            <th class="text-center">Tabela</th>
-                            <th class="text-center">Codigo</th>
-                            <th class="text-center">Referência</th>
-                            <th class="text-center">Dimensões</th>
-                            <th class="text-center">1000</th>
-                            <th class="text-center">1400</th>
-                            <th class="text-center">2000</th>
-                            <th class="text-center">2500</th>
-                            <th class="text-center">3000</th>
-                            <th class="text-center">5000</th>
-                            <th class="text-center">Usr. cadastro</th>
-                            <th class="text-center">Data cadastro</th>
-                            <th class="text-center">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center text-muted" style="width: 80px;">1</td>
-                            <td class="text-center text-muted" style="width: 80px;">TABELA - 09/2020</td>
-                            <td class="text-center text-muted" style="width: 80px;">61578</td>
-                            <td class="text-center" style="width: 80px;">3 LG 2 BR ( 2 ASS1,00 ) </td>
-                            <td class="text-center">2,55X0,88X0,95</td>
-                            <td class="text-center">3.384,00</td>
-                            <td class="text-center">3.508,00</td>
-                            <td class="text-center">3.601,33</td>
-                            <td class="text-center">3.767,72</td>
-                            <td class="text-center">3.818,67</td>
-                            <td class="text-center">5.358,67</td>
-                            <td class="text-center">rodrigoF.supervisor</td>
-                            <td class="text-center" style="width: 200px;">06/02/2021</td>
-                            <td class="text-center">
-                                <div role="" class="btn-group-sm btn-group">
-                                    <!--Editar-->
-                                    <button class="btn-shadow btn btn-info" (click)="detalheCatalogo(1)">Editar</button>
-                                    <!--Excluir-->
-                                    <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </perfect-scrollbar>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">Cod. tabela</th>
+                        <th class="text-center">Tabela</th>
+                        <th class="text-center">Codigo</th>
+                        <th class="text-center">Referência</th>
+                        <th class="text-center">Dimensões</th>
+                        <th class="text-center">1000</th>
+                        <th class="text-center">1400</th>
+                        <th class="text-center">2000</th>
+                        <th class="text-center">2500</th>
+                        <th class="text-center">3000</th>
+                        <th class="text-center">5000</th>
+                        <th class="text-center">Usr. cadastro</th>
+                        <th class="text-center">Data cadastro</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center text-muted" style="width: 80px;">1</td>
+                        <td class="text-center text-muted" style="width: 80px;">TABELA - 09/2020</td>
+                        <td class="text-center text-muted" style="width: 80px;">61578</td>
+                        <td class="text-center" style="width: 80px;">3 LG 2 BR ( 2 ASS1,00 ) </td>
+                        <td class="text-center">2,55X0,88X0,95</td>
+                        <td class="text-center">3.384,00</td>
+                        <td class="text-center">3.508,00</td>
+                        <td class="text-center">3.601,33</td>
+                        <td class="text-center">3.767,72</td>
+                        <td class="text-center">3.818,67</td>
+                        <td class="text-center">5.358,67</td>
+                        <td class="text-center">rodrigoF.supervisor</td>
+                        <td class="text-center" style="width: 200px;">06/02/2021</td>
+                        <td class="text-center">
+                            <div role="" class="btn-group-sm btn-group">
+                                <!--Editar-->
+                                <button class="btn-shadow btn btn-info" (click)="detalheCatalogo(1)">Editar</button>
+                                <!--Excluir-->
+                                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </app-card>
 </div>
-<button class="fixed feather icon-plus btn btn-primary" (click)="detalheCatalogo(0)">   Cadastrar</button>
+<button class="fixed feather icon-plus btn btn-primary" (click)="detalheCatalogo(0)"> Cadastrar</button>

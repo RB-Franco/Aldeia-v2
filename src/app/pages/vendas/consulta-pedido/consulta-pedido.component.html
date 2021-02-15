@@ -1,70 +1,66 @@
-<router-outlet></router-outlet>
-<div class="row btn-page">
-    <div class="col-sm-12">
-        <ngb-accordion [closeOthers]="true" activeIds="static-1" class="next-accordion">
-            <ngb-panel id="static-3">
-                <ng-template ngbPanelTitle style="width: 1500px;">
-                    <button class="btn-icon btn-icon-only btn btn-link" (click)="ChangeIcon(troca)"
-                        style="width: 1525px; border-style: solid;">
+<div class="col-sm-12">
+    <app-filter cardTitle="Filtros avançados">
+        <div class="row">
+            <div class="col-md-3">
+                <form action="javascript:">
+                    <div class="form-group">
                         <div class="row">
-                            <div class="col-auto mr-auto">
-                                <h5>Filtros avancados</h5>
+                            <div class="col-md-3">
+                                <label for="">Usuario:</label>
                             </div>
-                            <div class="col-auto">
-                                <i class="feather icon-eye"></i>
+                            <div class="col-md-9">
+                                <input type="usuario" class="form-control" id="idusuario"
+                                    aria-describedby="codigo do usuario" placeholder="Codigo do usuario">
                             </div>
                         </div>
-                    </button>
-                    <hr>
-                </ng-template>
-            </ngb-panel>
-        </ngb-accordion>
-    </div>
-</div>
-<div class="row btn-page">
-    <div class="col-md-12">
-        <app-card cardTitle="Pedidos" blockClass="table-border-style">
-            <div class="table-responsive">
-                <perfect-scrollbar style="height: 470px; overflow: auto; position: relative;">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Nº pedido</th>
-                                <th class="text-center">Empresa</th>
-                                <th class="text-center">Fornecedor</th>
-                                <th class="text-center">Cliente</th>
-                                <th class="text-center">Obs. pedido/th>
-                                <th class="text-center">Prazo</th>
-                                <th class="text-center">Cond. pagamento</th>
-                                <th class="text-center">usr. cadastro</th>
-                                <th class="text-center">Data cadastro</th>
-                                <th class="text-center">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center text-muted" style="width: 80px;">1</td>
-                                <td class="text-center" style="width: 80px;">1 - Puzzel inc.</td>
-                                <td class="text-center">1 - D Angelis</td>
-                                <td class="text-center">1 - Rodrigo Barcelos Franco</td>
-                                <td class="text-center">Pedido devera ser entregue em 10 dias</td>
-                                <td class="text-center">90</td>
-                                <td class="text-center">90</td>
-                                <td class="text-center">rodrigoF.supervisor</td>
-                                <td class="text-center" style="width: 200px;">06/02/2021</td>
-                                <td class="text-center">
-                                    <div role="" class="btn-group-sm btn-group">
-                                        <!--Editar-->
-                                        <button class="btn-shadow btn btn-info" (click)="open()">Detalhe</button>
-                                        <!--Excluir-->
-                                        <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </perfect-scrollbar>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </form>
             </div>
-        </app-card>
-    </div>
+        </div>
+    </app-filter>
+</div>
+
+<div class="col-md-12">
+    <app-card cardTitle="Pedidos" blockClass="table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nº pedido</th>
+                        <th class="text-center">Empresa</th>
+                        <th class="text-center">Fornecedor</th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">Obs. pedido/th>
+                        <th class="text-center">Prazo</th>
+                        <th class="text-center">Cond. pagamento</th>
+                        <th class="text-center">usr. cadastro</th>
+                        <th class="text-center">Data cadastro</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center text-muted" style="width: 80px;">1</td>
+                        <td class="text-center" style="width: 80px;">1 - Puzzel inc.</td>
+                        <td class="text-center">1 - D Angelis</td>
+                        <td class="text-center">1 - Rodrigo Barcelos Franco</td>
+                        <td class="text-center">Pedido devera ser entregue em 10 dias</td>
+                        <td class="text-center">90</td>
+                        <td class="text-center">90</td>
+                        <td class="text-center">rodrigoF.supervisor</td>
+                        <td class="text-center" style="width: 200px;">06/02/2021</td>
+                        <td class="text-center">
+                            <div role="" class="btn-group-sm btn-group">
+                                <!--Editar-->
+                                <button class="btn-shadow btn btn-info" (click)="detalhePedido(1)">Detalhe</button>
+                                <!--Excluir-->
+                                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </app-card>
 </div>

@@ -1,1 +1,80 @@
-<p>empresa-detalhe works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle=Empresas [options]="true">
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Empresa</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Puzzle inc.">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Telefone</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="####-####">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Logradouro</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Rua tambaqui cond. Gran oasis">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Complemento</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="QD: 10 apt: 524 bl: 15">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">E-mail</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="61578">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-2">
+          <form action="javascript:" class="was-validated">
+            <div class="form-group">
+              <label for="">Estado de atuação</label>
+              <select class="custom-select" required>
+                <option value=""></option>
+                <option value="1">GO</option>
+                <option value="2">SP</option>
+                <option value="3">MT</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
+        </div>
+        <div class="col-auto">
+          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

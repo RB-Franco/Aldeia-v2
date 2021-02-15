@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.scss']
 })
+
 export class CatalogoComponent implements OnInit {
   public isCollapsed: boolean;
   public multiCollapsed1: boolean;

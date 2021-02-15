@@ -1,1 +1,84 @@
-<p>produto-detalhe works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle=Produto [options]="true">
+      <hr>
+      <div class="row">
+        <div class="col-md-7">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Descrição</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="ASTI">
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-md-4">
+              <form action="javascript:">
+                <div class="form-group">
+                  <label for="">Catalogo</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="TABELA - 2019">
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <form action="javascript:">
+                <div class="form-group">
+                  <form action="javascript:">
+                    <div class="form-group">
+                      <label for="UN">Referencia</label>
+                      <select class="form-control" id="UN">
+                        <option>UN</option>
+                        <option>MT</option>
+                        <option>KG</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <form action="javascript:">
+                <div class="form-group">
+                  <form action="javascript:">
+                    <div class="form-group">
+                      <label for="UN">Unidade de medida</label>
+                      <select class="form-control" id="UN">
+                        <option>UN</option>
+                        <option>MT</option>
+                        <option>KG</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto" style="left: 24%;">
+          <div class="container" style="background-color: rgb(245, 245, 245); 
+                                          box-shadow: 2px 2px 2px rgb(160, 158, 158); 
+                                          width: 250px; 
+                                          height: 250px;
+                                          text-align: center; bottom: 50%;"
+                                          >
+            <!--<span class="fixed feather icon-plus" style="align-items: center;"></span>-->
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
+        </div>
+        <div class="col-auto">
+          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

@@ -10,11 +10,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'begin/inicio',
+        redirectTo: '/inicio',
         pathMatch: 'full'
       },
       {
-        path: 'begin',
+        path: '',
         loadChildren: () => import('./pages/inicio/inicio.module').then(module => module.InicioModule)
       },
       {

@@ -1,15 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import {NextConfig} from '../../../../app-config';
 @Component({
   selector: 'app-empresa-detalhe',
   templateUrl: './empresa-detalhe.component.html',
   styleUrls: ['./empresa-detalhe.component.scss']
 })
 export class EmpresaDetalheComponent implements OnInit {
+  public windowWidth: number;
+  public nextConfig: any;
+  @Output() onNavMobCollapse = new EventEmitter();
 
-  constructor() { }
+  idCatalogo: any;
+  rotaAtual: any;
+  rota: any;
+  constructor(
+    private rotas: Router,
+    private route: ActivatedRoute
+  ) {
+    this.nextConfig = NextConfig.config;
+    this.windowWidth = window.innerWidth;
+    this.rota = rotas;
+   }
 
   ngOnInit() {
-  }
+    this.route.params.subscribe((objeto: any) => {
+       this.idCatalogo = objeto.id;
+    })
 
+    this.route.queryParams.subscribe(params => {
+      this.rotaAtual = params.rotaAtual;
+    });
+ }
+
+ navMobCollapse() {
+   if (this.windowWidth < 992) {
+     this.onNavMobCollapse.emit();
+   }
+ }
+
+ voltarRota(){
+   this.rota.navigate([this.rotaAtual]);
+ }
 }

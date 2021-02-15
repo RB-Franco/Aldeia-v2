@@ -9,7 +9,8 @@
                                 <label for="">Usuario:</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="usuario" class="form-control" id="idusuario" aria-describedby="codigo do usuario" placeholder="Codigo do usuario">
+                                <input type="usuario" class="form-control" id="idusuario"
+                                    aria-describedby="codigo do usuario" placeholder="Codigo do usuario">
                             </div>
                         </div>
                     </div>
@@ -23,41 +24,40 @@
 <div class="col-md-12">
     <app-card cardTitle="Usuarios" blockClass="table-border-style">
         <div class="table-responsive">
-            <perfect-scrollbar style="overflow: auto; position: relative;">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="text-center">#</th>
-                            <th class="text-center">Nome</th>
-                            <th class="text-center">Usuario</th>
-                            <th class="text-center">Telefone</th>
-                            <th class="text-center">Atuação</th>
-                            <th class="text-center">Usr. cadastro</th>
-                            <th class="text-center">Data cadastro</th>
-                            <th class="text-center">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center text-muted" style="width: 80px;">1</td>
-                            <td class="text-center" style="width: 80px;">Rafael santana de lima</td>
-                            <td class="text-center">RafaelS.representante</td>
-                            <td class="text-center">(62) 99856-2265</td>
-                            <td class="text-center">GO</td>
-                            <td class="text-center">rodrigoF.supervisor</td>
-                            <td class="text-center" style="width: 200px;">06/02/2021</td>
-                            <td class="text-center">
-                                <div role="" class="btn-group-sm btn-group">
-                                    <!--Editar-->
-                                    <button class="btn-shadow btn btn-info" (click)="open()">Editar</button>
-                                    <!--Excluir-->
-                                    <button class="btn-shadow btn btn-danger" (click)="excluir()">Inativar</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </perfect-scrollbar>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Usuario</th>
+                        <th class="text-center">Telefone</th>
+                        <th class="text-center">Atuação</th>
+                        <th class="text-center">Usr. cadastro</th>
+                        <th class="text-center">Data cadastro</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center text-muted" style="width: 80px;">1</td>
+                        <td class="text-center" style="width: 80px;">Rafael santana de lima</td>
+                        <td class="text-center">RafaelS.representante</td>
+                        <td class="text-center">(62) 99856-2265</td>
+                        <td class="text-center">GO</td>
+                        <td class="text-center">rodrigoF.supervisor</td>
+                        <td class="text-center" style="width: 200px;">06/02/2021</td>
+                        <td class="text-center">
+                            <div role="" class="btn-group-sm btn-group">
+                                <!--Editar-->
+                                <button class="btn-shadow btn btn-info" (click)="detalheUsuario(1)">Editar</button>
+                                <!--Excluir-->
+                                <button class="btn-shadow btn btn-danger" (click)="excluir()">Inativar</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </app-card>
 </div>
+<button class="fixed feather icon-plus btn btn-primary" (click)="detalheUsuario(0)"> Cadastrar</button>

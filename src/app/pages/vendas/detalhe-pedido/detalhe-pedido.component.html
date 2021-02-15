@@ -1,1 +1,206 @@
-<h1>Pagina detalhe pedido</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle='Emitir pedido' [options]="true">
+            <hr>
+            <div class="row justify-content-between">
+                <div class="col-md-4">
+                    <form action="javascript:">
+                        <div class="form-group">
+                            <label for="produtct">Empresa</label>
+                            <select class="form-control" id="produtct">
+                                <option></option>
+                                <option>1-Puzzle inc.</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form action="javascript:">
+                        <div class="form-group">
+                            <label for="produtct">Fornecedor</label>
+                            <select class="form-control" id="produtct">
+                                <option></option>
+                                <option>1-D Angelis.</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row justify-content-between">
+                <div class="col-md-4">
+                    <form action="javascript:">
+                        <div class="form-group">
+                            <label for="produtct">Cliente</label>
+                            <select class="form-control" id="produtct">
+                                <option></option>
+                                <option>1-Rodrigo</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form action="javascript:">
+                        <div class="form-group">
+                            <label for="">Obs. pedido</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Puzzle inc.">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="">CPF/CPNJ</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="####-####" disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                     <div class="form-group">
+                        <label for="">Endereço</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="####-####"  disabled="true">
+                    </div>
+                </div><div class="col-md-3">
+                    <div class="form-group">
+                       <label for="">Complemento</label>
+                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           placeholder="####-####"  disabled="true">
+                   </div>
+               </div>
+                <div class="col-md-1 offset-md-3">
+                    <div class="form-group">
+                        <label for="">Prazo</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="30">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 offset-md-11">
+                    <div class="form-group">
+                        <label for="">Cond. pagamento</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="30">
+                    </div>
+                </div>
+            </div>
+
+
+            <hr>
+            <div class="col-sm-12">
+                <app-card cardTitle="Adicionar produtos" blockClass="table-border-style">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <form action="javascript:">
+                                <div class="form-group">
+                                    <label for="produtct">Produto</label>
+                                    <select class="form-control" id="produtct">
+                                        <option></option>
+                                        <option>1-ASTI</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-2">
+                            <form action="javascript:">
+                                <div class="form-group">
+                                    <label for="table">Tabela</label>
+                                    <select class="form-control" id="table">
+                                        <option></option>
+                                        <option>1-Tabela 09-2019</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-2">
+                            <form action="javascript:">
+                                <div class="form-group">
+                                    <label for="table">Referencia</label>
+                                    <select class="form-control" id="table">
+                                        <option></option>
+                                        <option> 3 LG 2 BR ( 2 ASS1,00 )</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-2">
+                            <form action="javascript:">
+                                <div class="form-group">
+                                    <label for="table">Linha</label>
+                                    <select class="form-control" id="table">
+                                        <option></option>
+                                        <option>1000 - 3.384,00</option>
+                                        <option>1400 - 3.508,00</option>
+                                        <option>2000 - 3.601,33</option>
+                                        <option>2500 - 3.767,72</option>
+                                        <option>3000 - 3.818,67</option>
+                                        <option>5000 - 5.358,67</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-1">
+                            <form action="javascript:">
+                                <div class="form-group">
+                                    <label for="">Qtd</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="0">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-1">
+                            <form action="javascript:">
+                                <div class="form-group">
+                                    <label for="">% Desconto</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="0%">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="salvar" class="btn btn-success" (click)="voltarRota()">Adicionar</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Descrição</th>
+                                    <th class="text-center">Unidade de medida</th>
+                                    <th class="text-center">Quantidade</th>
+                                    <th class="text-center">Vlr. unitario</th>
+                                    <th class="text-center">Vlr. bruto</th>
+                                    <th class="text-center">% desconto</th>
+                                    <th class="text-center">Total liquido</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 
+                                conteudo
+                            -->
+                            </tbody>
+                        </table>
+                    </div>
+                </app-card>
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col-auto mr-auto">
+                    <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
+                </div>
+                <div class="col-auto">
+                    <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+                </div>
+            </div>
+        </app-card>
+    </div>
+</div>

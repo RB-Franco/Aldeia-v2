@@ -6,8 +6,8 @@ import { SharedModule } from '../../theme/shared/shared.module';
 import { NgbAccordionModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { VendasComponent } from './vendas.component';
 import { ConsultaPedidoComponent } from './consulta-pedido/consulta-pedido.component';
-import { EmitirPedidoComponent } from './emitir-pedido/emitir-pedido.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { DetalhePedidoComponent } from './detalhe-pedido/detalhe-pedido.component';
 
 const routes: Routes = [
   {
@@ -19,8 +19,12 @@ const routes: Routes = [
         component: ConsultaPedidoComponent,
       },
       {
-        path: 'emitir-pedido',
-        component: EmitirPedidoComponent
+        path: 'detalhe-pedido/:id',
+        component: DetalhePedidoComponent
+      },
+      {
+        path: 'emitir/detalhe-pedido',
+        component: DetalhePedidoComponent
       }
     ]
   }
@@ -48,7 +52,7 @@ const routes: Routes = [
   declarations: [
     VendasComponent,
     ConsultaPedidoComponent, 
-    EmitirPedidoComponent
+    DetalhePedidoComponent
   ]
 })
 export class VendasModule { }

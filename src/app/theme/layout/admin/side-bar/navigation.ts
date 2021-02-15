@@ -36,7 +36,7 @@ const NavigationItems = [
         id: 'begin',
         title: 'Inicio',
         type: 'item',
-        url: '/begin/inicio',
+        url: '//inicio',
         icon: 'feather icon-home'                        
       },
       {
@@ -46,40 +46,40 @@ const NavigationItems = [
         icon: 'feather icon-file',
         children: [  
           {
+            id: 'empresa',
+            title: 'Empresa',
+            type: 'item',
+            url: '/pages/cadastros/empresa'
+          },
+          {
+            id: 'fornecedor',
+            title: 'Fornecedor',
+            type: 'item',
+            url: '/pages/cadastros/fornecedor'
+          },   
+          {
             id: 'catalogo',
             title: 'Catalogo',
             type: 'item',
             url: '/pages/cadastros/catalogo'
+          },
+          {
+            id: 'produto',
+            title: 'Produto',
+            type: 'item',
+            url: '/pages/cadastros/produto'
           },      
            {
              id: 'usuario',
              title: 'Usuario',
              type: 'item',
              url: '/pages/cadastros/usuario'
-           },
-           {
-             id: 'empresa',
-             title: 'Empresa',
-             type: 'item',
-             url: '/pages/cadastros/empresa'
-           },
-           {
-             id: 'fornecedor',
-             title: 'Fornecedor',
-             type: 'item',
-             url: '/pages/cadastros/fornecedor'
-           },          
+           },       
            {
              id: 'cliente',
              title: 'Cliente',
              type: 'item',
              url: '/pages/cadastros/cliente'
-           },
-           {
-             id: 'produto',
-             title: 'Produto',
-             type: 'item',
-             url: '/pages/cadastros/produto'
            }
         ]
       },
@@ -99,7 +99,7 @@ const NavigationItems = [
             id: 'emitir-pedido',
             title: 'Emitir novo pedido',
             type: 'item',
-            url: '/pages/vendas/emitir-pedido'
+            url: '/pages/vendas/emitir/detalhe-pedido'
           }
         ]
       }

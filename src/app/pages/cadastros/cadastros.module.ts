@@ -40,21 +40,41 @@ const routs: Routes = [
         component: ClienteComponent,
       },
       {
+        path: 'cliente/cliente-detalhe/:id',
+        component: ClienteDetalheComponent,
+      },
+      {
         path: 'empresa',
         component: EmpresaComponent,
+      },
+      {
+        path: 'empresa/empresa-detalhe/:id',
+        component: EmpresaDetalheComponent,
       },
       {
         path: 'fornecedor',
         component: FornecedorComponent,
       },
       {
+        path: 'fornecedor/fornecedor-detalhe/:id',
+        component: FornecedorDetalheComponent,
+      },
+      {
         path: 'produto',
         component: ProdutoComponent,
       },
       {
+        path: 'produto/produto-detalhe/:id',
+        component: ProdutoDetalheComponent,
+      },
+      {
         path: 'usuario',
         component: UsuarioComponent,
-      }
+      },
+      {
+        path: 'usuario/usuario-detalhe/:id',
+        component: UsuarioDetalheComponent,
+      },
     ]
 
   }

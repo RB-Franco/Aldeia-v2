@@ -1,1 +1,89 @@
-<p>fornecedor-detalhe works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle=Fornecedor [options]="true">
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Fornecedor</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Puzzle inc.">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Telefone</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="3278-5589">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">E-mail</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="fornecedor@gmail.com">
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+      <h5>Endereço principal</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Logradouro</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Rua tambaqui cond. Gran oasis">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Complemento</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="QD: 10 apt: 524 bl: 15">
+            </div>
+          </form>
+        </div>
+      </div><h5>Endereço de entrega</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Logradouro</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Rua tambaqui cond. Gran oasis">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Complemento</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="QD: 10 apt: 524 bl: 15">
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
+        </div>
+        <div class="col-auto">
+          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
