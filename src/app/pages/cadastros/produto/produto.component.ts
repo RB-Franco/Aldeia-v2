@@ -30,5 +30,7 @@ export class ProdutoComponent implements OnInit {
   detalheProduto(id: number) {
     this.router.navigate(['/pages/cadastros/produto/produto-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
-
+  excluir(){
+    
+  }
 }

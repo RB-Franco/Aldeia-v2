@@ -30,4 +30,7 @@ export class EmpresaComponent implements OnInit {
   detalheEmpresa(id: number) {
     this.router.navigate(['/pages/cadastros/empresa/empresa-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
+  excluir(){
+    
+  }
 }

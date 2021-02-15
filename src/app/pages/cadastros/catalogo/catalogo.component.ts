@@ -33,4 +33,7 @@ export class CatalogoComponent implements OnInit {
   detalheCatalogo(id: number) {
     this.router.navigate(['/pages/cadastros/catalogo/catalogo-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
+  excluir(){
+    
+  }
 }

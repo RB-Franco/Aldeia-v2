@@ -33,4 +33,7 @@ export class ConsultaPedidoComponent implements OnInit {
   detalhePedido(id: number) {
     this.router.navigate(['/pages/vendas/detalhe-pedido', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
+  excluir(){
+    
+  }
 }

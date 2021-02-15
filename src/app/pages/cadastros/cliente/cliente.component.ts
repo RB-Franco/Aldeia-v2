@@ -33,4 +33,7 @@ export class ClienteComponent implements OnInit {
   detalheCliente(id: number) {
     this.router.navigate(['/pages/cadastros/cliente/cliente-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
+  excluir(){
+    
+  }
 }

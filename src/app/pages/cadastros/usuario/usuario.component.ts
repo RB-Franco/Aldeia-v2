@@ -30,4 +30,7 @@ export class UsuarioComponent implements OnInit {
   detalheUsuario(id: number) {
     this.router.navigate(['/pages/cadastros/usuario/usuario-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
+  excluir(){
+    
+  }
 }

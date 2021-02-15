@@ -30,5 +30,8 @@ export class FornecedorComponent implements OnInit {
   detalheFornecedor(id: number) {
     this.router.navigate(['/pages/cadastros/fornecedor/fornecedor-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
+  excluir(){
+    
+  }
 
 }
