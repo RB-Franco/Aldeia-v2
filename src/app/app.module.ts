@@ -27,7 +27,6 @@ import { NavigationItem } from './theme/layout/admin/side-bar/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroModule } from './pages/cadastros/cadastros.module';
 import { VendasModule } from './pages/vendas/vendas.module';
-import { CatalogoDetalheComponent } from './pages/cadastros/catalogo/catalogo-detalhe/catalogo-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import { CatalogoDetalheComponent } from './pages/cadastros/catalogo/catalogo-de
     VendasModule
   ],
   providers: [NavigationItem],
-  entryComponents: [CatalogoDetalheComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

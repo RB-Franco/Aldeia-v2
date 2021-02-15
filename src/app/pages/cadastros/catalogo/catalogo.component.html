@@ -1,26 +1,25 @@
 <div class="col-sm-12">
-    <ngb-accordion [closeOthers]="true" activeIds="static-1" class="next-accordion">
-        <ngb-panel id="static-3">
-            <ng-template ngbPanelTitle style="width: 1500px;">
-                <button class="btn-icon btn-icon-only btn btn-link" (click)="ChangeIcon(troca)"
-                    style="width: 1525px; border-style: solid;">
-                    <div class="row">
-                        <div class="col-auto mr-auto">
-                            <h5>Filtros avancados</h5>
-                        </div>
-                        <div class="col-auto">
-                            <i class="feather icon-eye"></i>
+    <app-filter cardTitle="Filtros avançados">
+        <div class="row">
+            <div class="col-md-3">
+                <form action="javascript:">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="">Catalogo:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="catalogo" class="form-control" id="idcatalogo" aria-describedby="codigo do catalogo" placeholder="Codigo do catalogo">
+                            </div>
                         </div>
                     </div>
-                </button>
-                <hr>
-            </ng-template>
-            <ng-template ngbPanelContent>
-
-            </ng-template>
-        </ngb-panel>
-    </ngb-accordion>
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </form>
+            </div>
+        </div>
+    </app-filter>
 </div>
+
 <div class="col-md-12">
     <app-card cardTitle="Catalogos" blockClass="table-border-style">
         <div class="table-responsive">
@@ -62,10 +61,7 @@
                             <td class="text-center">
                                 <div role="" class="btn-group-sm btn-group">
                                     <!--Editar-->
-                                    <button class="btn-shadow btn btn-info">
-                                        <a [routerLink]="'/pages/vendas/emitir-pedido'"></a>
-                                        Editar
-                                    </button>
+                                    <button class="btn-shadow btn btn-info" (click)="detalheCatalogo(1)">Editar</button>
                                     <!--Excluir-->
                                     <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
                                 </div>
@@ -77,3 +73,4 @@
         </div>
     </app-card>
 </div>
+<button class="fixed feather icon-plus btn btn-primary" (click)="detalheCatalogo(0)">   Cadastrar</button>

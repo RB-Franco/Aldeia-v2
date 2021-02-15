@@ -1,20 +1,78 @@
-<div  class="container" style="background-color: chartreuse;">
-<h1 mat-dialog-title>Observação do pedido</h1>
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle=Catalogo [options]="true">
+      <hr>
+      <div class="row">
+        <div class="col-md-3">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Tabela</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Codigo da tabela">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Cod. Referencia</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-9">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Desc. Referencia</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Dimensões</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+          </form>
+        </div>
+      </div>
 
-<div class="row" style="background-color: chartreuse;">
-  <div class="col-xl-12">
-    {{campoObservacao}}   
-  </div>    
-</div>
-<br>
-<div
-  class="float-right"
-  style="position: relative">
-  <button
-    type="button"
-    class="btn btn-primary btn-sm m-btn m-btn--custom pad"
-    mat-dialog-close>
-    Fechar
-  </button>
-</div>
+      <h5 class="mt-5">Sizing</h5>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <input class="mb-3 form-control form-control-lg" type="text" placeholder=".form-control-lg">
+          <input class="mb-3 form-control" type="text" placeholder="Default input">
+          <input class="mb-3 form-control form-control-sm" type="text" placeholder=".form-control-sm">
+        </div>
+        <div class="col-md-6">
+          <select class="mb-3 form-control form-control-lg">
+            <option>Large select</option>
+          </select>
+          <select class="mb-3 form-control">
+            <option>Default select</option>
+          </select>
+        </div>
+      </div>
+      <h5 class="mt-5">Range Inputs</h5>
+      <hr>
+      <form action="javascript:">
+        <div class="form-group">
+          <label for="formControlRange">Example Range input</label>
+          <input type="range" class="form-control-range" id="formControlRange">
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-auto mr-auto" >
+          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
+        </div>
+        <div class="col-auto">
+          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+        </div>
+      </div>
+    </app-card>
+  </div>
 </div>

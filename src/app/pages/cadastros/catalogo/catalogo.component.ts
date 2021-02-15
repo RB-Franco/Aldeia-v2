@@ -1,6 +1,5 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogContainer, MatDialogModule } from '@angular/material/dialog';
-import { CatalogoDetalheComponent } from './catalogo-detalhe/catalogo-detalhe.component';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
@@ -12,26 +11,25 @@ export class CatalogoComponent implements OnInit {
   public multiCollapsed1: boolean;
   public multiCollapsed2: boolean;
 
+  router: Router;
+  empresa: any = 1;
+  rotaAtual: string = '/pages/cadastros/catalogo';
+
   constructor(
-    public configDialog: MatDialog,
-    public detDialog: MatDialog,
-    public relatorioDialogo: MatDialog
-  ) {
+    public rotas: Router
+    ) 
+    {
     this.isCollapsed = true;
     this.multiCollapsed1 = true;
     this.multiCollapsed2 = true;
-  }
+
+    this.router = rotas;
+    }
 
   ngOnInit() {
   }
 
-  detalheCatalogo() {
-    const dialogConfig = new MatDialogConfig();
-
-
-    dialogConfig.position = {
-      top: '20%', right: '30%', left: '30%', bottom: '30%'};
-      dialogConfig.width = '680px';
-    this.configDialog.open(CatalogoDetalheComponent, dialogConfig);
+  detalheCatalogo(id: number) {
+    this.router.navigate(['/pages/cadastros/catalogo/catalogo-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
 }

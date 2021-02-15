@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertModule, BreadcrumbModule, CardModule, ModalModule } from './components';
+import { AlertModule, BreadcrumbModule, CardModule, FilterModule, ModalModule } from './components';
 import { DataFilterPipe } from './components/data-table/data-filter.pipe';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { ClickOutsideModule } from 'ng-click-outside';
@@ -23,6 +23,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReactiveFormsModule,
     AlertModule,
     CardModule,
+    FilterModule,
     BreadcrumbModule,
     ModalModule,
     ClickOutsideModule
@@ -34,6 +35,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReactiveFormsModule,
     AlertModule,
     CardModule,
+    FilterModule,
     BreadcrumbModule,
     ModalModule,
     DataFilterPipe,

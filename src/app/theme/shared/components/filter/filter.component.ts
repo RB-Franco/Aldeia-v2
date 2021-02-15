@@ -4,9 +4,9 @@ import { AnimationBuilder, AnimationService } from 'css-animator';
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  selector: 'app-filter',
+  templateUrl: './filter.component.html',
+  styleUrls: ['./filter.component.scss'],
   providers: [NgbDropdownConfig],
   animations: [
     trigger('collapsedCard', [
@@ -39,7 +39,7 @@ import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular
   ]
 })
 
-export class CardComponent implements OnInit {
+export class FilterComponent implements OnInit {
   @Input() cardTitle: string;
   @Input() cardClass: string;
   @Input() blockClass: string;
@@ -65,6 +65,9 @@ export class CardComponent implements OnInit {
 
   public cardRemove: string;
 
+  public icone = "feather icon-eye"
+  public troca = true;
+
   constructor(animationService: AnimationService, config: NgbDropdownConfig) {
     config.placement = 'bottom-right';
     this.customHeader = false;
@@ -76,11 +79,9 @@ export class CardComponent implements OnInit {
     this.animator = animationService.builder();
     this.animators = animationService.builder();
     this.animator.useVisibility = true;
-    this.fullIcon = 'icon-maximize';
     this.isAnimating = false;
 
-    this.collapsedCard = 'expanded';
-    this.collapsedIcon = 'icon-minus';
+    this.collapsedCard = 'collapsed';
 
     this.loadCard = false;
 
@@ -129,17 +130,10 @@ export class CardComponent implements OnInit {
     }, 500);
   }
 
-  collapsedCardToggle() {
+  collapsedCardToggle(change: boolean) {
     this.collapsedCard = this.collapsedCard === 'collapsed' ? 'expanded' : 'collapsed';
-    this.collapsedIcon = this.collapsedCard === 'collapsed' ? 'icon-plus' : 'icon-minus';
+    this.icone = change ? "feather icon-eye-off" : "feather icon-eye"
+    this.troca = !change;
   }
 
-  cardRefresh() {
-    this.loadCard = true;
-    this.cardClass = 'card-load';
-    setTimeout( () => {
-      this.loadCard = false;
-      this.cardClass = 'expanded';
-    }, 3000);
-  }
 }

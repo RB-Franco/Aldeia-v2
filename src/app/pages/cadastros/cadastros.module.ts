@@ -32,7 +32,7 @@ const routs: Routes = [
         component: CatalogoComponent,
       },
       {
-        path: 'catalogo/catalogo-detalhe',
+        path: 'catalogo/catalogo-detalhe/:id',
         component: CatalogoDetalheComponent,
       },
       {
@@ -92,7 +92,7 @@ const routs: Routes = [
     UsuarioDetalheComponent
   ],
   exports: [RouterModule],
-  entryComponents: [CatalogoDetalheComponent],
+  entryComponents: [CatalogoDetalheComponent]
 })
 
 export class CadastroModule { }

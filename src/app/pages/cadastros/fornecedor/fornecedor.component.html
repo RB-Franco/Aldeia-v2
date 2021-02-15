@@ -1,25 +1,23 @@
 <div class="col-sm-12">
-    <ngb-accordion [closeOthers]="true" activeIds="static-1" class="next-accordion">
-        <ngb-panel id="static-3">
-            <ng-template ngbPanelTitle style="width: 1500px;">
-                <button class="btn-icon btn-icon-only btn btn-link" (click)="ChangeIcon(troca)"
-                    style="width: 1525px; border-style: solid;">
-                    <div class="row">
-                        <div class="col-auto mr-auto">
-                            <h5>Filtros avancados</h5>
-                        </div>
-                        <div class="col-auto">
-                            <i class="feather icon-eye"></i>
+    <app-filter cardTitle="Filtros avançados">
+        <div class="row">
+            <div class="col-md-3">
+                <form action="javascript:">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="">Fornecedor:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="fornecedor" class="form-control" id="idfornecedor" aria-describedby="codigo do fornecedor" placeholder="Codigo do fornecedor">
+                            </div>
                         </div>
                     </div>
-                </button>
-                <hr>
-            </ng-template>
-            <ng-template ngbPanelContent>
-
-            </ng-template>
-        </ngb-panel>
-    </ngb-accordion>
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </form>
+            </div>
+        </div>
+    </app-filter>
 </div>
 
 <div class="col-md-12">
