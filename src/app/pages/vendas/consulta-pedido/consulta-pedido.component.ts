@@ -36,4 +36,8 @@ export class ConsultaPedidoComponent implements OnInit {
   excluir(){
     
   }
+  
+  imprimir(){
+
+  }
 }

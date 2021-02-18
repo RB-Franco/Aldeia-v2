@@ -45,5 +45,7 @@ export class CatalogoDetalheComponent implements OnInit {
   voltarRota(){
     this.rota.navigate([this.rotaAtual]);
   }
- 
+  excluir(){
+    
+  }
 }
