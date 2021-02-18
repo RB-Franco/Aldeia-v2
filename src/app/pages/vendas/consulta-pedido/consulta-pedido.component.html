@@ -37,6 +37,7 @@
                         <th class="text-center">usr. cadastro</th>
                         <th class="text-center">Data cadastro</th>
                         <th class="text-center">Ações</th>
+                        <th class="text-center">Imprimir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,10 +54,19 @@
                         <td class="text-center">
                             <div role="" class="btn-group-sm btn-group">
                                 <!--Editar-->
-                                <button class="btn-shadow btn btn-info" (click)="detalhePedido(1)">Detalhe</button>
+                                <button type="button" class="btn btn-icon" (click)="detalhePedido(1)">
+                                    <i class="feather icon-edit f-16"> </i>                                    
+                                </button>
                                 <!--Excluir-->
-                                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+                                <button type="button" class="btn btn-icon" (click)="excluir()">
+                                    <i class="feather icon-trash-2"> </i>                                    
+                                </button>
                             </div>
+                        </td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-icon" (click)="collapsedCardToggle(troca)">
+                                <i class="feather icon-printer"> </i>
+                          </button>
                         </td>
                     </tr>
                 </tbody>

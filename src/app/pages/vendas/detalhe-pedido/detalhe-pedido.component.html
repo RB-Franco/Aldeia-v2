@@ -2,26 +2,37 @@
     <div class="col-sm-12">
         <app-card cardTitle='Emitir pedido' [options]="true">
             <hr>
-            <div class="row justify-content-between">
-                <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-4">                    
                     <form action="javascript:">
                         <div class="form-group">
-                            <label for="produtct">Empresa</label>
-                            <select class="form-control" id="produtct">
-                                <option></option>
-                                <option>1-Puzzle inc.</option>
-                            </select>
+                            <label for="Empresa">Empresa</label>
+                            <input class="form-control" list="Empresa" name="Empresa">
+                            <datalist id="Empresa">
+                                <option value="1-Puzzle inc.">
+                            </datalist>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 offset-md-2">
                     <form action="javascript:">
                         <div class="form-group">
-                            <label for="produtct">Fornecedor</label>
-                            <select class="form-control" id="produtct">
-                                <option></option>
-                                <option>1-D Angelis.</option>
-                            </select>
+                            <label for="fornecedor">Fornecedor</label>
+                            <input class="form-control" list="fornecedor" name="fornecedor">
+                            <datalist id="fornecedor">
+                                <option value="1-D Angelis.">
+                            </datalist>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <form action="javascript:">
+                        <div class="form-group">
+                            <label for="Catalogo">Catalogo</label>
+                            <input class="form-control" list="Catalogo" name="Catalogo">
+                            <datalist id="Catalogo">
+                                <option value="1-Tabela 09-2019">
+                            </datalist>
                         </div>
                     </form>
                 </div>
@@ -31,11 +42,11 @@
                 <div class="col-md-4">
                     <form action="javascript:">
                         <div class="form-group">
-                            <label for="produtct">Cliente</label>
-                            <select class="form-control" id="produtct">
-                                <option></option>
-                                <option>1-Rodrigo</option>
-                            </select>
+                            <label for="Cliente">Cliente</label>
+                            <input class="form-control" list="Cliente" name="Cliente">
+                            <datalist id="Cliente">
+                                <option value="1-Rodrigo">
+                            </datalist>
                         </div>
                     </form>
                 </div>
@@ -58,18 +69,19 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="">Endereço</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="####-####"  disabled="true">
+                            placeholder="####-####" disabled="true">
                     </div>
-                </div><div class="col-md-3">
+                </div>
+                <div class="col-md-3">
                     <div class="form-group">
-                       <label for="">Complemento</label>
-                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="####-####"  disabled="true">
-                   </div>
-               </div>
+                        <label for="">Complemento</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="####-####" disabled="true">
+                    </div>
+                </div>
                 <div class="col-md-1 offset-md-3">
                     <div class="form-group">
                         <label for="">Prazo</label>
@@ -96,49 +108,39 @@
                         <div class="col-md-2">
                             <form action="javascript:">
                                 <div class="form-group">
-                                    <label for="produtct">Produto</label>
-                                    <select class="form-control" id="produtct">
-                                        <option></option>
-                                        <option>1-ASTI</option>
-                                    </select>
+                                    <label for="product">Produto</label>
+                                    <input class="form-control" list="product" name="produtos">
+                                    <datalist id="product">
+                                        <option value="1 - ASTI">
+                                    </datalist>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-2">
+                            <form action="javascript:">
+                                <div class="form-group">
+                                    <label for="references">Referencia</label>
+                                    <input class="form-control" list="references" name="Referencia">
+                                    <datalist id="references">
+                                        <option value="3 LG 2 BR ( 2 ASS1,00 )">
+                                    </datalist>
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-2">
                             <form action="javascript:">
                                 <div class="form-group">
-                                    <label for="table">Tabela</label>
-                                    <select class="form-control" id="table">
-                                        <option></option>
-                                        <option>1-Tabela 09-2019</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-2">
-                            <form action="javascript:">
-                                <div class="form-group">
-                                    <label for="table">Referencia</label>
-                                    <select class="form-control" id="table">
-                                        <option></option>
-                                        <option> 3 LG 2 BR ( 2 ASS1,00 )</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-2">
-                            <form action="javascript:">
-                                <div class="form-group">
-                                    <label for="table">Linha</label>
-                                    <select class="form-control" id="table">
-                                        <option></option>
-                                        <option>1000 - 3.384,00</option>
-                                        <option>1400 - 3.508,00</option>
-                                        <option>2000 - 3.601,33</option>
-                                        <option>2500 - 3.767,72</option>
-                                        <option>3000 - 3.818,67</option>
-                                        <option>5000 - 5.358,67</option>
-                                    </select>
+                                    <label for="Linha">Linha</label>
+                                    <input class="form-control" list="Linha" name="Linha">
+                                    <datalist id="Linha">
+                                        <option value="1000 - 3.384,00">
+                                        <option value="1400 - 3.508,00">
+                                        <option value="2000 - 3.601,33">
+                                        <option value="2500 - 3.767,72">
+                                        <option value="3000 - 3.818,67">
+                                            <option value="5000 - 5.358,67">
+                                    </datalist>
                                 </div>
                             </form>
                         </div>
@@ -151,7 +153,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <form action="javascript:">
                                 <div class="form-group">
                                     <label for="">% Desconto</label>
@@ -191,6 +193,8 @@
                     </div>
                 </app-card>
             </div>
+            <hr>
+            <h1>Total:</h1>
 
             <hr>
             <div class="row">
