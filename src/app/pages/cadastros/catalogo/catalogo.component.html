@@ -27,44 +27,40 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="text-center">Cod. tabela</th>
-                        <th class="text-center">Tabela</th>
                         <th class="text-center">Codigo</th>
-                        <th class="text-center">Referência</th>
-                        <th class="text-center">Dimensões</th>
-                        <th class="text-center">1000</th>
-                        <th class="text-center">1400</th>
-                        <th class="text-center">2000</th>
-                        <th class="text-center">2500</th>
-                        <th class="text-center">3000</th>
-                        <th class="text-center">5000</th>
+                        <th class="text-center">Descrição</th>
+                        <th class="text-center">Cod. fornecedor</th>
+                        <th class="text-center">Descrição</th>                     
                         <th class="text-center">Usr. cadastro</th>
                         <th class="text-center">Data cadastro</th>
-                        <th class="text-center">Ações</th>
+                        <th class="text-center">Produtos</th>
+                        <th class="text-center">Ações</th>   
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-center text-muted" style="width: 80px;">1</td>
-                        <td class="text-center text-muted" style="width: 80px;">TABELA - 09/2020</td>
-                        <td class="text-center text-muted" style="width: 80px;">61578</td>
-                        <td class="text-center" style="width: 80px;">3 LG 2 BR ( 2 ASS1,00 ) </td>
-                        <td class="text-center">2,55X0,88X0,95</td>
-                        <td class="text-center">3.384,00</td>
-                        <td class="text-center">3.508,00</td>
-                        <td class="text-center">3.601,33</td>
-                        <td class="text-center">3.767,72</td>
-                        <td class="text-center">3.818,67</td>
-                        <td class="text-center">5.358,67</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">TABELA - 09/2020</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">D Angelis</td>
                         <td class="text-center">rodrigoF.supervisor</td>
-                        <td class="text-center" style="width: 200px;">06/02/2021</td>
-                        <td class="text-center">
+                        <td class="text-center">06/02/2021</td>
+                        <td class="text-center">                            
+                            <button type="button" class="btn btn-icon">
+                                <i class="feather icon-eye"> </i>
+                            </button>
+                        </td>
+                        <td class="text-center">                            
                             <div role="" class="btn-group-sm btn-group">
                                 <!--Editar-->
-                                <button class="btn-shadow btn btn-info" (click)="detalheCatalogo(1)">Editar</button>
+                                <button type="button" class="btn btn-icon" (click)="detalheCatalogo(1)">
+                                  <i class="feather icon-edit"> </i>
+                                </button>
                                 <!--Excluir-->
-                                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
-                            </div>
+                                <button type="button" class="btn btn-icon" (click)="excluir()">
+                                  <i class="feather icon-trash-2"> </i>
+                                </button>
+                              </div>
                         </td>
                     </tr>
                 </tbody>

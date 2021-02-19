@@ -29,11 +29,14 @@
           <tr>
             <th class="text-center">#</th>
             <th class="text-center">Nome</th>
-            <th class="text-center">Endereço</th>
-            <th class="text-center">Telefone</th>
-            <th class="text-center">Email</th>
             <th class="text-center">CPF/CNPJ</th>
             <th class="text-center">R.G/I.E</th>
+            <th class="text-center">Telefone</th>
+            <th class="text-center">E-mail</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Cidade</th>
+            <th class="text-center">Endereço</th>
+            <th class="text-center">Complemento</th>
             <th class="text-center">Usr. cadastro</th>
             <th class="text-center">Data cadastro</th>
             <th class="text-center">Ações</th>
@@ -41,40 +44,54 @@
         </thead>
         <tbody>
           <tr>
-            <td class="text-center text-muted" style="width: 80px;">1</td>
-            <td class="text-center" style="width: 80px;">Lojas maranata</td>
-            <td class="text-center">Rua tambaqui Qd:03</td>
+            <td class="text-center">1</td>
+            <td class="text-center">Rodrigo</td>
+            <td class="text-center">122.555.888-68</td>
+            <td class="text-center">65859862</td>
             <td class="text-center">3665-5889</td>
-            <td class="text-center">maranata@gmail.com</td>
-            <td class="text-center">164.658.698-64</td>
-            <td class="text-center">57889986</td>
+            <td class="text-center">rodrigo@gmail.com</td>
+            <td class="text-center">Goiás</td>
+            <td class="text-center">Goiânia</td>
+            <td class="text-center">Rua tambaqui</td>
+            <td class="text-center">Qd:03</td>            
             <td class="text-center">rodrigoF.supervisor</td>
-            <td class="text-center" style="width: 200px;">06/02/2021</td>
-            <td class="text-center">
+            <td class="text-center">06/02/2021</td>
+            <td class="text-center">              
               <div role="" class="btn-group-sm btn-group">
                 <!--Editar-->
-                <button class="btn-shadow btn btn-info" (click)="detalheCliente(1)">Editar</button>
+                <button type="button" class="btn btn-icon" (click)="detalheCliente(1)">
+                  <i class="feather icon-edit"> </i>
+                </button>
                 <!--Excluir-->
-                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+                <button type="button" class="btn btn-icon" (click)="excluir()">
+                  <i class="feather icon-trash-2"> </i>
+                </button>
               </div>
             </td>
           </tr>
           <tr>
-            <td class="text-center text-muted" style="width: 80px;">1</td>
-            <td class="text-center" style="width: 80px;">Lojas alo brasil</td>
-            <td class="text-center">Avenida pio 12</td>
-            <td class="text-center">3665-5889</td>
-            <td class="text-center">suportebrasil@gmail.com</td>
+            <td class="text-center">2</td>
+            <td class="text-center">Aloha</td>
             <td class="text-center">164.658.698-64</td>
             <td class="text-center">57889986</td>
+            <td class="text-center">3665-5889</td>
+            <td class="text-center">suportebrasil@gmail.com</td>
+            <td class="text-center">Goiás</td>
+            <td class="text-center">Goiânia</td>
+            <td class="text-center">Avenida pio 12</td>
+            <td class="text-center">Qd: 01 lt: 12</td>
             <td class="text-center">rodrigoF.supervisor</td>
-            <td class="text-center" style="width: 200px;">06/02/2021</td>
+            <td class="text-center">06/02/2021</td>
             <td class="text-center">
               <div role="" class="btn-group-sm btn-group">
                 <!--Editar-->
-                <button class="btn-shadow btn btn-info" (click)="detalheCliente(1)">Editar</button>
+                <button type="button" class="btn btn-icon" (click)="detalheCliente(2)">
+                  <i class="feather icon-edit"> </i>
+                </button>
                 <!--Excluir-->
-                <button class="btn-shadow btn btn-danger" (click)="excluir()">Excluir</button>
+                <button type="button" class="btn btn-icon" (click)="excluir()">
+                  <i class="feather icon-trash-2"> </i>
+                </button>
               </div>
             </td>
           </tr>

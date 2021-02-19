@@ -44,7 +44,13 @@ const NavigationItems = [
         title: 'Cadastro',
         type: 'collapse',
         icon: 'feather icon-file',
-        children: [  
+        children: [                
+          {
+            id: 'usuario',
+            title: 'Usuario',
+            type: 'item',
+            url: '/pages/cadastros/usuario'
+          },
           {
             id: 'empresa',
             title: 'Empresa',
@@ -56,25 +62,19 @@ const NavigationItems = [
             title: 'Fornecedor',
             type: 'item',
             url: '/pages/cadastros/fornecedor'
-          },   
-          {
-            id: 'catalogo',
-            title: 'Catalogo',
-            type: 'item',
-            url: '/pages/cadastros/catalogo'
           },
           {
             id: 'produto',
             title: 'Produto',
             type: 'item',
             url: '/pages/cadastros/produto'
-          },      
-           {
-             id: 'usuario',
-             title: 'Usuario',
-             type: 'item',
-             url: '/pages/cadastros/usuario'
-           },       
+          }, 
+          {
+            id: 'catalogo',
+            title: 'Catalogo',
+            type: 'item',
+            url: '/pages/cadastros/catalogo'
+          },        
            {
              id: 'cliente',
              title: 'Cliente',
