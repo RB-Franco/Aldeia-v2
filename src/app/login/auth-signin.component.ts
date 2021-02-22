@@ -10,7 +10,7 @@ import { Usuario } from './usuario';
 })
 export class AuthSigninComponent implements OnInit {
   
-  private usuario: Usuario = new Usuario();
+  public usuario: Usuario = new Usuario();
   
   constructor(private authSevice: AuthService) { }
 
