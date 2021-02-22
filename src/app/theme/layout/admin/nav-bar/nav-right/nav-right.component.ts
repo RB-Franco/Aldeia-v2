@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,9 +8,19 @@ import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./nav-right.component.scss'],
   providers: [NgbDropdownConfig]
 })
+
 export class NavRightComponent implements OnInit {
+  router: Router;
 
-  constructor() { }
+  constructor(public rotas: Router) { 
+    this.router = rotas;
+  }
 
-  ngOnInit() { }
+  ngOnInit() { 
+
+  }
+  
+  sair(){
+    window.location.reload();
+  }
 }

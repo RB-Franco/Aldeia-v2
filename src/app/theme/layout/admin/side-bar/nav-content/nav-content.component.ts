@@ -35,7 +35,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    if (this.windowWidth < 992) {
+    if (this.windowWidth < 320) {
       this.nextConfig['layout'] = 'vertical';
       setTimeout(() => {
         document.querySelector('.pcoded-navbar').classList.add('menupos-static');
@@ -108,7 +108,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   }
 
   navMob() {
-    if (this.windowWidth < 992 && document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
+    if (this.windowWidth < 320 && document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open')) {
       this.onNavMobCollapse.emit();
     }
   }

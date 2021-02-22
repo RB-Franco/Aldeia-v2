@@ -1,20 +1,26 @@
-<div class="col-sm-12">
+<div class="col-md-12">
     <app-filter cardTitle="Filtros avançados">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <form action="javascript:">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="">Catalogo:</label>
+                                <input type="text" class="form-control" id="idcatalogo" aria-describedby="codigo do catalogo" placeholder="Codigo do catalogo">
                             </div>
-                            <div class="col-md-9">
-                                <input type="catalogo" class="form-control" id="idcatalogo"
-                                    aria-describedby="codigo do catalogo" placeholder="Codigo do catalogo">
+                            <div class="col-md-4">
+                                <label for="">Fornecedor:</label>
+                                <input type="text" class="form-control" id="idfornecedor" aria-describedby="codigo do fornecedor" placeholder="Codigo do fornecedor">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    <div class="row btn-page">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary"><i class="feather icon-search"></i> Pesquisar</button>
+                            <button type="button" class="btn btn-light">Limpar campos</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

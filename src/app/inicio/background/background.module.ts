@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BackgroundRoutingModule } from './background-routing.module';
 import { BackgroundComponent } from './background.component';
-import {SharedModule} from '../../../theme/shared/shared.module';
+import {SharedModule} from '../../theme/shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbPopoverModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 
