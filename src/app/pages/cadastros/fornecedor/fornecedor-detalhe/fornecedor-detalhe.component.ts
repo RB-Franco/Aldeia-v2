@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import {NextConfig} from '../../../../app-config';
 
@@ -15,17 +16,15 @@ export class FornecedorDetalheComponent implements OnInit {
 
   idCatalogo: any;
   rotaAtual: any;
-  rota: any;
-  constructor(
-    private rotas: Router,
-    private route: ActivatedRoute
-  ) {
+
+  constructor(private rotas: Router, private route: ActivatedRoute, private titleService: Title) {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
-    this.rota = rotas;
    }
 
   ngOnInit() {
+    this.titleService.setTitle('Aldeia - Cadastro fornecedor');
+
     this.route.params.subscribe((objeto: any) => {
        this.idCatalogo = objeto.id;
     })
@@ -42,6 +41,6 @@ export class FornecedorDetalheComponent implements OnInit {
  }
 
  voltarRota(){
-   this.rota.navigate([this.rotaAtual]);
+   this.rotas.navigate([this.rotaAtual]);
  }
 }

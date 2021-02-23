@@ -1,23 +1,31 @@
-<div class="col-sm-12">
+<div class="col-md-12">
   <app-filter cardTitle="Filtros avançados">
-    <div class="row">
-      <div class="col-md-3">
-        <form action="javascript:">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-3">
-                <label for="">Cod. empresa:</label>
-              </div>
-              <div class="col-md-9">
-                <input type="catalogo" class="form-control" id="idcatalogo" aria-describedby="codigo do catalgo"
-                  placeholder="Codigo do catalogo">
-              </div>
-            </div>
+      <div class="row">
+          <div class="col-md-12">
+              <form action="javascript:">
+                  <div class="form-group">
+                      <div class="row">
+                          <div class="col-md-3">
+                              <label for="">Descrição:</label>
+                              <input type="text" class="form-control" id="idDescricao"
+                                  aria-describedby="Descricao" placeholder="Descrição">
+                          </div>
+                          <div class="col-md-3">
+                              <label for="">CNPJ:</label>
+                              <input type="text" class="form-control" id="idCNPJ"
+                                  aria-describedby="CNPJ" placeholder="CNPJ">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row btn-page">
+                      <div class="col-md-12">
+                          <button type="button" class="btn btn-primary"><i class="feather icon-search"></i>Pesquisar</button>
+                          <button type="button" class="btn btn-light">Limpar campos</button>
+                      </div>
+                  </div>
+              </form>
           </div>
-          <button type="submit" class="btn btn-primary">Pesquisar</button>
-        </form>
       </div>
-    </div>
   </app-filter>
 </div>
 
@@ -59,11 +67,11 @@
             <td class="text-center">
               <div role="" class="btn-group-sm btn-group">
                 <!--Editar-->
-                <button type="button" class="btn btn-icon" (click)="detalheEmpresa(1)">
+                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="detalheEmpresa(1)">
                   <i class="feather icon-edit"> </i>
                 </button>
                 <!--Excluir-->
-                <button type="button" class="btn btn-icon" (click)="excluir()">
+                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
                   <i class="feather icon-trash-2"> </i>
                 </button>
               </div>

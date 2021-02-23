@@ -1,25 +1,28 @@
-<div class="col-sm-12">
+<div class="col-md-12">
     <app-filter cardTitle="Filtros avançados">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <form action="javascript:">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="">Produto:</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="produto" class="form-control" id="idproduto"
-                                    aria-describedby="codigo do produto" placeholder="Codigo do produto">
+                                <label for="">Descrição:</label>
+                                <input type="text" class="form-control" id="idDescricao"
+                                    aria-describedby="Descricao" placeholder="Descrição">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    <div class="row btn-page">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary"><i class="feather icon-search"></i> Pesquisar</button>
+                            <button type="button" class="btn btn-light">Limpar campos</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </app-filter>
-</div>
+  </div>
 
 <div class="col-md-12">
     <app-card cardTitle="Produtos" blockClass="table-border-style">
@@ -64,11 +67,11 @@
                         <td class="text-center">
                             <div role="" class="btn-group-sm btn-group">
                                 <!--Editar-->
-                                <button type="button" class="btn btn-icon" (click)="detalheProduto(2)">
+                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="detalheProduto(2)">
                                     <i class="feather icon-edit"> </i>
                                 </button>
                                 <!--Excluir-->
-                                <button type="button" class="btn btn-icon" (click)="excluir()">
+                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
                                     <i class="feather icon-trash-2"> </i>
                                 </button>
                             </div>

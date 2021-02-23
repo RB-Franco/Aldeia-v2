@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {NextConfig} from '../../../../app-config';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-catalogo-detalhe',
@@ -15,18 +16,21 @@ export class CatalogoDetalheComponent implements OnInit {
 
   idCatalogo: any;
   rotaAtual: any;
-  rota: any;
+  title = "teste";
   constructor(
     private rotas: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private titleService: Title
     )
   {
      this.nextConfig = NextConfig.config;
      this.windowWidth = window.innerWidth;
-     this.rota = rotas;
+
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Aldeia - Cadastro catalogo');
+
      this.route.params.subscribe((objeto: any) => {
         this.idCatalogo = objeto.id;
      })
@@ -43,7 +47,7 @@ export class CatalogoDetalheComponent implements OnInit {
   }
 
   voltarRota(){
-    this.rota.navigate([this.rotaAtual]);
+    this.rotas.navigate([this.rotaAtual]);
   }
   excluir(){
     

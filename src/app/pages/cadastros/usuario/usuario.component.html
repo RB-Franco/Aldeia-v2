@@ -1,20 +1,33 @@
-<div class="col-sm-12">
+<div class="col-md-12">
     <app-filter cardTitle="Filtros avançados">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <form action="javascript:">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="">Usuario:</label>
+                                <label for="">Nome:</label>
+                                <input type="text" class="form-control" id="idNome"
+                                    aria-describedby="Nome" placeholder="Nome">
                             </div>
-                            <div class="col-md-9">
-                                <input type="usuario" class="form-control" id="idusuario"
-                                    aria-describedby="codigo do usuario" placeholder="Codigo do usuario">
+                            <div class="col-md-3">
+                                <label for="">Login:</label>
+                                <input type="text" class="form-control" id="idLogin"
+                                    aria-describedby="Login" placeholder="Login">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Tipo:</label>
+                                <input type="text" class="form-control" id="idTipo"
+                                    aria-describedby="Tipo" placeholder="Tipo">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    <div class="row btn-page">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary"><i class="feather icon-search"></i>Pesquisar</button>
+                            <button type="button" class="btn btn-light">Limpar campos</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -29,7 +42,7 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">Nome</th>
-                        <th class="text-center">Usuario</th>
+                        <th class="text-center">Usuário</th>
                         <th class="text-center">Tipo</th>
                         <th class="text-center">Estado de atuação</th>
                         <th class="text-center">Telefone</th>
@@ -53,11 +66,11 @@
                         <td class="text-center">
                             <div role="" class="btn-group-sm btn-group">
                                 <!--Editar-->
-                                <button type="button" class="btn btn-icon" (click)="detalheUsuario(1)">
+                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="detalheUsuario(1)">
                                     <i class="feather icon-edit"> </i>                                    
                                 </button>
                                 <!--Excluir-->
-                                <button type="button" class="btn btn-icon" (click)="excluir()">
+                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
                                     <i class="feather icon-trash-2"> </i>                                    
                                 </button>
                             </div>

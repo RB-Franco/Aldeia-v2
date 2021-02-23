@@ -47,7 +47,7 @@ const NavigationItems = [
         children: [                
           {
             id: 'usuario',
-            title: 'Usuario',
+            title: 'Usuário',
             type: 'item',
             url: '/pages/cadastros/usuario'
           },
