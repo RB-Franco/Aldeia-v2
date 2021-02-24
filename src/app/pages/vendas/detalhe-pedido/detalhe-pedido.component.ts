@@ -43,5 +43,9 @@ export class DetalhePedidoComponent implements OnInit {
  voltarRota(){
    this.rota.navigate([this.rotaAtual]);
  }
+ 
+ excluir(){
+
+ }
 
 }
