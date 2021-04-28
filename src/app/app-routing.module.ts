@@ -1,27 +1,38 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 
 const routes: Routes = [
   {
+  
     path: '',
-    component: AdminComponent,
+    component: AuthComponent,
     children: [
-       {
-         path: '',
-         redirectTo: '/inicio',
-         pathMatch: 'full'
-       },
       {
         path: '',
-        loadChildren: './inicio/inicio.module#InicioModule'
-      },
-      {
-        path: 'pages',
-        loadChildren:  './pages/pages.module#PagesModule'
+        loadChildren: './auth/auth.module#AuthModule',
+        pathMatch: 'full'
       }
+
     ]
-  }
+  },
+   {
+     path: '',
+     component: AdminComponent,
+     children: [
+       {
+         path: '',
+         loadChildren: './inicio/inicio.module#InicioModule'
+       },
+       {
+         path: 'pages',
+         loadChildren:  './pages/pages.module#PagesModule'
+       }
+     ], 
+     canActivate: []
+   }
+  
 ];
 
 @NgModule({

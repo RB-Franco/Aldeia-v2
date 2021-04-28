@@ -35,6 +35,16 @@
 </div>
 
 <div class="col-md-12">
+    <mx-formulario-aterrissagem
+        #formulario
+        [titulo]="'Usuarios'"
+        [colunas]="colunas"
+        [acoes]="acoes"
+        [servico]="'/api/usuarios/ObterUsuarios'">
+    </mx-formulario-aterrissagem>
+</div>
+
+<!-- <div class="col-md-12">
     <app-card cardTitle="Usuarios" blockClass="table-border-style">
         <div class="table-responsive">
             <table class="table table-hover">
@@ -65,11 +75,11 @@
                         <td class="text-center" style="width: 200px;">06/02/2021</td>
                         <td class="text-center">
                             <div role="" class="btn-group-sm btn-group">
-                                <!--Editar-->
+                                Editar
                                 <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="detalheUsuario(1)">
                                     <i class="feather icon-edit"> </i>                                    
                                 </button>
-                                <!--Excluir-->
+                                Excluir
                                 <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
                                     <i class="feather icon-trash-2"> </i>                                    
                                 </button>
@@ -80,5 +90,5 @@
             </table>
         </div>
     </app-card>
-</div>
+</div> -->
 <button class="fixed feather icon-plus btn btn-primary" (click)="detalheUsuario(0)"> Cadastrar</button>

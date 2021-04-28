@@ -15,6 +15,24 @@ export class UsuarioComponent implements OnInit {
   empresa: any = 1;
   rotaAtual: string = '/pages/cadastros/usuario';
 
+  colunas = [
+    { titulo: '#', propriedade: 'codigo', width: 10 },
+    { titulo: 'Nome', propriedade: 'descricao', width: 350 },
+    { titulo: 'Usuário', propriedade: 'embalagem', width: 150 },
+    { titulo: 'Tipo', propriedade: 'usrCadastro', width: 150 },
+    { titulo: 'Estado de atuação', propriedade: 'dtCadastro', width: 150 },
+    { titulo: 'Telefone', propriedade: 'acoes', width: 150 },
+    { titulo: 'Status', propriedade: 'acoes', width: 150 },
+    { titulo: 'Usr. cadastro', propriedade: 'acoes', width: 150 },
+    { titulo: 'Data cadastro', propriedade: 'acoes', width: 150 },
+    { titulo: 'Ações', propriedade: 'acoes', width: 150 }
+  ];
+  
+  acoes = [
+    {icone: 'feather icon-edit', evento: this.detalheUsuario.bind(this)},
+    {icone: 'feather icon-trash-2', evento: this.excluir.bind(this)},
+  ];
+  
   constructor(public rotas: Router) 
     {
     this.isCollapsed = true;

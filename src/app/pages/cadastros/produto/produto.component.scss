@@ -12,3 +12,24 @@
     box-shadow: 2px 2px 2px rgb(160, 158, 158);
     text-align: right;
    }
+
+:host{
+    .tabela-produtos {
+        height: 320px;   
+        width: 100% !important;
+    }
+
+    .ngx-datatable {
+        width: 100% !important;
+    }
+    .datatable-row-center {
+        user-select: none;
+        cursor: pointer;
+    }    
+    .datatable-header-cell:active {
+        background: rgb(231, 231, 231);
+    }
+    .alinhado-direita{
+        text-align: right;
+    }
+}

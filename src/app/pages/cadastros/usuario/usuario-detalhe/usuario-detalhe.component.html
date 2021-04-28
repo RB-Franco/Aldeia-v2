@@ -3,14 +3,26 @@
       <app-card cardTitle=Usuario [options]="true">
         <hr>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-11">
             <form action="javascript:">
               <div class="form-group">
-                <label for="">nome</label>
+                <label for="">Nome</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Brendo de oliveira de santana">
               </div>
             </form>            
           </div>  
+          <div class="col-md-1">
+            <form action="javascript:">
+              <div class="form-group">
+                  <label for="status">Status</label>
+                  <select class="form-control" id="status">
+                      <option></option>
+                      <option>0 - Ativo</option>
+                      <option>1 - Inativo</option>
+                  </select>
+              </div>
+          </form>           
+          </div> 
           <div class="col-md-2">
             <form action="javascript:">
               <div class="form-group">

@@ -21,6 +21,7 @@ import { EmpresaDetalheComponent } from './empresa/empresa-detalhe/empresa-detal
 import { FornecedorDetalheComponent } from './fornecedor/fornecedor-detalhe/fornecedor-detalhe.component';
 import { ProdutoDetalheComponent } from './produto/produto-detalhe/produto-detalhe.component';
 import { UsuarioDetalheComponent } from './usuario/usuario-detalhe/usuario-detalhe.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const routs: Routes = [
   {
@@ -93,6 +94,7 @@ const routs: Routes = [
     NgbAccordionModule,
     NgbCollapseModule,
     MatDialogModule,
+    NgxDatatableModule,
     NgbModule
   ],
   providers: [ ],

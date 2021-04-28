@@ -1,0 +1,15 @@
+<mx-portlet>
+  <!-- <mx-portlet-head *ngIf="showHeader">    
+    <h3 class="m-portlet__head-text">{{titulo}}</h3>
+  </mx-portlet-head> -->
+  <mx-portlet-body [padding]="false">
+
+    <mx-lista-infinite-scroll #listagem [colunas]="colunas" [acoes]="acoes" [servico]="servico" [servicoSalvarGrid]="servicoSalvarGrid" [nomeGrid]="nomeGrid" [filtros]="filtros"
+      [funcaoAjusteDeParametros]="funcaoAjusteDeParametros" [semPaginacao]="semPaginacao" [colunaOrdenacao]="colunaOrdenacao" [exibirLoading]="exibirLoading" 
+      (aoCarregarDados)="this.aoCarregarDados.emit()" (onChangeColunaEditavel)="this.onChangeColunaEditavel.emit($event)" 
+      [dataSource]="dataSource" [tamanho]="tamanho">
+    </mx-lista-infinite-scroll>
+
+  </mx-portlet-body>
+
+</mx-portlet>

@@ -24,13 +24,15 @@ import { NavigationItem } from './theme/layout/admin/side-bar/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroModule } from './pages/cadastros/cadastros.module';
 import { VendasModule } from './pages/vendas/vendas.module';
-import { AuthSigninComponent } from './login/auth-signin.component';
-import { AuthService } from './login/auth.service';
+import { AuthService } from './theme/shared/services/login.service';
 import { InicioModule } from './inicio/inicio.module';
+import { AuthModule } from './auth/auth.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ComunicacaoBaseService } from './theme/shared/services/comunicacao-base.service';
+import { ComunicaoService } from './theme/shared/_data-service/comunicacao-service';
 
 @NgModule({
   declarations: [
-    AuthSigninComponent,
     AppComponent,
     AdminComponent,
     NavigationComponent,
@@ -53,11 +55,16 @@ import { InicioModule } from './inicio/inicio.module';
     NgbButtonsModule,
     NgbTabsetModule,
     MatDialogModule,
+    NgxDatatableModule,
     InicioModule,
     CadastroModule,
-    VendasModule
+    VendasModule,
+    AuthModule
   ],
-  providers: [NavigationItem, AuthService],
+  providers: [NavigationItem, 
+              AuthService, 
+              ComunicacaoBaseService, 
+              ComunicaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

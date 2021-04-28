@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CadastroModule } from './cadastros/cadastros.module';
 import { VendasModule } from './vendas/vendas.module';
 import { CatalogoDetalheComponent } from './cadastros/catalogo/catalogo-detalhe/catalogo-detalhe.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
 	declarations: [
@@ -19,7 +20,8 @@ import { CatalogoDetalheComponent } from './cadastros/catalogo/catalogo-detalhe/
 		FormsModule,
 		PagesRoutingModule,
 		CadastroModule,
-		VendasModule
+		VendasModule,
+		NgxDatatableModule
 	],
 	entryComponents: [CatalogoDetalheComponent],
 	providers: []

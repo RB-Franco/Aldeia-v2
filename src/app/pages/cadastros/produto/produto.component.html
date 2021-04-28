@@ -7,14 +7,15 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="">Descrição:</label>
-                                <input type="text" class="form-control" id="idDescricao"
-                                    aria-describedby="Descricao" placeholder="Descrição">
+                                <input type="text" class="form-control" id="idDescricao" aria-describedby="Descricao"
+                                    placeholder="Descrição">
                             </div>
                         </div>
                     </div>
                     <div class="row btn-page">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-primary"><i class="feather icon-search"></i> Pesquisar</button>
+                            <button type="button" class="btn btn-primary" (click)="pesquisar()"><i class="feather icon-search"></i>
+                                Pesquisar</button>
                             <button type="button" class="btn btn-light">Limpar campos</button>
                         </div>
                     </div>
@@ -22,20 +23,28 @@
             </div>
         </div>
     </app-filter>
-  </div>
+</div>
 
 <div class="col-md-12">
+    <mx-formulario-aterrissagem
+        #formulario
+        [titulo]="'Produtos'"
+        [colunas]="colunas"
+        [acoes]="acoes"
+        [servico]="'api/produtos/obterProdutos'">
+    </mx-formulario-aterrissagem>
+</div>
+
+<button class="fixed feather icon-plus btn btn-primary" (click)="detalheProduto(0)"> Cadastrar</button>
+<!-- <div class="col-md-12">
     <app-card cardTitle="Produtos" blockClass="table-border-style">
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="text-center">#</th>
-                        <th class="text-center">Descrição</th>
-                        <th class="text-center">Und. medida</th>
-                        <th class="text-center">Usr. cadastro</th>
-                        <th class="text-center">Data cadastro</th>
-                        <th class="text-center">Ações</th>
+                        <th *ngFor="let coluna of colunas" class="text-center">
+                            {{coluna.titulo}}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,11 +56,11 @@
                         <td class="text-center">06/02/2021</td>
                         <td class="text-center">
                             <div role="" class="btn-group-sm btn-group">
-                                <!--Editar-->
+                                
                                 <button type="button" class="btn btn-icon" (click)="detalheProduto(1)">
                                     <i class="feather icon-edit"> </i>
                                 </button>
-                                <!--Excluir-->
+                                
                                 <button type="button" class="btn btn-icon" (click)="excluir()">
                                     <i class="feather icon-trash-2"> </i>
                                 </button>
@@ -66,12 +75,14 @@
                         <td class="text-center">06/02/2021</td>
                         <td class="text-center">
                             <div role="" class="btn-group-sm btn-group">
-                                <!--Editar-->
-                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="detalheProduto(2)">
+                                
+                                <button type="button" class="btn btn-icon" style="box-shadow: none;"
+                                    (click)="detalheProduto(2)">
                                     <i class="feather icon-edit"> </i>
                                 </button>
-                                <!--Excluir-->
-                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
+                                
+                                <button type="button" class="btn btn-icon" style="box-shadow: none;"
+                                    (click)="excluir()">
                                     <i class="feather icon-trash-2"> </i>
                                 </button>
                             </div>
@@ -81,5 +92,11 @@
             </table>
         </div>
     </app-card>
-</div>
-<button class="fixed feather icon-plus btn btn-primary" (click)="detalheProduto(0)"> Cadastrar</button>
+</div> -->
+
+<!-- <mx-tabela-com-selecao
+[itensSelecionados]="modelo"
+[colunas]="colunas"
+[usaFooter]="false"
+[usaPost]="true"
+></mx-tabela-com-selecao> -->

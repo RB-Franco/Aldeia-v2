@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/theme/shared/services/login.service';
 
 @Component({
   selector: 'app-nav-right',
@@ -12,8 +13,8 @@ import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 export class NavRightComponent implements OnInit {
   router: Router;
 
-  constructor(public rotas: Router) { 
-    this.router = rotas;
+  constructor(private authSevice: AuthService) { 
+   
   }
 
   ngOnInit() { 
@@ -21,6 +22,6 @@ export class NavRightComponent implements OnInit {
   }
   
   sair(){
-    window.location.reload();
+    this.authSevice.fazerLogout();
   }
 }

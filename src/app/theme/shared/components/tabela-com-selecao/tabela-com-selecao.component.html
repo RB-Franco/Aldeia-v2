@@ -1,0 +1,254 @@
+ <mat-form-field
+*ngIf="utilizaFiltroGeral"
+class="col-12">
+  <mat-label>Filtro</mat-label>
+  <input matInput
+  (keyup)="aplicarFiltro($event)"
+  placeholder="{{ placeholderFiltroGeral }}">
+</mat-form-field> 
+
+<div class="table-scroll">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="mat-elevation-z8">
+    <ng-container
+      *ngIf="usaSelecao"
+      [matColumnDef]="colunaSelect">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header>
+        <mat-checkbox
+          (change)="$event ? alternarSelecaoGeral() : null"
+          [checked]="modeloSelecao.hasValue() && todosItensEstaoSelecionados()"
+          [indeterminate]="modeloSelecao.hasValue() && !todosItensEstaoSelecionados()">
+        </mat-checkbox>
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let row">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="$event ? alternarSelecaoItem(row) : null"
+          [checked]="modeloSelecao.isSelected(row)">
+        </mat-checkbox>
+      </td>
+      <span *ngIf="usaFooter">
+        <td
+          mat-footer-cell
+          *matFooterCellDef>
+        </td>
+      </span>
+    </ng-container>
+    <span
+      *ngFor="let coluna of colunas; let i = index"
+      [attr.data-index]="i">
+
+      <ng-container
+        *ngIf="!coluna.acoes && (coluna.visivel || coluna.visivel == undefined)"
+        [matColumnDef]="coluna.propriedade">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="mat-header-cell ng-tns-c22-6 cdk-column-{{coluna.propriedade}} mat-column-{{coluna.propriedade}} mat-table-sticky ng-star-inserted {{coluna.class}}">
+          <em
+            *ngIf="coluna.iconeTitulo"
+            [class]="coluna.iconeTitulo"
+            [matTooltip]="coluna.legendaTitulo">
+          </em>
+          <span *ngIf="!coluna.iconeTitulo" [matTooltip]="coluna.legendaTitulo" >{{coluna.titulo}}</span>
+        </th>
+
+        <td
+          mat-cell
+          *matCellDef="let row"
+          class="mat-cell cdk-column-{{coluna.propriedade}} mat-column-{{coluna.propriedade}} ng-star-inserted {{coluna.class}}"
+          (click)="eventoClickPersonalizado(row,coluna); $event.stopPropagation();">
+
+          <span *ngIf="coluna.toggle">
+            <em
+              class="fas fa-toggle-on m--font-success"
+              *ngIf="coluna.toggle(row)"
+              style="font-size:24px">
+            </em>
+            <em
+              class="fas fa-toggle-off"
+              *ngIf="!coluna.toggle(row)"
+              style="font-size:24px">
+            </em>
+          </span>
+
+          <span *ngIf="coluna.iconeConteudo">
+            <span *ngIf="verificarTipoArray(row[coluna.propriedade])">
+              <span *ngFor="let ic of row[coluna.propriedade]">
+                <em
+                  [class]="ic"
+                  [matTooltip]="coluna.legendaConteudo"></em>
+              </span>
+            </span>
+            <span *ngIf="!verificarTipoArray(row[coluna.propriedade])">
+              <em
+                [class]="row[coluna.propriedade]"
+                [matTooltip]="coluna.legendaConteudo">
+              </em>
+            </span>
+          </span>
+
+          <span *ngIf="coluna.propriedadeDescritiva">
+            {{ row[coluna.propriedade] + ' - ' + row[coluna.propriedadeDescritiva] }}
+          </span>
+
+          <span *ngIf="coluna.localImagem">
+            <img
+              [src]="coluna.localImagem(row)"
+              alt="imagem">
+          </span>
+
+          <span *ngIf="coluna.valor" [style.color]="coluna.temCor ? obterCorDaLinha(row, coluna) : ''">
+            {{coluna.valor(row)}}
+          </span>
+
+          <span *ngIf="coluna.botao">
+            <button mat-stroked-button [color]="coluna.botao.temaDeCor" style="margin: 5px;"
+            (click)="eventoClickColuna(coluna.botao.acao, row, coluna.botao.visaoDialog)">
+              <ng-container *ngTemplateOutlet="valorMonetarioOuNao"></ng-container>
+            </button>
+          </span>
+
+          <span *ngIf="!coluna.iconeConteudo && 
+                       !coluna.toggle && 
+                       !coluna.propriedadeDescritiva && 
+                       !coluna.localImagem && 
+                       !coluna.valor &&
+                       !coluna.botao">
+            <ng-container *ngTemplateOutlet="valorMonetarioOuNao"></ng-container>
+          </span>
+
+          <ng-template #valorMonetarioOuNao>
+            <span *ngIf="coluna.monetario">
+              <span>{{ formatarMonetario(row[coluna.propriedade])}}</span> 
+              </span> 
+            <span *ngIf="!coluna.monetario">
+              <span [style.color]="coluna.temCor ? obterCorDaLinha(row, coluna) : ''">
+                {{ formatarNumero(row[coluna.propriedade], coluna.simbolo) }}
+              </span>
+            </span>
+          </ng-template>
+        </td>
+
+        <div *ngIf="usaFooter">
+          <span *ngIf="coluna.footer">
+            <td
+              mat-footer-cell
+              *matFooterCellDef
+              class="mat-footer-cell cdk-column-{{coluna.propriedade}} mat-column-{{coluna.propriedade}} mat-table-sticky ng-star-inserted {{coluna.class}}">
+              <div *ngIf="coluna.porcentual">
+                {{formatarNumero(getPorcentTotal(), coluna.simbolo)}}
+              </div>
+              <div *ngIf="!coluna.porcentual">
+                {{coluna.monetario ?
+                formatarMonetario(getTotal(coluna.propriedade,null, coluna.type)) :
+                formatarNumero(getTotal(coluna.propriedade,coluna.colunaFooter, coluna.type), coluna.simbolo)}}
+              </div>
+            </td>
+          </span>
+          <span *ngIf="!coluna.footer && i>0">
+            <td
+              mat-footer-cell
+              *matFooterCellDef></td>
+          </span>
+        </div>
+
+        <div *ngIf="usaFooter && i==0">
+          <td
+            mat-footer-cell
+            *matFooterCellDef>
+            Total
+          </td>
+        </div>
+      </ng-container>
+
+      <ng-container
+        *ngIf="coluna.acoes && (coluna.visivel || coluna.visivel == undefined)"
+        [matColumnDef]="coluna.propriedade">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="mat-header-cell ng-tns-c22-6 cdk-column-{{coluna.propriedade}} mat-column-{{coluna.propriedade}} mat-table-sticky ng-star-inserted {{coluna.class}}">
+          {{coluna.titulo}}
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let row">
+          <div class="coluna-acao">
+            <span *ngFor="let acao of coluna.acoes">
+              <button
+                mat-icon-button
+                (click)="acao.evento(row); $event.stopPropagation();"><em
+                  [class]="acao.icone"
+                  [style.color]="acao.cor ? acao.cor : ''"
+                  [matTooltip]="acao.legenda"></em>
+              </button>
+            </span>
+          </div>
+        </td>
+        <span *ngIf="usaFooter">
+          <td
+            mat-footer-cell
+            *matFooterCellDef></td>
+        </span>
+      </ng-container>
+    </span>
+
+    <!-- Header -->
+    <span
+      *ngFor="let header of headers; let i = index"
+      [attr.data-index]="i">
+      <ng-container
+        *ngIf="headers"
+        [matColumnDef]="header.id"><th
+          class="colunas-header mat-table-sticky ng-star-inserted {{header.visivel ? 'colunas-header-visivel' : 'colunas-header-invisivel'}}"
+          mat-header-cell
+          *matHeaderCellDef
+          [style.text-align]="'center'"
+          [attr.colspan]="header.qtdeColunas">
+          {{header.visivel ? header.titulo : ''}}
+        </th>
+      </ng-container>
+    </span>
+
+    <span *ngIf="headers"><tbody><tr
+          mat-header-row
+          *matHeaderRowDef="tituloHeaders; sticky: true"></tr>
+      </tbody></span>
+    <tbody>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="tituloColunas; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: tituloColunas;"
+        (click)="alternarSelecaoItem(row)"
+        (dblclick)="eventoDblClick(row)"></tr>
+      <span *ngIf="usaFooter">
+      <tbody>
+        <tr
+          mat-footer-row
+          *matFooterRowDef="tituloColunas; sticky: true"></tr>
+      </tbody></span>
+    </tbody>
+  </table>
+
+  <mat-paginator
+    #matPaginator
+    [hidden]="!paginado"
+    [length]="lengthPaginacao"
+    [pageSize]="pageSizePaginacao"
+    [showFirstLastButtons]="showFirstLastButtonsPaginacao"
+    (page)="obtenhaDadosPaginados($event)"
+  >
+  </mat-paginator>
+</div>

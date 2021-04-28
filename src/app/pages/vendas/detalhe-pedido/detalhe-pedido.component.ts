@@ -14,14 +14,10 @@ export class DetalhePedidoComponent implements OnInit {
 
   idCatalogo: any;
   rotaAtual: any;
-  rota: any;
-  constructor(
-    private rotas: Router,
-    private route: ActivatedRoute
-  ) {
+  
+  constructor(private rotas: Router, private route: ActivatedRoute) {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
-    this.rota = rotas;
    }
 
   ngOnInit() {
@@ -41,7 +37,7 @@ export class DetalhePedidoComponent implements OnInit {
  }
 
  voltarRota(){
-   this.rota.navigate([this.rotaAtual]);
+   this.rotas.navigate([this.rotaAtual]);
  }
  
  excluir(){
