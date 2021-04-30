@@ -3,11 +3,11 @@
     <app-card cardTitle=Empresas [options]="true">
       <hr>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-9">
           <form action="javascript:">
             <div class="form-group">
               <label for="">Descrição</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="text" name="inputDescricao" [(ngModel)]="this.descricao" class="form-control"
                 placeholder="Puzzle inc.">
             </div>
           </form>
@@ -16,58 +16,70 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">CNPJ</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="text" name="inputCNPJ" [(ngModel)]="this.cnpj" class="form-control"
                 placeholder="99.999.999/9999-99">
             </div>
           </form>
-        </div>        
+        </div>
       </div>
-      <div class="row">        
+      <div class="row">
         <div class="col-md-3">
           <form action="javascript:">
             <div class="form-group">
               <label for="">Telefone</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="####-####">
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row">        
-        <div class="col-md-3">
-          <form action="javascript:">
-            <div class="form-group">
-              <label for="">Estado</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="####-####">
-            </div>
-          </form>
-        </div>
-        <div class="col-md-3">
-          <form action="javascript:">
-            <div class="form-group">
-              <label for="">Cidade</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="####-####">
-            </div>
-          </form>
-        </div>
-        <div class="col-md-3">
-          <form action="javascript:">
-            <div class="form-group">
-              <label for="">CEP</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="text" name="inputTel" [(ngModel)]="this.telefone" class="form-control"
                 placeholder="####-####">
             </div>
           </form>
         </div>
       </div>
       <div class="row">
+
+        <div class="col-md-3">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">CEP</label>
+              <div class="input-group">
+                <input type="text" name="inputCep" [(ngModel)]="this.cep" class="form-control" placeholder="####-####">
+                &nbsp;
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-icon btn-secondary" (click)="validaCep()" style="box-shadow: none;">
+                    <i class="feather icon-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="col-sm-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="estadoEmp" class="control-label">UF</label>
+              <select class="form-control" name="Iestado" [(ngModel)]="this.estado">
+                <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.nome}}</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-sm-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Cidade</label>
+              <input type="text" name="inputCidade" [(ngModel)]="this.cidade" class="form-control" placeholder="">
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="row">
         <div class="col-md-6">
           <form action="javascript:">
             <div class="form-group">
               <label for="">Logradouro</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="text" name="inputLograd" [(ngModel)]="this.logradouro" class="form-control"
                 placeholder="Rua tambaqui cond. Gran oasis">
             </div>
           </form>
@@ -76,7 +88,7 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Complemento</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="text" name="inputComplement" [(ngModel)]="this.complemento" class="form-control"
                 placeholder="QD: 10 apt: 524 bl: 15">
             </div>
           </form>
@@ -87,20 +99,17 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">E-mail</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="61578">
+              <input type="email" name="inputEmail" [(ngModel)]="this.email" class="form-control" placeholder="">
             </div>
           </form>
-        </div>        
+        </div>
       </div>
       <hr>
       <div class="row">
-        <div class="col-auto mr-auto">
-          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
+        <div class="col-auto mr-auto"> <button type="button" class="btn btn-danger"
+            (click)="cancelar()">Cancelar</button>
         </div>
-        <div class="col-auto">
-          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
-        </div>
+        <div class="col-auto"> <button type="button" class="btn btn-primary" (click)="salvar()">Salvar</button> </div>
       </div>
     </app-card>
   </div>

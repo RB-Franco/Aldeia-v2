@@ -2,11 +2,8 @@ import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Title } from '@angular/platform-browser';
-import { Router, ActivatedRoute } from '@angular/router';
-import { param } from 'jquery';
 import { ComunicacaoBaseService } from 'src/app/theme/shared/services/comunicationService/comunicacao-base.service';
 import { DropdownService } from 'src/app/theme/shared/services/dropdownService/dropdown.service';
-import { EstadoBr } from 'src/app/theme/shared/services/models/estado-br.model';
 import {NextConfig} from '../../../../app-config';
 import { UsuarioComponent } from '../usuario.component';
 
@@ -35,16 +32,24 @@ export class UsuarioDetalheComponent implements OnInit {
   estados: any;
   tipoUsuarios: any;
 
-  constructor( private comunicacao: ComunicacaoBaseService,
-              private titleService: Title,
-              public dialogRef: MatDialogRef<UsuarioComponent>,
-              public configDialog: MatDialog,
-              @Inject(MAT_DIALOG_DATA) data,
-              private dropdowService: DropdownService) {
+  listStatus = [
+    {valor: 0, descricao: 'Ativo'},
+    {valor: 1, descricao: 'Inativo'}
+  ]
+
+  constructor( 
+    private comunicacao: ComunicacaoBaseService,
+    private titleService: Title,
+    public dialogRef: MatDialogRef<UsuarioComponent>,
+    public configDialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) data,
+    private dropdowService: DropdownService) 
+  {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
-    //this.modelo = data;
+
       if (data !== undefined) {
+        debugger;
         this.id= data.id,
         this.nome= data.nome,
         this.nomeUsuario= data.nomeUsuario,
@@ -76,7 +81,6 @@ export class UsuarioDetalheComponent implements OnInit {
  }
  salvar()
  {
-   debugger;
    let usuario ={
     id: undefined,
     nome: this.nome,

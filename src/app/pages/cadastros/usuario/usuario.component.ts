@@ -19,8 +19,6 @@ export class UsuarioComponent implements OnInit {
   public multiCollapsed2: boolean;
 
   router: Router;
-  empresa: any = 1;
-  rotaAtual: string = '/pages/cadastros/usuario';
 
   filtros = { nome: '', tipoUsuario: '',  loginUsuario: '' };
 
@@ -63,7 +61,6 @@ export class UsuarioComponent implements OnInit {
   
   detalheUsuario(row: any) {
     const detRef = this.configDialog.open(UsuarioDetalheComponent, { width: '1000px', height:'490px',panelClass: 'cdk-overlay-container' ,  disableClose:true, data: row}).addPanelClass('painel-class');    
-    //this.router.navigate(['/pages/cadastros/usuario/usuario-detalhe', row.id], {queryParams: {route: this.rotaAtual, data: row}});
   }
 
   excluir(row: any){

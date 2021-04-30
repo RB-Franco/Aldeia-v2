@@ -3,7 +3,7 @@
     <app-card cardTitle=Usuario [options]="true">
       <hr>
       <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-10">
           <form action="javascript:">
             <div class="form-group">
               <label for="">Nome</label>
@@ -11,18 +11,18 @@
             </div>
           </form>
         </div>
-        <div class="col-md-1">
+
+        <div class="col-md-2">
           <form action="javascript:">
             <div class="form-group">
               <label for="status">Status</label>
-              <select class="form-control" id="status">
-                <option></option>
-                <option>0 - Ativo</option>
-                <option>1 - Inativo</option>
+              <select class="form-control" name="status" [(ngModel)]="this.status">
+                <option *ngFor="let status of listStatus" [ngValue]="status.valor"> {{status.valor}} - {{status.descricao}}</option>
               </select>
             </div>
           </form>
         </div>
+
         <div class="col-md-2">
           <form action="javascript:">
             <div class="form-group">
@@ -33,6 +33,7 @@
             </div>
           </form>
         </div>
+
         <div class="col-md-2">
           <form action="javascript:">
             <div class="form-group">
