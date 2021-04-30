@@ -25,7 +25,6 @@ export class ComunicacaoBaseService {
   }
 
   public post(servico: string, { dados = <any>(null), enviarComoQueryString = false, exibirLoading = true, retornaArquivo = false } = {}): Promise<any> {
-    debugger;
     if (exibirLoading) this.dialogo.exibaLoading();
 
     const corpo = enviarComoQueryString ? {} : dados;

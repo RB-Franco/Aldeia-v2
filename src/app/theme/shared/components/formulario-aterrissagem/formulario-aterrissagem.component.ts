@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { GenericServices } from '../../services/comunicationService/generic-services';
 import { ListaInfiniteScrollAcoesHelper } from '../lista-infinite-scroll/lista-infinite-scroll-acoes-helper';
 import { ListaInfiniteScrollColunasHelper } from '../lista-infinite-scroll/lista-infinite-scroll-colunas-helper';
 import { ListaInfiniteScrollComponent } from '../lista-infinite-scroll/lista-infinite-scroll.component';
-// import { GenericServices } from '../services/generic-services';
+
 
 @Component({
   selector: 'mx-formulario-aterrissagem',
@@ -21,7 +22,7 @@ export class FormularioAterrissagemComponent implements OnInit {
   @Input() semPaginacao: boolean = false;
   @Input() funcaoAjusteDeParametros: any;
   @Input() colunaOrdenacao: string;
-  // @Input() genericServices: GenericServices;
+  @Input() genericServices: GenericServices;
   @Input() exibirLoading:boolean = false;
   @Input() servicoSalvarGrid: string = '';
   @Input() nomeGrid: string = '';

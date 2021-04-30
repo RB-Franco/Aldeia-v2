@@ -1,12 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { FormularioAterrissagemComponent } from 'src/app/theme/shared/components/formulario-aterrissagem/formulario-aterrissagem.component';
+import { ComunicacaoBaseService } from 'src/app/theme/shared/services/comunicationService/comunicacao-base.service';
+import { UsuarioDetalheComponent } from './usuario-detalhe/usuario-detalhe.component';
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.scss']
 })
+
 export class UsuarioComponent implements OnInit {
+  @ViewChild(FormularioAterrissagemComponent, {static: true}) formulario: FormularioAterrissagemComponent;
+  
   public isCollapsed: boolean;
   public multiCollapsed1: boolean;
   public multiCollapsed2: boolean;
@@ -15,16 +22,18 @@ export class UsuarioComponent implements OnInit {
   empresa: any = 1;
   rotaAtual: string = '/pages/cadastros/usuario';
 
+  filtros = { nome: '', tipoUsuario: '',  loginUsuario: '' };
+
   colunas = [
-    { titulo: '#', propriedade: 'codigo', width: 10 },
-    { titulo: 'Nome', propriedade: 'descricao', width: 350 },
-    { titulo: 'Usuário', propriedade: 'embalagem', width: 150 },
-    { titulo: 'Tipo', propriedade: 'usrCadastro', width: 150 },
-    { titulo: 'Estado de atuação', propriedade: 'dtCadastro', width: 150 },
-    { titulo: 'Telefone', propriedade: 'acoes', width: 150 },
-    { titulo: 'Status', propriedade: 'acoes', width: 150 },
-    { titulo: 'Usr. cadastro', propriedade: 'acoes', width: 150 },
-    { titulo: 'Data cadastro', propriedade: 'acoes', width: 150 },
+    { titulo: '#', propriedade: 'id', width: 10 },
+    { titulo: 'Nome', propriedade: 'nome', width: 150 },
+    { titulo: 'Usuário', propriedade: 'nomeUsuario', width: 150 },
+    { titulo: 'Tipo', propriedade: 'tipoUsuario', width: 150 },
+    { titulo: 'Estado de atuação', propriedade: 'estadoAtuacao', width: 150 },
+    { titulo: 'Telefone', propriedade: 'telefone', width: 150 },
+    { titulo: 'Status', propriedade: 'status', width: 150 },
+    { titulo: 'Usr. cadastro', propriedade: 'usrCadastro', width: 150 },
+    { titulo: 'Data cadastro', propriedade: 'dtCadastro', width: 150 },
     { titulo: 'Ações', propriedade: 'acoes', width: 150 }
   ];
   
@@ -33,7 +42,10 @@ export class UsuarioComponent implements OnInit {
     {icone: 'feather icon-trash-2', evento: this.excluir.bind(this)},
   ];
   
-  constructor(public rotas: Router) 
+  constructor(private comunicacao: ComunicacaoBaseService,
+            public rotas: Router, 
+            public configDialog: MatDialog, 
+            detDialog: MatDialog) 
     {
     this.isCollapsed = true;
     this.multiCollapsed1 = true;
@@ -45,10 +57,21 @@ export class UsuarioComponent implements OnInit {
   ngOnInit() {
   }
 
-  detalheUsuario(id: number) {
-    this.router.navigate(['/pages/cadastros/usuario/usuario-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
+  pesquisar(){
+    this.formulario.pesquisar();
   }
-  excluir(){
-    
+  
+  detalheUsuario(row: any) {
+    const detRef = this.configDialog.open(UsuarioDetalheComponent, { width: '1000px', height:'490px',panelClass: 'cdk-overlay-container' ,  disableClose:true, data: row}).addPanelClass('painel-class');    
+    //this.router.navigate(['/pages/cadastros/usuario/usuario-detalhe', row.id], {queryParams: {route: this.rotaAtual, data: row}});
+  }
+
+  excluir(row: any){
+    this.comunicacao.delete('api/usuarios/excluir-usuario', {dados: { id: row.id}}).then((result: any) => { 
+      if(result.success){
+        alert(result.data)
+        this.pesquisar();
+      }
+    }); 
   }
 }

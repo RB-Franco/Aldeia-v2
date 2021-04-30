@@ -24,12 +24,14 @@ import { NavigationItem } from './theme/layout/admin/side-bar/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroModule } from './pages/cadastros/cadastros.module';
 import { VendasModule } from './pages/vendas/vendas.module';
-import { AuthService } from './theme/shared/services/login.service';
+import { AuthService } from './theme/shared/services/autthService/auth.service';
 import { InicioModule } from './inicio/inicio.module';
 import { AuthModule } from './auth/auth.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { ComunicacaoBaseService } from './theme/shared/services/comunicacao-base.service';
-import { ComunicaoService } from './theme/shared/_data-service/comunicacao-service';
+import { ComunicacaoBaseService } from './theme/shared/services/comunicationService/comunicacao-base.service';
+import { TextMaskModule } from 'angular2-text-mask';
+import { UsuarioDetalheComponent } from './pages/cadastros/usuario/usuario-detalhe/usuario-detalhe.component';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -55,16 +57,17 @@ import { ComunicaoService } from './theme/shared/_data-service/comunicacao-servi
     NgbButtonsModule,
     NgbTabsetModule,
     MatDialogModule,
+    MatButtonModule,
     NgxDatatableModule,
     InicioModule,
     CadastroModule,
     VendasModule,
-    AuthModule
+    AuthModule,
+    TextMaskModule
   ],
   providers: [NavigationItem, 
               AuthService, 
-              ComunicacaoBaseService, 
-              ComunicaoService],
+              ComunicacaoBaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ComunicacaoBaseService } from '../../services/comunicacao-base.service';
-import { GenericServices } from '../../services/generic-services';
+import { ComunicacaoBaseService } from '../../services/comunicationService/comunicacao-base.service';
+import { GenericServices } from '../../services/comunicationService/generic-services';
 import { ListaInfiniteScrollAcoesHelper } from './lista-infinite-scroll-acoes-helper';
 import { ListaInfiniteScrollColunasHelper } from './lista-infinite-scroll-colunas-helper';
 // import { dateToString } from '../../utils/date';
@@ -70,7 +70,6 @@ export class ListaInfiniteScrollComponent implements OnInit {
     }
 
   ngOnInit() {
-    debugger;
     if (!this.colunaOrdenacao) { this.colunaOrdenacao = this.colunas[0].propriedade; }
     this.naoEncontrouColunaAcoes = this.colunas.filter(x => x.titulo === 'Ações').length === 0;
     this.temFooter = this.colunas.some(c => c.hasOwnProperty('footer'));
@@ -95,24 +94,24 @@ export class ListaInfiniteScrollComponent implements OnInit {
 
   onScroll(offsetY: number) {
 
-    // if (this.semPaginacao && this.rows.length > 0) { return; }
+    if (this.semPaginacao && this.rows.length > 0) { return; }
 
-    // const viewHeight = (this.el as any).element.getBoundingClientRect().height - this.headerHeight;
+    const viewHeight = (this.el as any).element.getBoundingClientRect().height - this.headerHeight;
 
-    // if (!this.isLoading &&
-    //   offsetY + viewHeight >= this.rows.length * this.rowHeight) {
+    if (!this.isLoading &&
+      offsetY + viewHeight >= this.rows.length * this.rowHeight) {
 
-    //   let limit = this.pageLimit;
+      let limit = this.pageLimit;
 
-    //   if (this.rows.length === 0) {
+      if (this.rows.length === 0) {
 
-    //     const pageSize = Math.ceil(viewHeight / this.rowHeight);
+        const pageSize = Math.ceil(viewHeight / this.rowHeight);
 
-    //     limit = Math.max(pageSize, this.pageLimit);
-    //   }
+        limit = Math.max(pageSize, this.pageLimit);
+      }
 
       this.loadPage(100);
-    // }
+     }
   }
 
    private loadPage(limit: number) {
@@ -133,8 +132,8 @@ export class ListaInfiniteScrollComponent implements OnInit {
     this.getResults(this.rows.length, limit)
       .then(results => {
         const renderizarScroll = this.rows.length === 0;
-        this.quantidadeMaxima = results.quantidade;
-        const rows = [...this.rows, ...results.lista];
+        this.quantidadeMaxima = 5;
+        const rows = [...this.rows, ...results.data];
         this.rows = rows;
         this.rows.forEach( row => {row.rowValue = 0});
         this.configureDataSource(renderizarScroll, false);
@@ -158,15 +157,14 @@ export class ListaInfiniteScrollComponent implements OnInit {
   }
 
   getResults(indiceAtual: number, limite: number): Promise<any> {
+    if (!this.filtros) { this.filtros = {}; }
 
-    // if (!this.filtros) { this.filtros = {}; }
-
-    // if (!this.semPaginacao) {
-    //   this.filtros.campoOrdenacao = this.colunaOrdenacao;
-    //   this.filtros.tamanhoPagina = limite;
-    //   this.filtros.indicePrimeiroRegistroPagina = indiceAtual || 1;
-    //   this.filtros.tipoOrdenacao = this.direcaoOrdenacao;
-    // }
+    if (!this.semPaginacao) {
+      this.filtros.campoOrdenacao = this.colunaOrdenacao;
+      this.filtros.tamanhoPagina = limite;
+      this.filtros.indicePrimeiroRegistroPagina = indiceAtual || 1;
+      this.filtros.tipoOrdenacao = this.direcaoOrdenacao;
+    }
 
     // for (const propriedade in this.filtros) {
     //   if (this.filtros.hasOwnProperty(propriedade)) {
@@ -176,9 +174,7 @@ export class ListaInfiniteScrollComponent implements OnInit {
     //   }
     // }
 
-    // if (this.funcaoAjusteDeParametros) { this.funcaoAjusteDeParametros(this.filtros); }
-
-    //return this.http.get <any[]>(`${this.servico}`);
+    if (this.funcaoAjusteDeParametros) { this.funcaoAjusteDeParametros(this.filtros); }
 
     if (this.genericServices) {
       return this.genericServices.get(this.metodoPesquisa, {
@@ -191,7 +187,6 @@ export class ListaInfiniteScrollComponent implements OnInit {
         exibirLoading: this.exibirLoading
       });
     }
-    return;
   }
 
   converterDatasFormatoApi(filtros: any): any {

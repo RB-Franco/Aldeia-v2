@@ -2,8 +2,9 @@
 import { HttpClient, HttpErrorResponse, HttpRequest, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpSentEvent, HttpUserEvent } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize, take } from 'rxjs/operators';
+import { ResponseError } from '../../interfaces/response-error';
 import { MensagensService } from './mensagens.service';
-import { ResponseError } from '../interfaces/response-error';
+
 /**
  * Criar uma classe generica do tipo abstract para o projeto estendendo essa para e configurar
  *

@@ -10,6 +10,8 @@ import { VendasModule } from './vendas/vendas.module';
 import { CatalogoDetalheComponent } from './cadastros/catalogo/catalogo-detalhe/catalogo-detalhe.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
+import { UsuarioDetalheComponent } from './cadastros/usuario/usuario-detalhe/usuario-detalhe.component';
+
 @NgModule({
 	declarations: [
 		PagesComponent
@@ -23,7 +25,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 		VendasModule,
 		NgxDatatableModule
 	],
-	entryComponents: [CatalogoDetalheComponent],
+	entryComponents: [CatalogoDetalheComponent, UsuarioDetalheComponent],
 	providers: []
 })
 

@@ -19,7 +19,10 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ApexChartComponent } from './components/chart/apex-chart/apex-chart.component';
 import {ApexChartService} from './components/chart/apex-chart/apex-chart.service';
 import { TabelaComSelecaoModule } from './components/tabela-com-selecao/tabela-com-selecao.module';
-import { ComunicacaoBaseService } from './services/comunicacao-base.service';
+import { ComunicacaoBaseService } from './services/comunicationService/comunicacao-base.service';
+import { UsuarioDetalheComponent } from 'src/app/pages/cadastros/usuario/usuario-detalhe/usuario-detalhe.component';
+import { DropdownService } from './services/dropdownService/dropdown.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -28,6 +31,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     PerfectScrollbarModule,
     FormsModule,
     ReactiveFormsModule,
@@ -65,10 +69,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+      
     },
     ApexChartService,
-    ComunicacaoBaseService
+    ComunicacaoBaseService,
+    DropdownService
   ]
 })
 export class SharedModule { }

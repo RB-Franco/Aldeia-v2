@@ -1,103 +1,55 @@
-<ngx-datatable
-	[swapColumns]="false"
-	#lista
-	class="material listagem-aterrissagem"
-	[rows]="rows"
-	[columnMode]="'force'"
-	[headerHeight]="headerHeight"
-	[rowHeight]="rowHeight"
-	[footerHeight]="footerHeight"
-	[loadingIndicator]="isLoading"
-	[scrollbarV]="true"
-	[scrollbarH]="true"
-	(scroll)="onScroll($event.offsetY)"
-	(sort)="onSort($event)"
-	[messages]="messages"
-	[selected]="selected"
-	[selectionType]="'single'"
-	(reorder)="reorderColumn($event)"
-	(select)="onSelect($event)"
-	[style.height] ="tamanho !=='' ? tamanho : 'calc(75vh - 110px)'" 
-	>
+<ngx-datatable [swapColumns]="false" #lista class="material listagem-aterrissagem" [rows]="rows" [columnMode]="'force'"
+	[headerHeight]="headerHeight" [rowHeight]="rowHeight" [footerHeight]="footerHeight" [loadingIndicator]="isLoading"
+	[scrollbarV]="true" [scrollbarH]="true" (scroll)="onScroll($event.offsetY)" (sort)="onSort($event)"
+	[messages]="messages" [selected]="selected" [selectionType]="'single'" (reorder)="reorderColumn($event)"
+	(select)="onSelect($event)" [style.height]="tamanho !=='' ? tamanho : 'calc(75vh - 110px)'">
 
 	<span *ngFor="let coluna of colunas">
 		<ngx-datatable-column
 			*ngIf="coluna.width && (coluna.visibilidade || coluna.visibilidade == undefined) && coluna.titulo !== 'Ações' && !coluna.editavel"
-			[name]="coluna.titulo"
-			[prop]="coluna.propriedade"
-			[sortable]="!coluna.nosortable"
+			[name]="coluna.titulo" [prop]="coluna.propriedade" [sortable]="!coluna.nosortable"
 			[headerClass]="coluna.centralizarHeader ? 'col-center': ''"
-			[cellClass]="coluna.centralizarValor? 'col-center': ''"
-			[width]="coluna.width"
-			>
-				<ng-template
-					*ngIf="coluna.valor"
-					let-row="row"
-					ngx-datatable-cell-template>
-					{{coluna.valor(row)}}
-				</ng-template>
+			[cellClass]="coluna.centralizarValor? 'col-center': ''" [width]="coluna.width">
+			<ng-template *ngIf="coluna.valor" let-row="row" ngx-datatable-cell-template>
+				{{coluna.valor(row)}}
+			</ng-template>
 		</ngx-datatable-column>
 
 		<ngx-datatable-column
 			*ngIf="!coluna.width && (coluna.visibilidade || coluna.visibilidade == undefined) && coluna.titulo !== 'Ações' && !coluna.editavel"
-			[name]="coluna.titulo"
-			[prop]="coluna.propriedade"
-			[sortable]="!coluna.nosortable"
+			[name]="coluna.titulo" [prop]="coluna.propriedade" [sortable]="!coluna.nosortable"
 			[headerClass]="coluna.centralizarHeader ? 'col-center': ''"
-			[cellClass]="coluna.centralizarValor? 'col-center': ''"
-			>
-				<ng-template
-					*ngIf="coluna.valor"
-					let-row="row"
-					ngx-datatable-cell-template>
-					{{coluna.valor(row)}}
-				</ng-template>
+			[cellClass]="coluna.centralizarValor? 'col-center': ''">
+			<ng-template *ngIf="coluna.valor" let-row="row" ngx-datatable-cell-template>
+				{{coluna.valor(row)}}
+			</ng-template>
 		</ngx-datatable-column>
 
-		<ngx-datatable-column
-			*ngIf="coluna.titulo === 'Ações' && acoes.length > 0 && !coluna.editavel"
-			name="Ações"
-			[prop]="coluna.propriedade"
-			[sortable]="false"
-			>
-				<ng-template
-					let-row="row"
-					ngx-datatable-cell-template>
-					<div class="coluna-acao">
-						<span *ngFor="let acao of acoes; let i = index">
-							<button
-								[id]="'botao-acao' + i"
-								mat-icon-button
-								(click)="acao.evento(row); $event.stopPropagation(); selected = [row]"
-								*ngIf="acao.visivel ? acao.visivel(row) : true"
-								>
-								<!-- [matTooltip]="acao.toolTip" -->
-									<em [class]="acao.icone"></em>
-							</button>
-						</span>
-					</div>
-				</ng-template>
+		<ngx-datatable-column *ngIf="coluna.titulo === 'Ações' && acoes.length > 0 && !coluna.editavel" name="Ações"
+			[prop]="coluna.propriedade" [sortable]="false">
+			<ng-template let-row="row" ngx-datatable-cell-template>
+				<div class="coluna-acao">
+					<span *ngFor="let acao of acoes; let i = index">
+						<button type="button" mat-icon-button class="btn btn-icon" style="box-shadow: none;"
+							[id]="'botao-acao' + i"
+							(click)="acao.evento(row); $event.stopPropagation(); selected = [row]">
+							<i [class]="acao.icone"> </i>
+						</button>
+					</span>
+				</div>
+			</ng-template>
 		</ngx-datatable-column>
-  	</span>
+	</span>
 
-	<ngx-datatable-column
-		name="Ações"
-		[sortable]="false"
-		*ngIf="naoEncontrouColunaAcoes && acoes.length > 0"
-		>
-		<ng-template
-			let-row="row"
-			ngx-datatable-cell-template>
+	<ngx-datatable-column name="Ações" [sortable]="false" *ngIf="naoEncontrouColunaAcoes && acoes.length > 0">
+		<ng-template let-row="row" ngx-datatable-cell-template>
 			<div class="coluna-acao">
 				<span *ngFor="let acao of acoes; let i = index">
-					<button
-						[id]="'botao-acao' + i"
-						mat-icon-button
-						(click)="acao.evento(row); $event.stopPropagation(); selected = [row]"
-						*ngIf="acao.visivel ? acao.visivel(row) : true"
-						>
+					<button *ngIf="acao.visivel ? acao.visivel(row) : true" type="button" class="btn btn-icon"
+						[id]="'botao-acao' + i" (click)="acao.evento(row); $event.stopPropagation(); selected = [row]"
+						style="box-shadow: none;">
 						<!-- [matTooltip]="acao.toolTip" -->
-						<em [class]="acao.icone"></em>
+						<i [class]="acao.icone"></i>
 					</button>
 				</span>
 			</div>
@@ -105,11 +57,10 @@
 	</ngx-datatable-column>
 
 	<ngx-datatable-footer *ngIf="temFooter">
-		<ng-template 
-		  ngx-datatable-footer-template>
-		  <div style="padding: 5px 15px; font-size: 13px;">
-			{{ retornaDadosFooter() }}
-		  </div>
+		<ng-template ngx-datatable-footer-template>
+			<div style="padding: 5px 15px; font-size: 13px;">
+				{{ retornaDadosFooter() }}
+			</div>
 		</ng-template>
-	  </ngx-datatable-footer>
+	</ngx-datatable-footer>
 </ngx-datatable>

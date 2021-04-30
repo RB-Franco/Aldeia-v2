@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NextConfig } from '../../../app-config';
 import { Location } from '@angular/common';
-import { AuthService } from 'src/app/theme/shared/services/login.service';
+import { AuthService } from 'src/app/theme/shared/services/autthService/auth.service';
 
 @Component({
   selector: 'app-admin',

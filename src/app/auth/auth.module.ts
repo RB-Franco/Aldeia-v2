@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
 import { AuthComponent } from './auth.component';
-import { ComunicaoService } from '../theme/shared/_data-service/comunicacao-service';
-import { ComunicacaoBaseService } from '../theme/shared/services/comunicacao-base.service';
+import { ComunicacaoBaseService } from '../theme/shared/services/comunicationService/comunicacao-base.service';
 
 @NgModule({
 	declarations: [
@@ -18,8 +17,7 @@ import { ComunicacaoBaseService } from '../theme/shared/services/comunicacao-bas
 		FormsModule,
 		LoginModule
 	],
-	providers: [ComunicaoService, 
-				ComunicacaoBaseService]
+	providers: [ComunicacaoBaseService]
 })
 
 export class AuthModule {
