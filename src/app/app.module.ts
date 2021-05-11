@@ -30,7 +30,6 @@ import { AuthModule } from './auth/auth.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ComunicacaoBaseService } from './theme/shared/services/comunicationService/comunicacao-base.service';
 import { TextMaskModule } from 'angular2-text-mask';
-import { UsuarioDetalheComponent } from './pages/cadastros/usuario/usuario-detalhe/usuario-detalhe.component';
 import { MatButtonModule } from '@angular/material';
 
 @NgModule({

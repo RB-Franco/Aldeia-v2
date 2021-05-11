@@ -49,7 +49,6 @@ export class UsuarioDetalheComponent implements OnInit {
     this.windowWidth = window.innerWidth;
 
       if (data !== undefined) {
-        debugger;
         this.id= data.id,
         this.nome= data.nome,
         this.nomeUsuario= data.nomeUsuario,
@@ -101,7 +100,7 @@ export class UsuarioDetalheComponent implements OnInit {
         this.dialogRef.close();
       }
      });    
-   }else {
+   }else {     
      usuario.usrCadastro = 'supervisor';
      usuario.dtCadastro = Date.now;
     this.comunicacao.post('api/usuarios/cadastrar-usuario', {dados: usuario}).then((result: any) => { 

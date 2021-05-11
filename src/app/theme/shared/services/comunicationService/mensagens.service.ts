@@ -1,12 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar, MatDialog } from '@angular/material';
-//import { ToastMensagemComponent } from '../toast-mensagem/toast-mensagem.component';
-//import { DialogoMensagemComponent } from '../dialogo-mensagem/dialogo-mensagem.component';
 import { Observable, Subject } from 'rxjs';
-//import { DialogoMensagemConfirmComponent } from '../dialogo-mensagem-confirm/dialogo-mensagem-confirm.component';
-//import { ConfirmDialogOptions } from '../dialogo-mensagem-confirm/confirm-dialog-options';
-//import { DialogoMensagemErrorsComponent } from '../dialogo-mensagem-errors/dialogo-mensagem-errors.component';
 import Swal from 'sweetalert2';
+import { ConfirmDialogOptions } from '../../components/dialogo-mensagem-confirm/confirm-dialog-options';
+import { DialogoMensagemConfirmComponent } from '../../components/dialogo-mensagem-confirm/dialogo-mensagem-confirm.component';
+import { DialogoMensagemErrorsComponent } from '../../components/dialogo-mensagem-errors/dialogo-mensagem-errors.component';
+import { DialogoMensagemComponent } from '../../components/dialogo-mensagem/dialogo-mensagem.component';
+import { ToastMensagemComponent } from '../../components/toast-mensagem/toast-mensagem.component';
 
 @Injectable({
   providedIn: 'root'
@@ -55,70 +55,70 @@ export class MensagensService {
 
   private toast(css: string, ...mensagens: string[]) {
 
-    // this.zone.run(() => {
-    //   this.snackBar.openFromComponent(ToastMensagemComponent, {
-    //     duration: 5000,
-    //     horizontalPosition: 'center',
-    //     verticalPosition: 'bottom',
-    //     data: {
-    //       mensagens: mensagens,
-    //       css: css
-    //     },
-    //     panelClass: 'container-mensagens-toast'
-    //   });
-    // })
+    this.zone.run(() => {
+      this.snackBar.openFromComponent(ToastMensagemComponent, {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        data: {
+          mensagens: mensagens,
+          css: css
+        },
+        panelClass: 'container-mensagens-toast'
+      });
+    })
 
   }
 
   private exibaAlerta(mensagem: string, titulo: string, buttons: Array<any> = []) {
 
-    // this.zone.run(() => {
-    //   const modal = this.dialogo.open(DialogoMensagemComponent, {
-    //     data: {
-    //       mensagem: mensagem,
-    //       titulo: titulo,
-    //       buttons: buttons
-    //     }
-    //   });
+    this.zone.run(() => {
+      const modal = this.dialogo.open(DialogoMensagemComponent, {
+        data: {
+          mensagem: mensagem,
+          titulo: titulo,
+          buttons: buttons
+        }
+      });
 
-    //   if (buttons.length == 0) {
-    //     buttons.push({
-    //       text: 'Ok',
-    //       handler: () => modal.close(),
-    //       cssClass: 'btn-ok'
-    //     });
-    //   }
-    // })
+      if (buttons.length == 0) {
+        buttons.push({
+          text: 'Ok',
+          handler: () => modal.close(),
+          cssClass: 'btn-ok'
+        });
+      }
+    })
   }
 
   exibaConfirmDialog(mensagem: string, titulo: string): Observable<{ confirmDialogSelect: any }> {
     const confirmDialog$ = new Subject<{ confirmDialogSelect: any }>();
 
 
-    // this.zone.run(() => {
-    //   const modal = this.dialogo.open(DialogoMensagemConfirmComponent, {
-    //     disableClose: true,
-    //     data: {
-    //       mensagem: mensagem,
-    //       titulo: titulo
-    //     }
-    //   });
+    this.zone.run(() => {
+      const modal = this.dialogo.open(DialogoMensagemConfirmComponent, {
+        disableClose: true,
+        data: {
+          mensagem: mensagem,
+          titulo: titulo
+        }
+      });
   
-    //   const fecharDialog = (value: ConfirmDialogOptions) => {
-    //     confirmDialog$.next({
-    //       confirmDialogSelect: value
-    //     });
-    //     modal.close();
-    //   };
+      const fecharDialog = (value: ConfirmDialogOptions) => {
+        confirmDialog$.next({
+          confirmDialogSelect: value
+        });
+        modal.close();
+      };
   
-    //   const dialogoMensagemConfirmComponent: DialogoMensagemConfirmComponent = modal.componentInstance;
+      const dialogoMensagemConfirmComponent: DialogoMensagemConfirmComponent = modal.componentInstance;
   
-    //   dialogoMensagemConfirmComponent
-    //     .confirmEventEmitter
-    //     .subscribe((value: ConfirmDialogOptions) => {
-    //       fecharDialog(value);
-    //     });
-    // })
+      dialogoMensagemConfirmComponent
+        .confirmEventEmitter
+        .subscribe((value: ConfirmDialogOptions) => {
+          fecharDialog(value);
+        });
+    })
     
 
     return confirmDialog$;
@@ -128,23 +128,23 @@ export class MensagensService {
 
     const errorDialogo$ = new Subject<any>();
 
-    // this.zone.run(() => {
-    //   const modal = this.dialogo.open(DialogoMensagemErrorsComponent, {
-    //     data: {
-    //       errors: errors,
-    //       titulo: titulo
-    //     }
-    //   });
+    this.zone.run(() => {
+      const modal = this.dialogo.open(DialogoMensagemErrorsComponent, {
+        data: {
+          errors: errors,
+          titulo: titulo
+        }
+      });
   
-    //   // const fecharDialog = (value: ConfirmDialogOptions) => {
-    //   //   confirmDialog$.next({
-    //   //     confirmDialogSelect: value
-    //   //   });
-    //   //   modal.close();
-    //   // };
+      // const fecharDialog = (value: ConfirmDialogOptions) => {
+      //   confirmDialog$.next({
+      //     confirmDialogSelect: value
+      //   });
+      //   modal.close();
+      // };
   
-    //   const dialogoMensagemErrorsComponent: DialogoMensagemErrorsComponent = modal.componentInstance;
-    // })
+      const dialogoMensagemErrorsComponent: DialogoMensagemErrorsComponent = modal.componentInstance;
+    })
 
 
     // dialogoMensagemConfirmComponent

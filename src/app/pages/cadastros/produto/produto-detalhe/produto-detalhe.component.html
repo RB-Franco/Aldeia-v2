@@ -3,42 +3,48 @@
     <app-card cardTitle=Produto [options]="true">
       <hr>
       <div class="row">
+
         <div class="col-md-7">
           <form action="javascript:">
             <div class="form-group">
               <label for="">Descrição</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="ASTI">
+              <input type="text" class="form-control" name="IDescricao" [(ngModel)]="this.descricao"
+                placeholder="Descrição do produto">
             </div>
-          </form>          
+          </form>
+
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-5">
               <form action="javascript:">
                 <div class="form-group">
-                  <form action="javascript:">
-                    <div class="form-group">
-                      <label for="UN">Unidade de medida</label>
-                      <select class="form-control" id="UN">
-                        <option>UN</option>
-                        <option>MT</option>
-                        <option>KG</option>
-                      </select>
-                    </div>
-                  </form>
+                  <label for="">Unidade de medida</label>
+                  <input type="text" class="form-control" name="IUN" [(ngModel)]="this.unidadeMedida"
+                    placeholder="Unidade de medida do produto(UN, KG etc...)">
                 </div>
               </form>
             </div>
           </div>
         </div>
 
-        <div class="col-auto" style="left: 24%;">
-          <div class="container" style="background-color: rgb(245, 245, 245); 
+        <div class="col-auto">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="" *ngIf="!previewUrl">
+                  <div class="container" style="background-color: rgb(245, 245, 245); 
                                           box-shadow: 2px 2px 2px rgb(160, 158, 158); 
                                           width: 250px; 
-                                          height: 250px;
-                                          text-align: center; bottom: 50%;"
-                                          >
-            <!--<span class="fixed feather icon-plus" style="align-items: center;"></span>-->
+                                          height: 150px;
+                                          text-align: center; bottom: 50%;"></div>
+                </div>
+                <div class="" *ngIf="previewUrl">
+                  <img [src]="this.previewUrl" style="width: 250px; height: 150px;">
+                </div>
+                <div class="form-group">
+                  <input type="file" name="image" (change)="fileProgress($event)" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,10 +52,10 @@
       <hr>
       <div class="row">
         <div class="col-auto mr-auto">
-          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
+          <button type="cancelar" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
         </div>
         <div class="col-auto">
-          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+          <button type="salvar" class="btn btn-primary" (click)="salvar()">Salvar</button>
         </div>
       </div>
     </app-card>

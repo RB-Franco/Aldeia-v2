@@ -1,0 +1,11 @@
+<div class="titulo">
+  {{data.titulo}}
+</div>
+
+<div class="mensagem">
+  {{data.mensagem}}
+</div>
+
+<div class="botoes">
+  <button *ngFor="let button of data.buttons" mat-button (click)="button.handler()" [ngClass]="button.cssClass">{{button.text}}</button>
+</div>

@@ -1,0 +1,22 @@
+<div class="titulo">{{data.titulo}}</div>
+
+<div class="mensagem"><span [innerHtml]=data.mensagem></span></div>
+
+<div class="botoes">
+    <button
+        mat-raised-button
+        color="primary"
+        class="button-confirm"
+        (click)="confirm(SIM)"
+    >
+        {{SIM}}
+    </button>
+    <button
+        class="button-confirm"
+        color="secundary"
+        mat-raised-button
+        (click)="confirm(NAO)"
+    >
+        {{NAO}}
+    </button>
+</div>

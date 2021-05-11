@@ -1,0 +1,5 @@
+<div class="toast-container" [ngClass]="css" (click)="fechar()">
+  <em *ngIf="css == 'sucesso'" class="icon fas fa-check"></em>
+  <em *ngIf="css == 'alerta'" class="icon fas fa-exclamation"></em>
+  <div id="toastMessage + i" *ngFor="let msg of mensagens; let i = index" class="mensagem">{{msg}}</div>
+</div>

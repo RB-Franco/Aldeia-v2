@@ -23,6 +23,10 @@ import { ComunicacaoBaseService } from './services/comunicationService/comunicac
 import { UsuarioDetalheComponent } from 'src/app/pages/cadastros/usuario/usuario-detalhe/usuario-detalhe.component';
 import { DropdownService } from './services/dropdownService/dropdown.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastMensagemComponent } from './components/toast-mensagem/toast-mensagem.component';
+import { DialogoMensagemComponent } from './components/dialogo-mensagem/dialogo-mensagem.component';
+import { DialogoMensagemConfirmComponent } from './components/dialogo-mensagem-confirm/dialogo-mensagem-confirm.component';
+import { DialogoMensagemErrorsComponent } from './components/dialogo-mensagem-errors/dialogo-mensagem-errors.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -59,12 +63,26 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DataFilterPipe,
     ClickOutsideModule,
     SpinnerComponent,
-    ApexChartComponent
+    ApexChartComponent,
+    ToastMensagemComponent,
+    DialogoMensagemComponent,
+    DialogoMensagemConfirmComponent,
+    DialogoMensagemErrorsComponent
   ],
   declarations: [
     DataFilterPipe,
     SpinnerComponent,
-    ApexChartComponent
+    ApexChartComponent,
+    ToastMensagemComponent,
+    DialogoMensagemComponent,
+    DialogoMensagemConfirmComponent,
+    DialogoMensagemErrorsComponent
+  ],
+  entryComponents: [
+    ToastMensagemComponent,
+    DialogoMensagemComponent,
+    DialogoMensagemConfirmComponent,
+    DialogoMensagemErrorsComponent,
   ],
   providers: [
     {

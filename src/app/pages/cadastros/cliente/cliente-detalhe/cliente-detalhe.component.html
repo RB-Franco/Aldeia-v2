@@ -1,100 +1,224 @@
 <div class="row">
-    <div class="col-sm-12">
-      <app-card cardTitle=Cliente [options]="true">
-        <hr>
+  <div class="col-sm-12">
+    <app-card cardTitle=Cliente [options]="true">
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Nome</label>
+              <input type="text" class="form-control" name="InomeCli" [(ngModel)]="this.cli_nome"
+                placeholder="Nome do cliente">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">CPF/CNPJ</label>
+              <input type="text" class="form-control" name="IcliCpfcnpj" [(ngModel)]="this.cli_cpfCnpj"
+                placeholder="###.###.###-##">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">R.G/I.E</label>
+              <input type="text" class="form-control" name="IcliRg" [(ngModel)]="this.cli_rgIe" placeholder="########">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Telefone</label>
+              <input type="text" class="form-control" name="IcliTel" [(ngModel)]="this.cli_telefone"
+                placeholder="(##) # ####-####">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-8">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">E-mail</label>
+              <input type="text" class="form-control" name="IcliEmail" [(ngModel)]="this.cli_email"
+                placeholder="cliente@gmail.com">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">CEP</label>
+              <div class="input-group">
+                <input type="text" name="inputCep" [(ngModel)]="this.cli_cep" class="form-control"
+                  placeholder="####-####">
+                &nbsp;
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-icon btn-secondary" (click)="validaCepCliente()"
+                    style="box-shadow: none;">
+                    <i class="feather icon-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-sm-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="estadoEmp" class="control-label">UF</label>
+              <select class="form-control" name="Iestado" [(ngModel)]="this.cli_estado">
+                <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.nome}}</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-sm-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Cidade</label>
+              <input type="text" name="inputCidade" [(ngModel)]="this.cli_cidade" class="form-control" placeholder="">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Logradouro</label>
+              <input type="text" name="inputLograd" [(ngModel)]="this.cli_logradouro" class="form-control"
+                placeholder="">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="">Complemento</label>
+              <input type="text" name="inputComplement" [(ngModel)]="this.cli_complemento" class="form-control"
+                placeholder="">
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+
+      <app-card cardTitle="Endereços de entrega" [options]="true">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-2">
             <form action="javascript:">
               <div class="form-group">
-                <label for="">Nome</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Rodrigo">
+                <label for="">CEP</label>
+                <div class="input-group">
+                  <input type="text" name="inputCep" [(ngModel)]="this.end_cep" class="form-control"
+                    placeholder="####-####">
+                  &nbsp;
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-icon btn-secondary" (click)="validaCepEndEntrega()"
+                      style="box-shadow: none;">
+                      <i class="feather icon-search"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-sm-2">
             <form action="javascript:">
               <div class="form-group">
-                <label for="">CPF/CNPJ</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="###.###.###-##">
+                <label for="estadoEmp" class="control-label">UF</label>
+                <select class="form-control" name="Iestado" [(ngModel)]="this.end_estado">
+                  <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.nome}}</option>
+                </select>
               </div>
             </form>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-sm-2">
             <form action="javascript:">
               <div class="form-group">
-                <label for="">R.G/I.E</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="########">
+                <label for="">Cidade</label>
+                <input type="text" name="inputCidade" [(ngModel)]="this.end_cidade" class="form-control" placeholder="">
               </div>
             </form>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-4">
             <form action="javascript:">
               <div class="form-group">
-                <label for="">Telefone</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="(##) # ####-####">
-              </div>
-            </form>
-          </div>
-          <div class="col-md-8">
-            <form action="javascript:">
-              <div class="form-group">
-                <label for="">E-mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="cliente@gmail.com">
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row">          
-          <div class="col-md-2">
-            <form action="javascript:">
-              <div class="form-group">
-                <label for="">Estado</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Goiás">
-              </div>
-            </form>
-          </div>
-          <div class="col-md-3">
-            <form action="javascript:">
-              <div class="form-group">
-                <label for="">Cidade</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Goiania">
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <form action="javascript:">
-              <div class="form-group">
                 <label for="">Logradouro</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Rua tambaqui cond. Gran oasis">
+                <input type="text" name="inputLograd" [(ngModel)]="this.end_logradouro" class="form-control"
+                  placeholder="">
               </div>
             </form>
           </div>
-          <div class="col-md-6">
+
+          <div class="col-md-4">
             <form action="javascript:">
               <div class="form-group">
                 <label for="">Complemento</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="QD: 10 apt: 524 bl: 15">
+                <input type="text" name="inputComplement" [(ngModel)]="this.end_complemento" class="form-control"
+                  placeholder="">                  
+              </div>
+            </form>
+          </div>
+          <div class="col-md-12">
+            <form action="javascript:">
+              <div class="form-group">
+                <label for="">Obs. endereço</label>
+                <div class="input-group">
+                <input type="text" name="inputobsEnd" [(ngModel)]="this.end_obsEndereco" class="form-control"
+                  placeholder="">
+                  &nbsp;&nbsp;
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-icon btn-success" (click)="salvarEndEntrega()"
+                      style="box-shadow: none;">
+                      <i class="feather icon-check"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
         </div>
         <hr>
-        <div class="row">
-          <div class="col-auto mr-auto">
-            <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
-          </div>
-          <div class="col-auto">
-            <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
-          </div>
+        <div class="col-md-12">
+          <mx-formulario-aterrissagem 
+            #formulario 
+            [titulo]="'Endereços'" 
+            [colunas]="colunas" 
+            [acoes]="acoes"
+            [filtros]="" 
+            [servico]="dataEnderecosEntrega" 
+            [semPaginacao]="true" 
+            [tamanho]="'350px'">
+          </mx-formulario-aterrissagem>
         </div>
       </app-card>
-    </div>
+
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <button type="cancelar" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+        </div>
+        <div class="col-auto">
+          <button type="salvar" class="btn btn-primary" (click)="salvar()">Salvar</button>
+        </div>
+      </div>
+    </app-card>
   </div>
+</div>

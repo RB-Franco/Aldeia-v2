@@ -7,14 +7,14 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="">Descrição:</label>
-                                <input type="text" class="form-control" id="idDescricao" aria-describedby="Descricao"
+                                <input type="text" class="form-control" name="IDescricao" [(ngModel)]="this.filtros.descricao"
                                     placeholder="Descrição">
                             </div>
                         </div>
                     </div>
                     <div class="row btn-page">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-primary" (click)="pesquisar()"><i class="feather icon-search"></i>
+                            <button type="button" class="btn btn-primary" (click)="pesquisar(this.filtros)"><i class="feather icon-search"></i>
                                 Pesquisar</button>
                             <button type="button" class="btn btn-light">Limpar campos</button>
                         </div>
@@ -31,72 +31,10 @@
         [titulo]="'Produtos'"
         [colunas]="colunas"
         [acoes]="acoes"
-        [servico]="'api/produtos/obterProdutos'">
+        [filtros]="Filtros"
+        [servico]="'api/produto/obter-produtos/pesquisar'"
+        [semPaginacao]="true">
     </mx-formulario-aterrissagem>
 </div>
 
 <button class="fixed feather icon-plus btn btn-primary" (click)="detalheProduto(0)"> Cadastrar</button>
-<!-- <div class="col-md-12">
-    <app-card cardTitle="Produtos" blockClass="table-border-style">
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th *ngFor="let coluna of colunas" class="text-center">
-                            {{coluna.titulo}}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center text-muted" style="width: 80px;">1</td>
-                        <td class="text-center" style="width: 80px;">ASTI</td>
-                        <td class="text-center">UN</td>
-                        <td class="text-center">rodrigoF.supervisor</td>
-                        <td class="text-center">06/02/2021</td>
-                        <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                                
-                                <button type="button" class="btn btn-icon" (click)="detalheProduto(1)">
-                                    <i class="feather icon-edit"> </i>
-                                </button>
-                                
-                                <button type="button" class="btn btn-icon" (click)="excluir()">
-                                    <i class="feather icon-trash-2"> </i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center text-muted" style="width: 80px;">2</td>
-                        <td class="text-center" style="width: 80px;">ASTI</td>
-                        <td class="text-center">UN</td>
-                        <td class="text-center">rodrigoF.supervisor</td>
-                        <td class="text-center">06/02/2021</td>
-                        <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                                
-                                <button type="button" class="btn btn-icon" style="box-shadow: none;"
-                                    (click)="detalheProduto(2)">
-                                    <i class="feather icon-edit"> </i>
-                                </button>
-                                
-                                <button type="button" class="btn btn-icon" style="box-shadow: none;"
-                                    (click)="excluir()">
-                                    <i class="feather icon-trash-2"> </i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </app-card>
-</div> -->
-
-<!-- <mx-tabela-com-selecao
-[itensSelecionados]="modelo"
-[colunas]="colunas"
-[usaFooter]="false"
-[usaPost]="true"
-></mx-tabela-com-selecao> -->

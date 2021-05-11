@@ -1,7 +1,10 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Title } from '@angular/platform-browser';
-import { Router, ActivatedRoute } from '@angular/router';
-import {NextConfig} from '../../../../app-config';
+import { ComunicacaoBaseService } from 'src/app/theme/shared/services/comunicationService/comunicacao-base.service';
+import { DropdownService } from 'src/app/theme/shared/services/dropdownService/dropdown.service';
+import { NextConfig } from '../../../../app-config';
+import { ProdutoComponent } from '../produto.component';
 
 @Component({
   selector: 'app-produto-detalhe',
@@ -13,34 +16,101 @@ export class ProdutoDetalheComponent implements OnInit {
   public nextConfig: any;
   @Output() onNavMobCollapse = new EventEmitter();
 
-  idCatalogo: any;
-  rotaAtual: any;
+  id: any;
+  descricao: any;
+  unidadeMedida: any;
+  foto: any;
+  usrCadastro: any;
+  dtCadastro: any;
 
-  constructor(private rotas: Router, private route: ActivatedRoute, private titleService: Title) {
+  fileData: File = null;
+  previewUrl:any = null;
+
+  constructor(
+    private comunicacao: ComunicacaoBaseService,
+    private titleService: Title,
+    public dialogRef: MatDialogRef<ProdutoComponent>,
+    public configDialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) data,
+    private dropdowService: DropdownService) {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
-   }
+    if (data !== undefined) {
+      this.id = data.id,
+        this.descricao = data.descricao,
+        this.unidadeMedida = data.unidadeMedida,
+        this.previewUrl = data.preview,
+        this.usrCadastro = data.usrCadastro,
+        this.dtCadastro = data.dtCadastro
+    }
+  }
 
   ngOnInit() {
     this.titleService.setTitle('Aldeia - Cadastro produto');
+  }
 
-    this.route.params.subscribe((objeto: any) => {
-       this.idCatalogo = objeto.id;
-    })
+  navMobCollapse() {
+    if (this.windowWidth < 992) {
+      this.onNavMobCollapse.emit();
+    }
+  }
 
-    this.route.queryParams.subscribe(params => {
-      this.rotaAtual = params.rotaAtual;
-    });
- }
 
- navMobCollapse() {
-   if (this.windowWidth < 992) {
-     this.onNavMobCollapse.emit();
-   }
- }
+  cancelar() {
+    this.dialogRef.close(false);
+  }
 
- voltarRota(){
-   this.rotas.navigate([this.rotaAtual]);
- }
+  salvar() {
+    let produto = {
+      id: undefined,
+      descricao: this.descricao,
+      unidadeMedida: this.unidadeMedida,
+      foto: this.foto,
+      usrCadastro: this.usrCadastro,
+      dtCadastro: this.dtCadastro,
+      preview: this.previewUrl
+    }
 
+    if (this.id !== undefined) {
+      produto.id = this.id;
+      this.comunicacao.put('api/produto/atualizar-produto', { dados: produto }).then((result: any) => {
+        if (result.success) {
+          this.dialogRef.close(result.success);
+        }
+      });
+    } else {
+      produto.usrCadastro = 'supervisor';
+      this.comunicacao.post('api/produto/cadastrar-produto', { dados: produto }).then((result: any) => {
+        if (result.success) {
+          this.dialogRef.close(result.success);
+          produto = result.data;
+        }
+      });
+    }
+  }
+   
+fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.preview();
+}
+ 
+preview() {
+    if(!this.fileData){
+      this.previewUrl = undefined;
+      return;
+    }
+
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+ 
+    var reader = new FileReader();      
+    reader.readAsDataURL(this.fileData); 
+    reader.onload = (_event) => {       
+      this.previewUrl = reader.result;
+    }
+}
+ 
+ 
 }

@@ -1,0 +1,36 @@
+@import '../../assets/paleta-cores.scss';
+
+:host {
+  .toast-container {
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 0 0 12px #999;
+    opacity: .9;
+    cursor: pointer;
+    display: flex;
+  }
+
+  .mensagem {
+    padding: 5px;
+    margin-left: 30px;
+    display: block;
+  }
+
+  .icon {
+    font-size: 25px;
+  }
+
+  .sucesso {
+    background-color: $mx-sucesso !important;
+  }
+
+  .alerta {
+    background-color: $mx-alerta !important;
+  }
+
+  .erro {
+    background-color: $mx-erro !important;
+  }
+}

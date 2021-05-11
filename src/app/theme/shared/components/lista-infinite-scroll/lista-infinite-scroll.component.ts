@@ -175,14 +175,13 @@ export class ListaInfiniteScrollComponent implements OnInit {
     // }
 
     if (this.funcaoAjusteDeParametros) { this.funcaoAjusteDeParametros(this.filtros); }
-
     if (this.genericServices) {
       return this.genericServices.get(this.metodoPesquisa, {
         dados: this.filtros,
         exibirLoading: false
       }).toPromise();
     } else {
-      return this.comunicacao.get(`${this.servico}/pesquisar`, {
+      return this.comunicacao.get(`${this.servico}`, {
         dados: this.converterDatasFormatoApi(this.filtros),
         exibirLoading: this.exibirLoading
       });
