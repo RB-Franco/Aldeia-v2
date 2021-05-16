@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { FormularioAterrissagemComponent } from 'src/app/theme/shared/components/formulario-aterrissagem/formulario-aterrissagem.component';
 import { ComunicacaoBaseService } from 'src/app/theme/shared/services/comunicationService/comunicacao-base.service';
+import { DropdownService } from 'src/app/theme/shared/services/dropdownService/dropdown.service';
+import swal from 'sweetalert2';
 import { UsuarioDetalheComponent } from './usuario-detalhe/usuario-detalhe.component';
 
 @Component({
@@ -20,7 +22,9 @@ export class UsuarioComponent implements OnInit {
 
   router: Router;
 
-  filtros = { nome: '', tipoUsuario: '',  loginUsuario: '' };
+  filtros = { nome: '', tipoUsuario: '',  usuario: '' };
+  
+  tipoUsuarios: any;
 
   colunas = [
     { titulo: '#', propriedade: 'id', width: 10 },
@@ -43,7 +47,8 @@ export class UsuarioComponent implements OnInit {
   constructor(private comunicacao: ComunicacaoBaseService,
             public rotas: Router, 
             public configDialog: MatDialog, 
-            detDialog: MatDialog) 
+            detDialog: MatDialog,
+            private dropdowService: DropdownService) 
     {
     this.isCollapsed = true;
     this.multiCollapsed1 = true;
@@ -53,6 +58,7 @@ export class UsuarioComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.dropdowService.getTipoUsuarios().subscribe(dados => { this.tipoUsuarios = dados });
   }
 
   pesquisar(){
@@ -60,13 +66,22 @@ export class UsuarioComponent implements OnInit {
   }
   
   detalheUsuario(row: any) {
-    const detRef = this.configDialog.open(UsuarioDetalheComponent, { width: '1000px', height:'490px',panelClass: 'cdk-overlay-container' ,  disableClose:true, data: row}).addPanelClass('painel-class');    
+    if(row.nome === 'Supervisor'){ 
+      swal('Atenção', 'Este usuario não pode ser alterado!' , 'error');
+      return;
+    }
+    const detRef = this.configDialog.open(UsuarioDetalheComponent, { width: '1000px', height:'430px',panelClass: 'cdk-overlay-container' ,  disableClose:true, data: row}).addPanelClass('painel-class');    
+    detRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.pesquisar();
+      }
+    });
   }
 
   excluir(row: any){
-    this.comunicacao.delete('api/usuarios/excluir-usuario', {dados: { id: row.id}}).then((result: any) => { 
+    this.comunicacao.delete('api/usuarios/excluir-usuario', {dados: { id: row.id, nome: row.nome}}).then((result: any) => { 
       if(result.success){
-        alert(result.data)
+        swal('Atenção', result.data, 'error');
         this.pesquisar();
       }
     }); 

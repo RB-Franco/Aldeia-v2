@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from 'src/app/theme/shared/services/autthService/auth.service';
+import { AuthService } from 'src/app/theme/shared/services/authService/auth.service';
 
 @Component({
   selector: 'app-nav-right',

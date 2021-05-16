@@ -9,9 +9,12 @@ export class DropdownService {
   constructor(private http: HttpClient) { }
 
   getEstadoBr() {
-    return this.http.get('assets/dadosEstados/estadosbr.json');
+    return this.http.get('assets/dadosEmJson/estadosbr.json');
   }
-  gettipoUsuarios() {
-    return this.http.get('assets/dadosEstados/tipoUsuarios.json');
+  getTipoUsuarios() {
+    return this.http.get('assets/dadosEmJson/tipoUsuarios.json');
+  }
+  getListaStatus() {
+    return this.http.get('assets/dadosEmJson/listaStatus.json');
   }
 }

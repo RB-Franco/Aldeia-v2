@@ -1,209 +1,58 @@
 <div class="row">
   <div class="col-sm-12">
-    <app-card cardTitle=Catalogo [options]="true">
-      <hr>
+    <app-card cardTitle=Catalogo [options]="true" style="height: 15px;">  
+      <hr>    
       <div class="row">
         <div class="col-md-3">
           <form action="javascript:">
             <div class="form-group">
               <label for="">Descrição</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="TABELA - 2019">
+              <input type="text" 
+                     class="form-control" 
+                     name="IDescricao"
+                     [(ngModel)]="this.descricaoCatalogo"
+                placeholder="Descrição do catalogo">
             </div>
           </form>
         </div>
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <form action="javascript:">
             <div class="form-group">
-              <label for="fornec">Fornecedor</label>
-              <input class="form-control" list="fornec" name="fornec">
-              <datalist id="fornec">
-                <option value="1-D Angelis">
-              </datalist>
+              <label for="fornecedores" class="control-label">Fornecedor</label>
+              <select class="form-control" name="IfornecedorId" [(ngModel)]="this.fornecedorId">
+                <option *ngFor="let fornecedor of fornecedores" [ngValue]="fornecedor.id">{{fornecedor.id}} - {{fornecedor.descricao}}</option>
+              </select>
             </div>
           </form>
         </div>
       </div>
-
-      <hr>
-      <div class="col-md-12">
-        <app-card cardTitle="Adicionar produtos" blockClass="table-border-style">
-          <div class="row">
-            <div class="col-md-2">
-              <form action="javascript:">
-                <div class="form-group">
-                  <label for="produtct">Produto</label>
-                  <select class="form-control" id="produtct">
-                    <option></option>
-                    <option>1-ASTI</option>
-                  </select>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <app-card cardTitle="Referências do catalogo" blockClass="table-border-style">
-                <div class="row">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label for="">Codigo</label>
-                      <input type="email" class="form-control" id="idCodigoReferencia" 
-                        placeholder="61578">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="">Descrição</label>
-                      <input type="email" class="form-control" id="icDescricaoReferencia" 
-                        placeholder="3 LG 2 BR ( 2 ASS1,00 )">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="">Tamanho</label>
-                      <input type="email" class="form-control" id="idtamanhaReferencia" 
-                        placeholder="2,55X0,88X0,95">
-                    </div>
-                  </div>
-                </div>
-                <button class="btn btn-success">Adicionar</button>
-                <hr>
-                <br>
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th class="text-center">Codigo</th>
-                        <th class="text-muted">Descrição</th>
-                        <th class="text-muted">Tamanho</th>
-                        <th class="text-center">Ação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="text-center" style="width: 80px;">61578</td>
-                        <td class="text-muted" style="width: 1500px;">3 LG 2 BR ( 2 ASS1,00 )</td>
-                        <td class="text-muted" style="width: 1500px;">2,55X0,88X0,95</td>
-                        <td class="text-center">
-                          <!--Excluir-->
-                          <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
-                            <i class="feather icon-trash-2"> </i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </app-card>
-            </div>
-
-            <div class="col-sm-6">
-              <app-card cardTitle="Linhas do catalogo" blockClass="table-border-style">
-                <div class="row">
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label for="">Codigo referência</label>
-                      <input type="email" class="form-control" id="idRefLinha" 
-                        placeholder="61578">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="">Linha</label>
-                      <input type="email" class="form-control" id="idLinha" 
-                        placeholder="1000">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="">Valor</label>
-                      <input type="email" class="form-control" id="idValor" 
-                        placeholder="3.384,00">
-                    </div>
-                  </div>
-                </div>
-                <button class="btn btn-success">Adicionar</button>
-                <hr>
-                <br>
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th class="text-center">#</th>
-                        <th class="text-muted">Cod. referência</th>
-                        <th class="text-muted">Linha</th>
-                        <th class="text-muted">Valor</th>
-                        <th class="text-center">Ação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="text-center" style="width: 80px;">1</td>
-                        <td class="text-muted" style="width: 1500px;">61578</td>
-                        <td class="text-muted" style="width: 1500px;">1000</td>
-                        <td class="text-muted" style="width: 1500px;">3.384,00</td>
-                        <td class="text-center">
-                          <!--Excluir-->
-                          <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
-                            <i class="feather icon-trash-2"> </i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </app-card>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-2 offset-md-11">
-              <button type="salvar" class="btn btn-success" (click)="voltarRota()">Adicionar</button>
-            </div>
-          </div>
-        </app-card>
+      <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+          <button type="button" 
+                  class="btn btn-success" 
+                  (click)="adicionarProduto()">Adicionar produto</button>          
+        </div>
       </div>
+      <br>
+      <mx-formulario-aterrissagem
+        #formularioProd 
+        [titulo]="'Produtos'"
+        [colunas]="colunasProdutos"
+        [acoes]="acoesProdutos"
+        [dataSource]="listProdutos"
+        [semPaginacao]="true"
+        [tamanho]="'450px'">
+      </mx-formulario-aterrissagem>
 
-      <div class="col-md-12">
-        <app-card cardTitle="Produtos do catalogo" blockClass="table-border-style" >
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th class="text-center">#</th>
-                  <th class="text-muted">Produto</th>
-                  <th class="text-muted">Referência</th>
-                  <th class="text-muted">Linha</th>
-                  <th class="text-muted">Valor</th>
-                  <th class="text-center">Ação</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-center">1</td>
-                  <td class="text-muted">1 - ASTI</td>
-                  <td class="text-muted">61578 - 3 LG 2 BR ( 2 ASS1,00 ) - 2,55X0,88X0,95</td>
-                  <td class="text-muted">1000</td>
-                  <td class="text-muted">3.384,00</td>
-                  <td class="text-center">
-                    <!--Excluir-->
-                    <button type="button" class="btn btn-icon"style="box-shadow: none;" (click)="excluir()">
-                      <i class="feather icon-trash-2"> </i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </app-card>
-      </div>
       <hr>
       <div class="row">
-        <div class="col-auto mr-auto">
-          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
-        </div>
+        <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+          <button type="button" class="btn btn-light" (click)="salvar()" ><i class="feather icon-check"></i>&nbsp;&nbsp;Salvar</button>
+          <button type="button" class="btn btn-light" (click)="novo()"><i class="feather icon-file"></i>&nbsp;&nbsp;Novo</button>
+          <button type="button" class="btn btn-light" (click)="excluir()"><i class="feather icon-trash"></i>&nbsp;&nbsp;Excluir</button>
+          <button type="button" class="btn btn-light" (click)="cancelar()"><i class="feather icon-x"></i>&nbsp;&nbsp;Cancelar</button>
         </div>
       </div>
     </app-card>

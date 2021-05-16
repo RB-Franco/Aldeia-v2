@@ -24,7 +24,7 @@ import { NavigationItem } from './theme/layout/admin/side-bar/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroModule } from './pages/cadastros/cadastros.module';
 import { VendasModule } from './pages/vendas/vendas.module';
-import { AuthService } from './theme/shared/services/autthService/auth.service';
+import { AuthService } from './theme/shared/services/authService/auth.service';
 import { InicioModule } from './inicio/inicio.module';
 import { AuthModule } from './auth/auth.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';

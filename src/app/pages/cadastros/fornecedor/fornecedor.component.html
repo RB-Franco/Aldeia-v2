@@ -7,24 +7,24 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="">Descrição:</label>
-                                <input type="text" class="form-control" id="idDescricao"
-                                    aria-describedby="Descricao" placeholder="Descrição">
+                                <input type="text" class="form-control" id="idDescricao" aria-describedby="Descricao"
+                                    placeholder="Descrição">
                             </div>
                             <div class="col-md-3">
                                 <label for="">CNPJ:</label>
-                                <input type="text" class="form-control" id="idCNPJ"
-                                    aria-describedby="CNPJ" placeholder="CNPJ">
+                                <input type="text" class="form-control" id="idCNPJ" aria-describedby="CNPJ"
+                                    placeholder="CNPJ">
                             </div>
                             <div class="col-md-3">
                                 <label for="">Inscrição Estadual:</label>
-                                <input type="text" class="form-control" id="idIE"
-                                    aria-describedby="IE" placeholder="Inscrição Estadual">
+                                <input type="text" class="form-control" id="idIE" aria-describedby="IE"
+                                    placeholder="Inscrição Estadual">
                             </div>
                         </div>
                     </div>
                     <div class="row btn-page">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-primary"><i class="feather icon-search"></i> Pesquisar</button>
+                            <button type="button" class="btn btn-primary" (click)="pesquisar()"><i class="feather icon-search"></i>Pesquisar</button>
                             <button type="button" class="btn btn-light">Limpar campos</button>
                         </div>
                     </div>
@@ -32,69 +32,18 @@
             </div>
         </div>
     </app-filter>
-  </div>
+</div>
 
 <div class="col-md-12">
-    <app-card cardTitle="Fornecedores" blockClass="table-border-style">
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th class="text-center">#</th>
-                        <th class="text-center">Descrição</th>
-                        <th class="text-center">CNPJ</th>
-                        <th class="text-center">I.E</th>
-                        <th class="text-center">Telefone</th>
-                        <th class="text-center">E-mail</th>
-                        <th class="text-center">Estado</th>
-                        <th class="text-center">Cidade</th>
-                        <th class="text-center">Endereço principal</th>
-                        <th class="text-center">Complemento</th>
-                        <th class="text-center">Estado</th>
-                        <th class="text-center">Cidade</th>
-                        <th class="text-center">Endereço de entrega</th>
-                        <th class="text-center">Complemento</th>
-                        <th class="text-center">Estado de atuação</th>
-                        <th class="text-center">Usr. cadastro</th>
-                        <th class="text-center">Data cadastro</th>
-                        <th class="text-center">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-muted">1</td>
-                        <td class="text-center">D Angelis</td>
-                        <td class="text-center">999-9999-9999-99</td>
-                        <td class="text-center">1234567</td>
-                        <td class="text-center">(62) 3278-0156</td>
-                        <td class="text-center">fornecedor@gmail.com</td>
-                        <td class="text-center">Góias</td>
-                        <td class="text-center">Goiânia</td>
-                        <td class="text-center">Rua das esmeraldas</td>
-                        <td class="text-center">Qd:01 esquina com castelo de pedra</td>
-                        <td class="text-center">Góias</td>
-                        <td class="text-center">Goiânia</td>
-                        <td class="text-center">Rua das esmeraldas</td>
-                        <td class="text-center">Qd:01 esquina com castelo de pedra</td>
-                        <td class="text-center">GO</td>
-                        <td class="text-center">rodrigoF.supervisor</td>
-                        <td class="text-center">06/02/2021</td>
-                        <td class="text-center">
-                            <div role="" class="btn-group-sm btn-group">
-                                <!--Editar-->
-                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="detalheFornecedor(1)">
-                                    <i class="feather icon-edit"> </i>
-                                </button>
-                                <!--Excluir-->
-                                <button type="button" class="btn btn-icon" style="box-shadow: none;" (click)="excluir()">
-                                    <i class="feather icon-trash-2"> </i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </app-card>
+    <mx-formulario-aterrissagem
+        #formulario
+        [titulo]="'Fornecedores'"
+        [colunas]="colunas"
+        [acoes]="acoes"
+        [filtros]="filtros"
+        [servico]="'api/fornecedor/obter-fornecedores/pesquisar'"
+        [semPaginacao]="true"
+        [tamanho]="'660px'">
+    </mx-formulario-aterrissagem>
 </div>
 <button class="fixed feather icon-plus btn btn-primary" (click)="detalheFornecedor(0)"> Cadastrar</button>

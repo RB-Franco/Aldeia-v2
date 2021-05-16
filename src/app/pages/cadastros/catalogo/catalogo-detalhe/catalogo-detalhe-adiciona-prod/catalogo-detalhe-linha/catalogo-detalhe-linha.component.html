@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-sm-6">
+    <app-catalogo-detalhe-referencia
+      (onChangeGrid)="adicionou(0).bind()">
+      
+    </app-catalogo-detalhe-referencia>
+  </div>
+  <div class="col-sm-6">
+    <app-card cardTitle="Linhas do catalogo" blockClass="table-border-style"><br>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="referenciasLinhas" class="control-label">Cód. referência</label>
+              <select class="form-control" name="ICodRefLinha" [(ngModel)]="this.codRefLinha">
+                <option *ngFor="let referencia of this.formularioReferencia.retornarLista()" [ngValue]="referencia.codigo">{{referencia.codigo}} - {{referencia.descricao}}</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Linha</label>
+            <input 
+              type="text" 
+              class="form-control"
+              name="ILinha"
+              [(ngModel)]="this.linha"
+              placeholder="Ex: 1000">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Valor</label>
+            <input 
+              type="text" 
+              class="form-control"
+              name="IValor"
+              [(ngModel)]="this.valor"
+              placeholder="Ex: 1.000,00">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-success" (click)="adicionarLinha()">Adicionar</button>
+      <hr>
+      <br>
+      <mx-formulario-aterrissagem
+          #formularioLinha
+          [titulo]="'Linhas'"
+          [colunas]="colunasLinhas"
+          [acoes]="acoesLinhas"
+          [dataSource]="listLinhas.valueOf()"
+          [semPaginacao]="true"
+          [tamanho]="'250px'">
+      </mx-formulario-aterrissagem>
+    </app-card>
+  </div>
+</div>

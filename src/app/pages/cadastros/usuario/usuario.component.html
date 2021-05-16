@@ -11,15 +11,20 @@
                                     aria-describedby="Nome" placeholder="Nome" [(ngModel)]="this.filtros.nome">
                             </div>
                             <div class="col-md-3">
-                                <label for="">Login:</label>
+                                <label for="">Usuario:</label>
                                 <input type="text" class="form-control" name="idLogin"
-                                    aria-describedby="Login" placeholder="Login" [(ngModel)]="this.filtros.loginUsuario">
+                                    aria-describedby="Login" placeholder="Usuario" [(ngModel)]="this.filtros.usuario">
                             </div>
-                            <div class="col-md-3">
-                                <label for="">Tipo:</label>
-                                <input type="text" class="form-control" name="idTipo"
-                                    aria-describedby="Tipo" placeholder="Tipo" [(ngModel)]="this.filtros.tipoUsuario">
-                            </div>
+                            <div class="col-md-2">
+                                <form action="javascript:">
+                                  <div class="form-group">
+                                    <label for="tipo">Tipo usuário</label>
+                                    <select class="form-control" name="tipo" [(ngModel)]="this.filtros.tipoUsuario" >
+                                      <option *ngFor="let tipo of tipoUsuarios" [ngValue]="tipo.id"> {{ tipo.descricao }}</option>
+                                    </select>
+                                  </div>
+                                </form>
+                              </div>
                         </div>
                     </div>
                     <div class="row btn-page">
@@ -42,8 +47,8 @@
         [acoes]="acoes"
         [filtros]="filtros"
         [servico]="'api/usuarios/obter-usuarios/pesquisar'"
-        [semPaginacao]="true"
-        [tamanho]="'700px'">
+        [semPaginacao]="true"        
+        [tamanho]="'660px'">
     </mx-formulario-aterrissagem>
 </div>
 <button class="fixed feather icon-plus btn btn-primary" (click)="detalheUsuario(0)"> Cadastrar</button>

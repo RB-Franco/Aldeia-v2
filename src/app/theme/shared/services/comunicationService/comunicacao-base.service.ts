@@ -8,6 +8,7 @@ import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs';
 import { _throw } from 'rxjs/observable/throw';
 import { MensagensService } from './mensagens.service';
+import { AuthService } from '../authService/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +18,23 @@ export class ComunicacaoBaseService {
   constructor( public http: HttpClient, public dialogo: MensagensService) { }
 
   private _caminhoApi: string = "https://localhost:5001/";
+  //private _tokenAutorization: string = AuthService.call();
+
   public set caminhoApi(value:string){
     this._caminhoApi = value;
   }
   public get caminhoApi() {
     return this._caminhoApi;
   }
-
+  // public set tokenAutorization(value:string){
+  //   this._tokenAutorization = value;
+  // }
+  // public get tokenAutorization() {
+  //   return this._tokenAutorization;
+  // }
   public post(servico: string, { dados = <any>(null), enviarComoQueryString = false, exibirLoading = true, retornaArquivo = false } = {}): Promise<any> {
     if (exibirLoading) this.dialogo.exibaLoading();
-
+    
     const corpo = enviarComoQueryString ? {} : dados;
     const params = enviarComoQueryString ? dados : {};
 
@@ -74,9 +82,9 @@ export class ComunicacaoBaseService {
   public get(servico: string, { dados = <any>(null), exibirLoading = true } = {}, retornarStatusResposta: boolean = false) {
 
     if (exibirLoading) this.dialogo.exibaLoading();
-
+    //, headers: new HttpHeaders().set('TenantId', `${this.tokenAutorization}`) 
     return this.http
-      .get(`${this.caminhoApi}${servico}`, { params: dados })
+      .get(`${this.caminhoApi}${servico}`, { params: dados})
       .catch(e => this.tratarErro(e, retornarStatusResposta))
       .finally(this.removerLoading.bind(this, exibirLoading))
       .toPromise()

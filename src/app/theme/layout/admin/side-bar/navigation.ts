@@ -50,6 +50,12 @@ const NavigationItems = [
             title: 'Usuário',
             type: 'item',
             url: '/pages/cadastros/usuario'
+          },        
+          {
+            id: 'cliente',
+            title: 'Cliente',
+            type: 'item',
+            url: '/pages/cadastros/cliente'
           },
           {
             id: 'empresa',
@@ -74,13 +80,7 @@ const NavigationItems = [
             title: 'Catalogo',
             type: 'item',
             url: '/pages/cadastros/catalogo'
-          },        
-           {
-             id: 'cliente',
-             title: 'Cliente',
-             type: 'item',
-             url: '/pages/cadastros/cliente'
-           }
+          }
         ]
       },
       {

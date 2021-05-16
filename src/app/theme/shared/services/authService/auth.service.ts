@@ -35,7 +35,7 @@ export class AuthService {
           this.usuarioAutenticado = response.success;
           swal(
             'Erro',
-            'Usuario ou senha inválido!',
+            response.data,
             'error'
           );
           //alert(response.error.toString())
@@ -47,5 +47,8 @@ export class AuthService {
       this.usuarioAutenticado = false;
       this.router.navigate(['/']);
     }    
+  }
+  public returnToken(){
+    return this.token;
   }
 }

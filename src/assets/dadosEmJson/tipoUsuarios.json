@@ -1,11 +1,10 @@
 [{
 	"id": "",
-	"sigla": "",
-	"nome": ""
+	"descricao": ""
 },{
-	"id": "1",
+	"id": "0",
 	"descricao": "Supervisor"
 },{
-	"id": "2",
+	"id": "1",
 	"descricao": "Vendedor"
 }]

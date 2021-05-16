@@ -3,7 +3,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ComunicacaoBaseService } from 'src/app/theme/shared/services/comunicationService/comunicacao-base.service';
+import { MensagensService } from 'src/app/theme/shared/services/comunicationService/mensagens.service';
 import { DropdownService } from 'src/app/theme/shared/services/dropdownService/dropdown.service';
+import swal from 'sweetalert2';
 import { NextConfig } from '../../../../app-config';
 import { UsuarioComponent } from '../../usuario/usuario.component';
 import { EmpresaComponent } from '../empresa.component';
@@ -34,6 +36,7 @@ export class EmpresaDetalheComponent implements OnInit {
 
   constructor(
     private comunicacao: ComunicacaoBaseService,
+    private menssagem: MensagensService,
     private titleService: Title,
     public dialogRef: MatDialogRef<EmpresaComponent>,
     public configDialog: MatDialog,
@@ -44,7 +47,7 @@ export class EmpresaDetalheComponent implements OnInit {
 
     if (data !== undefined) {
       this.id = data.id,
-        this.descricao = data.descrição,
+        this.descricao = data.descricao,
         this.cnpj = data.cnpj,
         this.telefone = data.telefone,
         this.cep = data.cep,
@@ -56,7 +59,6 @@ export class EmpresaDetalheComponent implements OnInit {
         this.usrCadastro = data.usrCadastro,
         this.dtCadastro = data.dtCadastro
     }
-
   }
 
   ngOnInit() {
@@ -71,10 +73,16 @@ export class EmpresaDetalheComponent implements OnInit {
   }
 
   cancelar() {
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   salvar() {
+    debugger;
+    if(!this.validaEmpresa()){
+      swal('Alerta', 'Informe os dados da empresa', 'warning');
+      return;
+    }
+
     let empresa = {
       id: this.id,
       descricao: this.descricao,
@@ -94,7 +102,7 @@ export class EmpresaDetalheComponent implements OnInit {
       empresa.id = this.id;
       this.comunicacao.put('api/empresa/atualizar-empresa', { dados: empresa }).then((result: any) => {
         if (result.success) {
-          this.dialogRef.close();
+          this.dialogRef.close(result.success);
         }
       });
     } else {
@@ -102,7 +110,7 @@ export class EmpresaDetalheComponent implements OnInit {
       empresa.dtCadastro = Date.now;
       this.comunicacao.post('api/empresa/cadastrar-empresa', { dados: empresa }).then((result: any) => {
         if (result.success) {
-          this.dialogRef.close();
+          this.dialogRef.close(result.success);
           empresa = result.data;
         }
       });
@@ -111,7 +119,7 @@ export class EmpresaDetalheComponent implements OnInit {
 
   validaCep() {
     if(this.cep === undefined) { 
-      alert("informe um CEP")
+      this.menssagem.exibaToastAlerta('Informe o CEP do cliente');
       return;
     }
     this.comunicacao.post(`api/enderecos/valida-cep?cep=${this.cep}`).then((result: any) => {
@@ -122,5 +130,40 @@ export class EmpresaDetalheComponent implements OnInit {
         this.complemento = result.data.complemento;
       }
     })
+  }
+
+  validaEmpresa(){
+    if(!this.descricao) { return false;} 
+    if(!this.cnpj) { return false;} 
+    if(!this.cep) { return false;} 
+    if(!this.estado) { return false;} 
+    if(!this.cidade) { return false;} 
+    if(!this.logradouro) { return false;} 
+    
+    return true;
+  }
+
+  novo(){
+    this.id= undefined;
+    this.descricao= undefined;
+    this.cnpj= undefined;
+    this.telefone= undefined;
+    this.cep= undefined;
+    this.estado= undefined;
+    this.cidade= undefined;
+    this.logradouro= undefined;
+    this.complemento= undefined;
+    this.email= undefined;
+    this.usrCadastro= undefined;
+    this.dtCadastro= undefined;
+  }
+
+  excluir(){ 
+    if(!this.id) { return; }
+    this.comunicacao.delete('api/empresa/excluir-empresa', {dados: { id: this.id}}).then((result: any) => { 
+      if(result.success){        
+        this.novo();        
+      }
+    }); 
   }
 }

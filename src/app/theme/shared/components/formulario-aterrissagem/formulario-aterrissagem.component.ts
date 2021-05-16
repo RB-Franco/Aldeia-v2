@@ -42,7 +42,9 @@ export class FormularioAterrissagemComponent implements OnInit {
 
     this.listagem.pesquisar();
   }
-
+  limparDataSource() {
+    this.listagem.limparDataSource();
+  }
   removerItem(item) {
 
     this.listagem.removerItem(item);

@@ -63,13 +63,17 @@ export class EmpresaComponent implements OnInit {
   }
 
   detalheEmpresa(row: any) {
-    const detRef = this.configDialog.open(EmpresaDetalheComponent, { width: '1000px', height:'650px',panelClass: 'cdk-overlay-container' ,  disableClose:true, data: row}).addPanelClass('painel-class');
+    const detRef = this.configDialog.open(EmpresaDetalheComponent, { width: '1000px', height:'600px',panelClass: 'cdk-overlay-container' ,  disableClose:true, data: row}).addPanelClass('painel-class');
+    detRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.pesquisar();
+      }
+    });
   }
   
   excluir(row: any){
     this.comunicacao.delete('api/empresa/excluir-empresa', {dados: { id: row.id}}).then((result: any) => { 
-      if(result.success){
-        alert(result.data)
+      if(result.success){        
         this.pesquisar();
       }
     }); 

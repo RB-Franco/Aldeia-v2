@@ -1,0 +1,26 @@
+<div class="col-md-12">
+  <app-card cardTitle="Adicionar produtos" blockClass="table-border-style"><br>
+    <div class="row">
+      <div class="col-md-4">
+        <form action="javascript:">
+          <div class="form-group">
+            <label for="produtos" class="control-label">Produto</label>
+            <select class="form-control" name="ICodProd" [(ngModel)]="this.codProduto">
+              <option></option>
+              <option *ngFor="let produto of produtos" [ngValue]="produto.id">{{produto.id}} - {{produto.descricao}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <app-catalogo-detalhe-linha></app-catalogo-detalhe-linha>   
+
+    <div class="row">
+      <div class="col-auto mr-auto"></div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-light" (click)="adicionarProduto()" ><i class="feather icon-check"></i>&nbsp;&nbsp;Adicionar produto</button>
+        <button type="button" class="btn btn-light" (click)="cancelar()"><i class="feather icon-x"></i>&nbsp;&nbsp;Cancelar</button>        
+      </div>
+    </div>
+  </app-card>
+</div>

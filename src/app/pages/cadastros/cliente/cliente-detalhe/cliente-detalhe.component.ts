@@ -1,7 +1,8 @@
 import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, DebugElement } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
+import { element } from 'protractor';
 
 import { FormularioAterrissagemComponent } from 'src/app/theme/shared/components/formulario-aterrissagem/formulario-aterrissagem.component';
 import { ComunicacaoBaseService } from 'src/app/theme/shared/services/comunicationService/comunicacao-base.service';
@@ -27,6 +28,8 @@ export class ClienteDetalheComponent implements OnInit {
   dataEnderecosEntrega: any;
   rotaAtual: any;
 
+  adicionouEndereco: boolean = false;
+
   cli_id: any;
   cli_nome: any;
   cli_cpfCnpj: any;
@@ -41,6 +44,7 @@ export class ClienteDetalheComponent implements OnInit {
   cli_usrCadastro: any;
   cli_dtCadastro: any;
 
+  listaEnderecoEntrega = [];
   end_cep: any;
   end_estado: any;
   end_cidade: any;
@@ -61,7 +65,7 @@ export class ClienteDetalheComponent implements OnInit {
     { titulo: 'Complemento', propriedade: 'complemento', width: 150 },
     { titulo: 'Obs. Endereço', propriedade: 'obsEndereco', width: 150 },
     { titulo: 'Usr. Cadastro', propriedade: 'usrCadastro', width: 150 },
-    { titulo: 'Dt. Cadastro', propriedade: 'dataCadastro', width: 150 },
+    { titulo: 'Dt. Cadastro', propriedade: 'dtCadastro', width: 150 },
     { titulo: 'Ações', propriedade: 'acoes', width: 150 }
   ];
 
@@ -80,23 +84,24 @@ export class ClienteDetalheComponent implements OnInit {
   {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
-    this.modelo = data;
-    this.dataEnderecosEntrega = `api/enderecos/obter-enderecos-entrega/pesquisar?codCliente=${this.modelo.id === undefined ? 0 : this.modelo.id}`; 
-    
-    if(data !== undefined && data !== 0){
-      this.cli_id = data.id,
-      this.cli_nome = data.nome,
-      this.cli_cpfCnpj = data.CpfCpj,
-      this.cli_rgIe = data.rgIe,
-      this.cli_telefone = data.telefone,
-      this.cli_email = data.email,
-      this.cli_cep = data.cep,
-      this.cli_estado = data.estado.toUpperCase(),
-      this.cli_cidade = data.cidade,
-      this.cli_logradouro = data.logradouro,
-      this.cli_complemento = data.complemento,  
-      this.cli_usrCadastro = data.usrCadastro,
-      this.cli_dtCadastro = data.dtCadastro 
+
+    this.modelo = data.cliente;
+    this.listaEnderecoEntrega = data.enderecos;
+
+    if(this.modelo !== undefined && this.modelo !== 0){
+      this.cli_id = this.modelo.id,
+      this.cli_nome = this.modelo.nome,
+      this.cli_cpfCnpj = this.modelo.cpfCnpj,
+      this.cli_rgIe = this.modelo.rgIe,
+      this.cli_telefone = this.modelo.telefone,
+      this.cli_email = this.modelo.email,
+      this.cli_cep = this.modelo.cep,
+      this.cli_estado = this.modelo.estado.toUpperCase(),
+      this.cli_cidade = this.modelo.cidade,
+      this.cli_logradouro = this.modelo.logradouro,
+      this.cli_complemento = this.modelo.complemento,  
+      this.cli_usrCadastro = this.modelo.usrCadastro,
+      this.cli_dtCadastro = this.modelo.dtCadastro 
     }
   }
 
@@ -112,14 +117,18 @@ export class ClienteDetalheComponent implements OnInit {
   }
 
   cancelar() {
-    this.dialogRef.close(false);
+    this.dialogRef.close(true);
   }
 
   salvar() {
+    if(!this.validaCliente()){
+      swal('Atenção', 'Informe os dados do cliente!','warning');
+      return;
+    }
     let cliente = {
-      id: this.cli_id,
+      id: undefined,
       nome: this.cli_nome,
-      cpfCpj: this.cli_cpfCnpj,
+      cpfCnpj: this.cli_cpfCnpj,
       rgIe: this.cli_rgIe,
       telefone: this.cli_telefone,
       email: this.cli_email,
@@ -135,21 +144,51 @@ export class ClienteDetalheComponent implements OnInit {
     if (this.cli_id !== undefined) {
       cliente.id = this.cli_id;
       this.comunicacao.put('api/cliente/atualizar-cliente', { dados: cliente }).then((result: any) => {
-        if (result.success) {
-          //this.dialogRef.close();
+        if (result.success) {  
+          if(this.adicionouEndereco){
+            this.salvarEndEntrega();
+          }         
+          this.dialogRef.close();
         }
       });
     } else {
       cliente.usrCadastro = 'supervisor';
       this.comunicacao.post('api/cliente/cadastrar-cliente', { dados: cliente }).then((result: any) => {
         if (result.success) {
-          //this.dialogRef.close();
           cliente = result.data;
           this.cli_id = cliente.id;
+
+          if(this.adicionouEndereco){
+            this.salvarEndEntrega();
+          }                    
         }
       });
-    }
+    }    
   }
+  
+  validaCliente(): boolean{
+    if(!this.cli_nome) { return false;} 		
+    if(!this.cli_cpfCnpj) { return false;} 		
+    if(!this.cli_rgIe) { return false;} 		
+    if(!this.cli_telefone) { return false;} 	
+    if(!this.cli_email) { return false;} 		
+    if(!this.cli_cep) { return false;} 			
+    if(!this.cli_estado) { return false;} 		
+    if(!this.cli_cidade) { return false;} 		
+    if(!this.cli_logradouro) { return false;}
+    
+    return true;
+  }
+
+  validaEnderecoEntrega(): boolean{
+    if(!this.end_cep) { return false;}
+    if(!this.end_estado) { return false;}
+    if(!this.end_cidade) { return false;}
+    if(!this.end_logradouro) { return false;}
+    
+    return true;
+  }
+
   validaCepCliente() {
     if(this.cli_cep === undefined) { 
       this.menssagem.exibaToastAlerta('Informe o CEP do cliente');
@@ -166,9 +205,7 @@ export class ClienteDetalheComponent implements OnInit {
   }
   validaCepEndEntrega() {
     if(this.end_cep === undefined) { 
-      //this.toastr.warning('Informe um CEP','Atenção', {timeOut: 2000})
       this.menssagem.exibaToastAlerta('Informe o CEP do endereço de entrega');
-      // alert("informe um CEP")
       return;
     }
     this.comunicacao.post(`api/enderecos/valida-cep?cep=${this.end_cep}`).then((result: any) => {
@@ -180,16 +217,13 @@ export class ClienteDetalheComponent implements OnInit {
       }
     })
   }
-  salvarEndEntrega(){ 
-    if(this.cli_id === undefined) { 
-      swal(
-        'Atenção',
-        'Para gravar endereço de entrega, salve os dados do cliente!',
-        'info'
-      );
+
+  AdicionarEnderecoNaLista(){       
+    if(!this.validaEnderecoEntrega()){
+      swal('Atenção', 'Informe os dados do endereço de entrega!','warning');
       return;
     }
-    let endereco = {
+    this.listaEnderecoEntrega.push({
       cep: this.end_cep,
       estado: this.end_estado,
       cidade: this.end_cidade,
@@ -197,32 +231,65 @@ export class ClienteDetalheComponent implements OnInit {
       complemento: this.end_complemento,  
       obsEndereco: this.end_obsEndereco,
       clienteId: this.cli_id,
-      usrCadastro: 'supervisor'
-    }
+      usrCadastro: 'supervisor',
+      dtCadastro: undefined
+    });
+    this.adicionouEndereco = true;
+    this.formulario.pesquisar();
+  }
 
-    this.comunicacao.post(`api/enderecos/cadastrar-enderecos-entrega-cliente`, { dados: endereco}).then((result: any) => {
-      if (result.success) {      
-        this.end_cep = '';
-        this.end_estado  = '';
-        this.end_cidade  = '';
-        this.end_logradouro  = '';
-        this.end_complemento  = ''; 
-        this.end_obsEndereco ='';       
-      }
-    })
-    this.dataEnderecosEntrega = `api/enderecos/obter-enderecos-entrega/pesquisar?codCliente=${this.modelo.id === undefined ? 0 : this.modelo.id}`; 
-    this.formulario.pesquisar()
+  salvarEndEntrega(){ 
+    this.listaEnderecoEntrega.forEach(item => item.clienteId = this.cli_id);
+      this.comunicacao.post(`api/enderecos/cadastrar-enderecos-entrega-cliente`, { dados: this.listaEnderecoEntrega}).then((result: any) => {        
+        if(result.success){                    
+          this.dialogRef.close();
+        }
+      });
   }
 
   excluirEndEntrega(row: any) {
     let endereco = {
       id: row.id
     }
+    const remove = this.listaEnderecoEntrega.indexOf(row);
+
     this.comunicacao.delete('api/enderecos/excluir-enderecos-entrega', { dados: endereco }).then((result: any) => {
-      if (result.success) {      
-        this.dataEnderecosEntrega = `api/enderecos/obter-enderecos-entrega/pesquisar?codCliente=${this.modelo.id === undefined ? 0 : this.modelo.id}`; 
+      if (result.success) {  
+        this.listaEnderecoEntrega.splice(remove, 1);
         this.formulario.pesquisar()     
       }
     })
   }  
+
+  excluir() {
+    if(this.listaEnderecoEntrega.length > 0){
+      this.listaEnderecoEntrega.forEach(item => this.excluirEndEntrega(item));
+    }
+
+    this.comunicacao.delete('api/cliente/excluir-cliente', { dados: { id: this.cli_id } }).then((result: any) => {
+      if (result.success) {
+        this.novo()
+      }
+    });
+  }
+
+  novo(){
+    this.cli_id = undefined; 			
+    this.cli_nome = undefined; 		
+    this.cli_cpfCnpj = undefined; 		
+    this.cli_rgIe = undefined; 		
+    this.cli_telefone = undefined; 	
+    this.cli_email = undefined; 		
+    this.cli_cep = undefined; 			
+    this.cli_estado = undefined; 		
+    this.cli_cidade = undefined; 		
+    this.cli_logradouro = undefined; 	
+    this.cli_complemento = undefined;  
+    this.cli_usrCadastro = undefined; 	
+    this.cli_dtCadastro = undefined; 
+
+    this.listaEnderecoEntrega = [];
+    this.formulario.limparDataSource();
+    this.formulario.pesquisar();
+  }
 }

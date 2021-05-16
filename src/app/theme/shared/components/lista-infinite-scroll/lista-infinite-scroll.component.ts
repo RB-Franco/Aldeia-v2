@@ -44,7 +44,7 @@ export class ListaInfiniteScrollComponent implements OnInit {
   reconsutando = true;
 
   rows: any[] = [];
-  isLoading: boolean;
+  isLoading: boolean = false;
   selected = [];
   naoEncontrouColunaAcoes = false;
   colunasOrdenadas: any[];
@@ -85,7 +85,10 @@ export class ListaInfiniteScrollComponent implements OnInit {
     this.rows = [];
     this.onScroll(0);
   }
-
+  limparDataSource() {
+    this.dataSource = [];
+    this.configureDataSource(true, false);
+  }
   removerItem(item) {
 
     this.rows = this.rows.filter(m => m !== item);
@@ -98,8 +101,7 @@ export class ListaInfiniteScrollComponent implements OnInit {
 
     const viewHeight = (this.el as any).element.getBoundingClientRect().height - this.headerHeight;
 
-    if (!this.isLoading &&
-      offsetY + viewHeight >= this.rows.length * this.rowHeight) {
+    if (!this.isLoading && offsetY + viewHeight >= this.rows.length * this.rowHeight) {
 
       let limit = this.pageLimit;
 
@@ -117,28 +119,31 @@ export class ListaInfiniteScrollComponent implements OnInit {
    private loadPage(limit: number) {
 
   //   if (this.quantidadeMaxima > 0 && this.rows.length === this.quantidadeMaxima) { return; }
+    if(this.servico === "" && this.dataSource.length === 0){
+      this.configureDataSource(true, false);
+      return;
+    }    
 
     this.isLoading = true;    
     if (this.dataSource.length > 0) {
       const rows = [...this.rows, ...this.dataSource];
       this.quantidadeMaxima = this.dataSource.length;
       this.rows = rows;
-      this.rows.forEach( row => {row.rowValue = 0});
       this.configureDataSource(this.dataSource.length === 0, false);
       this.aoCarregarDados.emit();
       return;
     }
-
+    
     this.getResults(this.rows.length, limit)
-      .then(results => {
-        const renderizarScroll = this.rows.length === 0;
-        this.quantidadeMaxima = 5;
-        const rows = [...this.rows, ...results.data];
-        this.rows = rows;
-        this.rows.forEach( row => {row.rowValue = 0});
-        this.configureDataSource(renderizarScroll, false);
-        this.aoCarregarDados.emit();
-      });
+    .then(results => {
+      const renderizarScroll = this.rows.length === 0;
+      this.quantidadeMaxima = 5;
+      const rows = [...this.rows, ...results.data];
+      this.rows = rows;
+      this.configureDataSource(renderizarScroll, false);
+      this.aoCarregarDados.emit();
+    });            
+    
   }
 
   configureDataSource(renderizarScroll, isLoading = false) {

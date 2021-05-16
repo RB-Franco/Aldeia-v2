@@ -69,7 +69,6 @@ export class ProdutoComponent implements OnInit {
   excluir(row: any) {
     this.comunicacao.delete('api/produto/excluir-produto', { dados: { id: row.id } }).then((result: any) => {
       if (result.success) {
-        alert(result.data)
         this.pesquisar(this.filtros);
       }
     });

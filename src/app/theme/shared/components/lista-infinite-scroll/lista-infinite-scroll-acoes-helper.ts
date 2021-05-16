@@ -3,4 +3,5 @@ export interface ListaInfiniteScrollAcoesHelper {
   visivel?: () => boolean;
   icone: string;
   toolTip?: string;
+  width?: number;
 }

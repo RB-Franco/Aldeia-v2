@@ -22,6 +22,9 @@ import { FornecedorDetalheComponent } from './fornecedor/fornecedor-detalhe/forn
 import { ProdutoDetalheComponent } from './produto/produto-detalhe/produto-detalhe.component';
 import { UsuarioDetalheComponent } from './usuario/usuario-detalhe/usuario-detalhe.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { CatalogoDetalheLinhaComponent } from './catalogo/catalogo-detalhe/catalogo-detalhe-adiciona-prod/catalogo-detalhe-linha/catalogo-detalhe-linha.component';
+import { CatalogoDetalheAdicionaProdComponent } from './catalogo/catalogo-detalhe/catalogo-detalhe-adiciona-prod/catalogo-detalhe-adiciona-prod.component';
+import { CatalogoDetalheReferenciaComponent } from './catalogo/catalogo-detalhe/catalogo-detalhe-adiciona-prod/catalogo-detalhe-referencia/catalogo-detalhe-referencia.component';
 
 const routs: Routes = [
   {
@@ -102,6 +105,9 @@ const routs: Routes = [
     CadastrosComponent,
     CatalogoComponent,
     CatalogoDetalheComponent,
+    CatalogoDetalheReferenciaComponent,
+    CatalogoDetalheLinhaComponent,
+    CatalogoDetalheAdicionaProdComponent,
     ClienteComponent,
     EmpresaComponent,
     FornecedorComponent,
@@ -114,7 +120,7 @@ const routs: Routes = [
     UsuarioDetalheComponent
   ],
   exports: [RouterModule],
-  entryComponents: [CatalogoDetalheComponent]
+  entryComponents: [CatalogoDetalheComponent, CatalogoDetalheAdicionaProdComponent]
 })
 
 export class CadastroModule { }

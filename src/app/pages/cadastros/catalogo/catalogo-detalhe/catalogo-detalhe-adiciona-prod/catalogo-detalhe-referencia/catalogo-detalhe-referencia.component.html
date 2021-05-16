@@ -1,0 +1,49 @@
+<app-card cardTitle="Referências do catalogo" blockClass="table-border-style"><br>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Código</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="IcodRef"
+          [(ngModel)]="this.codReferencia"
+          placeholder="Código da referência">
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="">Descrição</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="IDescReferencia"
+          [(ngModel)]="this.descReferencia"
+          placeholder="3 LG 2 BR ( 2 ASS1,00 )">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Tamanho</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="ITamReferencia"
+          [(ngModel)]="this.tamanhoReferencia"
+          placeholder="2,55X0,88X0,95">
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success" (click)="adicionar()">Adicionar</button>
+  <hr>
+  <br>
+  <mx-formulario-aterrissagem
+      #formularioRef
+      [titulo]="'Referencias'"
+      [colunas]="colunasReferencias"
+      [acoes]="acoesReferencias"
+      [dataSource]="listReferencias.valueOf()"
+      [semPaginacao]="true"
+      [tamanho]="'250px'">
+  </mx-formulario-aterrissagem>
+</app-card>

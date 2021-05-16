@@ -7,8 +7,11 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Descrição</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Puzzle inc.">
+              <input type="text" 
+              class="form-control" 
+              name="iDescricao"
+              [(ngModel)]="this.descricao"
+              placeholder="Informe o nome do fornecedor">
             </div>
           </form>
         </div>
@@ -16,8 +19,11 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">CPNJ</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Puzzle inc.">
+              <input type="text" 
+              class="form-control" 
+              name="iCnpj"
+              [(ngModel)]="this.cnpj"
+                placeholder="">
             </div>
           </form>
         </div>
@@ -25,8 +31,10 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Inscrição estadual</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Puzzle inc.">
+              <input type="text" class="form-control"
+                name="iIe"
+                [(ngModel)]="this.ie"
+                placeholder="Informe a Inscrição estadual">
             </div>
           </form>
         </div>
@@ -36,7 +44,9 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Telefone</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="email" class="form-control" 
+              name="iTelefone"
+              [(ngModel)]="this.telefone"
                 placeholder="3278-5589">
             </div>
           </form>
@@ -45,8 +55,10 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">E-mail</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="fornecedor@gmail.com">
+              <input type="email" class="form-control" 
+              name="iEmail"
+              [(ngModel)]="this.email"
+                placeholder="Email de contado">
             </div>
           </form>
         </div>
@@ -54,12 +66,29 @@
       <hr>
       <h5>Endereço principal</h5>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <form action="javascript:">
             <div class="form-group">
-              <label for="">Estado</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Goiás">
+              <label for="">CEP</label>
+              <div class="input-group">
+                <input type="text" name="inputCepP" [(ngModel)]="this.cep" class="form-control" placeholder="####-####">
+                &nbsp;
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-icon btn-secondary" (click)="validaCep(true)" style="box-shadow: none;">
+                    <i class="feather icon-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="estadoEmp" class="control-label">UF</label>
+              <select class="form-control" name="Iestado" [(ngModel)]="this.estado">
+                <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.nome}}</option>
+              </select>
             </div>
           </form>
         </div>
@@ -67,7 +96,9 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Cidade</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="email" class="form-control" 
+              name="iCidadeP"
+              [(ngModel)]="this.cidade"
                 placeholder="Goiania">
             </div>
           </form>
@@ -78,7 +109,9 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Logradouro</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="email" class="form-control"
+              name="ILogradouroP"
+              [(ngModel)]="this.logradouro"
                 placeholder="Rua tambaqui cond. Gran oasis">
             </div>
           </form>
@@ -87,20 +120,40 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Complemento</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="email" class="form-control" 
+              name="IcomplementoPrincipal"
+              [(ngModel)]="this.complemento"
                 placeholder="QD: 10 apt: 524 bl: 15">
             </div>
           </form>
         </div>
       </div>
+      <br>
       <h5>Endereço de entrega</h5>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <form action="javascript:">
             <div class="form-group">
-              <label for="">Estado</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Goiás">
+              <label for="">CEP</label>
+              <div class="input-group">
+                <input type="text" name="inputCepE" [(ngModel)]="this.cepEntrega" class="form-control" placeholder="####-####">
+                &nbsp;
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-icon btn-secondary" (click)="validaCep(false)" style="box-shadow: none;">
+                    <i class="feather icon-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-2">
+          <form action="javascript:">
+            <div class="form-group">
+              <label for="estadoEmp" class="control-label">Estado</label>
+              <select class="form-control" name="Iestado" [(ngModel)]="this.estadoEntrega">
+                <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.nome}}</option>
+              </select>
             </div>
           </form>
         </div>
@@ -108,7 +161,9 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Cidade</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="email" class="form-control" 
+              name="iCidadeEntrega"
+              [(ngModel)]="this.cidadeEntrega"
                 placeholder="Goiania">
             </div>
           </form>
@@ -119,7 +174,9 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Logradouro</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="email" class="form-control"
+              name="iLogradouroE"
+              [(ngModel)]="this.logradouroEntrega"
                 placeholder="Rua tambaqui cond. Gran oasis">
             </div>
           </form>
@@ -128,33 +185,33 @@
           <form action="javascript:">
             <div class="form-group">
               <label for="">Complemento</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="email" class="form-control"
+              name="IComplementoE"
+              [(ngModel)]="this.complementoEntrega"
                 placeholder="QD: 10 apt: 524 bl: 15">
             </div>
           </form>
         </div>
       </div>
       <hr>
-      <div class="col-md-2">
-        <form action="javascript:" class="was-validated">
+      <div class="col-sm-2">
+        <form action="javascript:">
           <div class="form-group">
-            <label for="">Estado de atuação</label>
-            <select class="custom-select" required>
-              <option value=""></option>
-              <option value="1">GO</option>
-              <option value="2">SP</option>
-              <option value="3">MT</option>
+            <label for="estadoEmp" class="control-label">Estado de atuação</label>
+            <select class="form-control" name="Iestado" [(ngModel)]="this.estadoAtuacao">
+              <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.nome}}</option>
             </select>
           </div>
         </form>
       </div>
       <hr>
       <div class="row">
-        <div class="col-auto mr-auto">
-          <button type="cancelar" class="btn btn-danger" (click)="voltarRota()">Cancelar</button>
-        </div>
+        <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-          <button type="salvar" class="btn btn-primary" (click)="voltarRota()">Salvar</button>
+          <button type="button" class="btn btn-light" (click)="salvar()" ><i class="feather icon-check"></i>&nbsp;&nbsp;Salvar</button>
+          <button type="button" class="btn btn-light" (click)="novo()"><i class="feather icon-file"></i>&nbsp;&nbsp;Novo</button>
+          <button type="button" class="btn btn-light" (click)="excluir()"><i class="feather icon-trash"></i>&nbsp;&nbsp;Excluir</button>
+          <button type="button" class="btn btn-light" (click)="cancelar()"><i class="feather icon-x"></i>&nbsp;&nbsp;Cancelar</button>
         </div>
       </div>
     </app-card>

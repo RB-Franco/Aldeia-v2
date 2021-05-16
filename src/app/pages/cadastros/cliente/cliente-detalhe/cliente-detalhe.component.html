@@ -186,7 +186,7 @@
                   placeholder="">
                   &nbsp;&nbsp;
                   <div class="input-group-btn">
-                    <button type="button" class="btn btn-icon btn-success" (click)="salvarEndEntrega()"
+                    <button type="button" class="btn btn-icon btn-success" (click)="AdicionarEnderecoNaLista()"
                       style="box-shadow: none;">
                       <i class="feather icon-check"></i>
                     </button>
@@ -204,21 +204,23 @@
             [colunas]="colunas" 
             [acoes]="acoes"
             [filtros]="" 
-            [servico]="dataEnderecosEntrega" 
+            [dataSource]="listaEnderecoEntrega" 
             [semPaginacao]="true" 
             [tamanho]="'350px'">
           </mx-formulario-aterrissagem>
         </div>
       </app-card>
 
+      <hr>
       <div class="row">
-        <div class="col-auto mr-auto">
-          <button type="cancelar" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
-        </div>
+        <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-          <button type="salvar" class="btn btn-primary" (click)="salvar()">Salvar</button>
+          <button type="button" class="btn btn-light" (click)="salvar()" ><i class="feather icon-check"></i>&nbsp;&nbsp;Salvar</button>
+          <button type="button" class="btn btn-light" (click)="novo()"><i class="feather icon-file"></i>&nbsp;&nbsp;Novo</button>
+          <button type="button" class="btn btn-light" (click)="excluir()"><i class="feather icon-trash"></i>&nbsp;&nbsp;Excluir</button>
+          <button type="button" class="btn btn-light" (click)="cancelar()"><i class="feather icon-x"></i>&nbsp;&nbsp;Cancelar</button>
         </div>
-      </div>
+      </div>      
     </app-card>
   </div>
 </div>

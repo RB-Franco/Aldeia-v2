@@ -17,7 +17,7 @@
             <div class="form-group">
               <label for="status">Status</label>
               <select class="form-control" name="status" [(ngModel)]="this.status">
-                <option *ngFor="let status of listStatus" [ngValue]="status.valor"> {{status.valor}} - {{status.descricao}}</option>
+                <option *ngFor="let status of ListaStatus" [ngValue]="status.id">{{status.descricao}}</option>
               </select>
             </div>
           </form>
@@ -39,7 +39,7 @@
             <div class="form-group">
               <label for="tipo">Tipo usuário</label>
               <select class="form-control" name="tipo" [(ngModel)]="this.tipoUsuario" >
-                <option *ngFor="let tipo of tipoUsuarios" [ngValue]="tipo.descricao"> {{ tipo.descricao }}</option>
+                <option *ngFor="let tipo of tipoUsuarios" [ngValue]="tipo.id"> {{ tipo.descricao }}</option>
               </select>
             </div>
           </form>
@@ -81,13 +81,14 @@
       </div>
       <hr>
       <div class="row">
-        <div class="col-auto mr-auto">
-          <button type="cancelar" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
-        </div>
+        <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-          <button type="salvar" class="btn btn-primary" (click)="salvar()">Salvar</button>
+          <button type="button" class="btn btn-light" (click)="salvar()" ><i class="feather icon-check"></i>&nbsp;&nbsp;Salvar</button>
+          <button type="button" class="btn btn-light" (click)="novo()"><i class="feather icon-file"></i>&nbsp;&nbsp;Novo</button>
+          <button type="button" class="btn btn-light" (click)="excluir()"><i class="feather icon-trash"></i>&nbsp;&nbsp;Excluir</button>
+          <button type="button" class="btn btn-light" (click)="cancelar()"><i class="feather icon-x"></i>&nbsp;&nbsp;Cancelar</button>
         </div>
-      </div>
+      </div>      
     </app-card>
   </div>
 </div>

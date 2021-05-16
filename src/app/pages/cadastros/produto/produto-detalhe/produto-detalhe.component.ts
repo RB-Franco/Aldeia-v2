@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import { ComunicacaoBaseService } from 'src/app/theme/shared/services/comunicationService/comunicacao-base.service';
 import { DropdownService } from 'src/app/theme/shared/services/dropdownService/dropdown.service';
+import swal from 'sweetalert2';
 import { NextConfig } from '../../../../app-config';
 import { ProdutoComponent } from '../produto.component';
 
@@ -24,7 +25,7 @@ export class ProdutoDetalheComponent implements OnInit {
   dtCadastro: any;
 
   fileData: File = null;
-  previewUrl:any = null;
+  previewUrl: any = null;
 
   constructor(
     private comunicacao: ComunicacaoBaseService,
@@ -61,6 +62,11 @@ export class ProdutoDetalheComponent implements OnInit {
   }
 
   salvar() {
+    if(!this.validarProduto() ){
+      swal('Atenção', 'Informe os dados do produto!', 'warning');
+      return;
+    }
+
     let produto = {
       id: undefined,
       descricao: this.descricao,
@@ -88,14 +94,14 @@ export class ProdutoDetalheComponent implements OnInit {
       });
     }
   }
-   
-fileProgress(fileInput: any) {
+
+  fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
     this.preview();
-}
- 
-preview() {
-    if(!this.fileData){
+  }
+
+  preview() {
+    if (!this.fileData) {
       this.previewUrl = undefined;
       return;
     }
@@ -104,13 +110,32 @@ preview() {
     if (mimeType.match(/image\/*/) == null) {
       return;
     }
- 
-    var reader = new FileReader();      
-    reader.readAsDataURL(this.fileData); 
-    reader.onload = (_event) => {       
+
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData);
+    reader.onload = (_event) => {
       this.previewUrl = reader.result;
     }
-}
- 
- 
+  }
+  excluir() {
+    this.comunicacao.delete('api/produto/excluir-produto', { dados: { id: this.id } }).then((result: any) => {
+      if (result.success) {
+        this.novo();
+      }
+    });
+  }
+  novo() {
+    this.id = undefined;
+    this.descricao = undefined;
+    this.unidadeMedida = undefined;
+    this.previewUrl = undefined;
+    this.usrCadastro = undefined;
+    this.dtCadastro = undefined;
+  }
+
+  validarProduto() {
+    if (!this.descricao) { return false; }
+    if (!this.unidadeMedida) { return false; }
+    return true;
+  }
 }

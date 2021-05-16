@@ -19,7 +19,7 @@
                     </div>
                     <div class="row btn-page">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-primary"><i class="feather icon-search"></i>
+                            <button type="button" class="btn btn-primary" (click)="pesquisar()"><i class="feather icon-search"></i>
                                 Pesquisar</button>
                             <button type="button" class="btn btn-light">Limpar campos</button>
                         </div>
@@ -31,6 +31,20 @@
 </div>
 
 <div class="col-md-12">
+    <mx-formulario-aterrissagem
+        #formulario
+        [titulo]="'Catalogos'"
+        [colunas]="colunas"
+        [acoes]="acoes"
+        [filtros]="filtros"
+        [servico]="'api/catalogo/obter-catalogos/pesquisar'"
+        [semPaginacao]="true"
+        [tamanho]="'660px'">
+    </mx-formulario-aterrissagem>
+</div>
+<button class="fixed feather icon-plus btn btn-primary" (click)="detalheCatalogo(0)"> Cadastrar</button>
+
+<!-- <div class="col-md-12">
     <app-card cardTitle="Catalogos" blockClass="table-border-style">
         <div class="table-responsive">
             <table class="table table-hover">
@@ -61,11 +75,11 @@
                         </td>
                         <td class="text-center">
                             <div role="" class="btn-group-sm btn-group">
-                                <!--Editar-->
+                                
                                 <button type="button" class="btn btn-icon"  style="box-shadow: none;" (click)="detalheCatalogo(1)">
                                     <i class="feather icon-edit"> </i>
                                 </button>
-                                <!--Excluir-->
+                                
                                 <button type="button" class="btn btn-icon"  style="box-shadow: none;" (click)="excluir()">
                                     <i class="feather icon-trash-2"> </i>
                                 </button>
@@ -76,5 +90,4 @@
             </table>
         </div>
     </app-card>
-</div>
-<button class="fixed feather icon-plus btn btn-primary" (click)="detalheCatalogo(0)"> Cadastrar</button>
+</div> -->
