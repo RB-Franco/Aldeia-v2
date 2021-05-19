@@ -34,6 +34,7 @@ export class CatalogoDetalheComponent implements OnInit {
   idProd: any;
   codProduto: any;
   usrCadastroProd: any;
+  montaListaProduto: boolean = false;
 
   listProdutos = [];
   listReferencias = [];
@@ -48,14 +49,19 @@ export class CatalogoDetalheComponent implements OnInit {
   ) {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
-    
+    debugger;
     if(data.id !== undefined){
       this.id = data.id;
       this.descricaoCatalogo = data.descricao;      
       this.fornecedorId = data.fornecedorId;
       this.usrCadastro = data.usrCadastro;
       this.dtCadastro = data.dtCadastro;
+      this.listReferencias = data.referencias;
+      this.listLinhas = data.linhas;
+      this.montaListaProduto = true;
     }
+    
+    this.CarregaDados();      
   }
   colunasProdutos = [
     { titulo: 'Produto', propriedade: 'descProduto', width: 450 },
@@ -66,14 +72,10 @@ export class CatalogoDetalheComponent implements OnInit {
   acoesProdutos = [{ titulo: 'Ação', icone: 'feather icon-trash-2', centralizarHeader: true, centralizarValor: true, evento: this.excluir.bind(2, this) }];
 
   ngOnInit() {
-    this.titleService.setTitle('Aldeia - Cadastro catalogo');
-    this.comunicacao.get('api/fornecedor/obter-fornecedores/pesquisar').then((result: any) => {
-      this.fornecedores = result.data;
-    });
-    this.comunicacao.get('api/produto/obter-produtos/pesquisar').then((result: any) => {
-      this.produtos = result.data;
-    });
-  }
+    //this.CarregaDados()
+    //this.montaListaProdutos();    
+  }  
+
 
   navMobCollapse() {
     if (this.windowWidth < 992) {
@@ -91,22 +93,24 @@ export class CatalogoDetalheComponent implements OnInit {
       id: this.id,
       descricao: this.descricaoCatalogo,
       fornecedorId: this.fornecedorId,
-      usrCadastro: this.usrCadastro
+      usrCadastro: this.usrCadastro,
+      referencias: this.listReferencias,
+      linhas: this.listLinhas
     }    
 
     if (this.id !== undefined) {
       catalogo.id = this.id;
       this.comunicacao.put('api/catalogo/atualizar-catalogo', { dados: catalogo }).then((result: any) => {
         if (result.success) {          
-          //this.dialogRef.close();
+          this.dialogRef.close(result.success);
         }
       });
     } else {
+      debugger;
       catalogo.usrCadastro = 'supervisor';
       this.comunicacao.post('api/catalogo/cadastrar-catalogo', { dados: catalogo }).then((result: any) => {
         if (result.success) {
-          //this.dialogRef.close();
-          catalogo = result.data;
+          this.dialogRef.close(result.success);
         }
       });
     }
@@ -122,9 +126,19 @@ export class CatalogoDetalheComponent implements OnInit {
   }
 
   excluir() {
+    debugger
     if(this.id === undefined) {return;}
 
-    this.comunicacao.delete('api/catalogo/excluir-catalogo', {dados: { id: this.id}}).then((result: any) => { 
+    let catalogo = {
+      id: this.id,
+      descricao: this.descricaoCatalogo,
+      fornecedorId: this.fornecedorId,
+      usrCadastro: this.usrCadastro,
+      referencias: this.listReferencias,
+      linhas: this.listLinhas
+    }  
+      
+    this.comunicacao.delete('api/catalogo/excluir-catalogo', {dados: catalogo}).then((result: any) => { 
       if(result.success){
         alert(result.data)
         this.formularioProd.pesquisar();
@@ -141,28 +155,46 @@ export class CatalogoDetalheComponent implements OnInit {
                         .addPanelClass('painel-class');
     detRef.afterClosed().subscribe(result => {
       if (result.success) {
+        debugger;  
         this.listReferencias = result.listaReferencias;
         this.listLinhas = result.listaLinhas;
 
-        this.montaListaProdutos()
-        this.formularioProd.pesquisar();
+        this.montaListaProdutos()        
       }
     });
   }
   
-  montaListaProdutos(){    
-    this.listLinhas.forEach(element => {
-      let ref = this.listReferencias.find(r => r.codigo === element.codigoReferencia);
-      let prod = this.produtos.find(p => p.id === element.codProduto);
-      this.listProdutos.push({ 
-        id: this.idProd,
-        catalogoId: this.id,
-        produtoId: element.codProduto,
-        descProduto: `${prod.id} - ${prod.descricao}`,
-        codReferencia: element.codigoReferencia,
-        descReferencia: `${ref.descricao} - ${ref.tamanho}`,
-        linha: element.linha,
-        valor: element.valor });
+  montaListaProdutos(){  
+    if(this.listReferencias.length > 0 && this.listReferencias.length > 0)  {
+      this.listLinhas.forEach(element => {
+        let ref = this.listReferencias.find(r => r.codReferencia === element.codReferenciaLinha);
+        let prod = this.produtos.find(p => p.id === element.produtoId);
+        this.listProdutos.push({ 
+          id: this.idProd,
+          catalogoId: this.id,
+          produtoId: element.produtoId,
+          descProduto: `${prod.id} - ${prod.descricao}`,
+          codReferencia: element.codReferenciaLinha,
+          descReferencia: `${ref.descricao} - ${ref.tamanho}`,
+          linha: element.linha,
+          valor: element.valor });
+      });
+    }
+
+    this.formularioProd.pesquisar();   
+  }
+  
+  CarregaDados(){
+    this.titleService.setTitle('Aldeia - Cadastro catalogo');
+    this.comunicacao.get('api/fornecedor/obter-fornecedores/pesquisar').then((result: any) => {
+      this.fornecedores = result.data;
     });
+    this.comunicacao.get('api/produto/obter-produtos/pesquisar').then((result: any) => {
+      this.produtos = result.data;
+      if(this.montaListaProduto){
+        this.montaListaProdutos();
+      }
+    });
+
   }
 }

@@ -42,7 +42,7 @@ export class CatalogoDetalheLinhaComponent implements OnInit {
   }
 
   colunasLinhas = [
-    { titulo: 'Código referencia', propriedade: 'codigoReferencia', width: 80 },
+    { titulo: 'Código referencia', propriedade: 'codReferenciaLinha', width: 80 },
     { titulo: 'Linha', propriedade: 'linha', width: 150 },
     { titulo: 'Valor', propriedade: 'valor', width: 150 },
     { titulo: 'Ações', width: 10 }
@@ -67,10 +67,12 @@ export class CatalogoDetalheLinhaComponent implements OnInit {
       return;
     }
     this.listLinhas.push({ 
-      codProduto: undefined,
-      codigoReferencia: this.codRefLinha,
+      id: undefined,
+      produtoId: undefined,
+      codReferenciaLinha: this.codRefLinha,
       linha: this.linha,
-      valor: this.valor });
+      valor: this.valor,
+      usrCadastro: 'Supervisor' });
     this.formulario.pesquisar();
     
     this.linha = undefined;

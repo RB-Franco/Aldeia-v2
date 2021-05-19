@@ -59,12 +59,12 @@ export class CatalogoComponent implements OnInit {
         this.pesquisar();
       }
     });
-    //this.router.navigate(['/pages/cadastros/fornecedor/fornecedor-detalhe', id], {queryParams: {rotaAtual: this.rotaAtual}});
   }
+  
   excluir(row: any){
-    this.comunicacao.delete('api/catalogo/excluir-catalogo', {dados: { id: row.id}}).then((result: any) => { 
+    debugger;
+    this.comunicacao.post('api/catalogo/excluir-catalogo', {dados: row}).then((result: any) => { 
       if(result.success){
-        alert(result.data)
         this.pesquisar();
       }
     });

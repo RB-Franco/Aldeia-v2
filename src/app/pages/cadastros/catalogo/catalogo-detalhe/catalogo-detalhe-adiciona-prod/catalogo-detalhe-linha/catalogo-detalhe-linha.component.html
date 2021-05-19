@@ -13,7 +13,8 @@
             <div class="form-group">
               <label for="referenciasLinhas" class="control-label">Cód. referência</label>
               <select class="form-control" name="ICodRefLinha" [(ngModel)]="this.codRefLinha">
-                <option *ngFor="let referencia of this.formularioReferencia.retornarLista()" [ngValue]="referencia.codigo">{{referencia.codigo}} - {{referencia.descricao}}</option>
+                <option></option>
+                <option *ngFor="let referencia of this.formularioReferencia.retornarLista()" [ngValue]="referencia.codReferencia">{{referencia.codReferencia}} - {{referencia.descricao}}</option>
               </select>
             </div>
           </form>

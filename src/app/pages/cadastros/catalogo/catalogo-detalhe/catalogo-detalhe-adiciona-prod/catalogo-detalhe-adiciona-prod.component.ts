@@ -84,8 +84,8 @@ export class CatalogoDetalheAdicionaProdComponent implements OnInit {
       return;
     }
 
-    listaReferencia.forEach(row => row.codProduto = this.codProduto);
-    listaLinha.forEach(row => row.codProduto = this.codProduto);
+    listaReferencia.forEach(row => row.produtoId = this.codProduto);
+    listaLinha.forEach(row => row.produtoId = this.codProduto);
 
     let data ={ 
       success: true,     

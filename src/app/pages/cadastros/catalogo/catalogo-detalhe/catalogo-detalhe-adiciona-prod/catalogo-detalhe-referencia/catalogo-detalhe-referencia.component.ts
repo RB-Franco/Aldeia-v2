@@ -30,7 +30,7 @@ export class CatalogoDetalheReferenciaComponent implements OnInit {
   }
 
   colunasReferencias = [
-    { titulo: 'Código', propriedade: 'codigo', width: 80 },
+    { titulo: 'Código', propriedade: 'codReferencia', width: 80 },
     { titulo: 'Descrição', propriedade: 'descricao', width: 150 },
     { titulo: 'Tamanho', propriedade: 'tamanho', width: 150 },
     { titulo: 'Ações', width: 10 }
@@ -55,10 +55,12 @@ export class CatalogoDetalheReferenciaComponent implements OnInit {
     }
 
     this.listReferencias.push({
-      codProduto: undefined,
-      codigo: this.codReferencia,
+      codReferencia: this.codReferencia,
+      produtoId: undefined,
+      catalogoId: undefined,
       descricao: this.descReferencia,
-      tamanho: this.tamanhoReferencia
+      tamanho: this.tamanhoReferencia,
+      usrCadastro: 'Supervisor'
     });
     this.formulario.pesquisar();
     
